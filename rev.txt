@@ -1,0 +1,33 @@
+================ user
+
+/**
+ * courses
+ */
+progress learn
+
+/**
+ * order
+ */
+when status order cancel, show delete button...
+
+/**
+ * pagination on 
+ */
+
+================= app
+
+/**
+ * wysiwyg
+ */
+add image from external url, google drive
+setting image thumbnail sizes
+
+/**
+ * seo
+ */
+noindex follow on category page, tags page.
+
+
+cek kode berjalan dengan sempurna dan tidak ada bug
+cek penulisan kode
+cek seo tag
