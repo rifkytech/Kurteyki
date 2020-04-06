@@ -4,7 +4,7 @@ $(function() {
 
 		CKEDITOR.replace( this.name, {
 			//language: 'id',
-			extraPlugins: 'autogrow,toc,codesnippet,htmlbuttons,a11ychecker,image2,wordcount,notification',
+			extraPlugins: 'autogrow,toc,codesnippet,htmlbuttons,a11ychecker,image2,wordcount,notification,tableresize,tableselection,uploadcare,quicktable,youtube',
 			'imageResize.maxWidth': 800,
 			'imageResize.maxHeight': 800,
 
@@ -12,6 +12,8 @@ $(function() {
 			autoGrow_minHeight: 300,
 			autoGrow_maxHeight: 600,
 			autoGrow_onStartup: true,
+
+			uploadcare: {publicKey: 'ef9642d97f5f30b0bee8'},
 
 			allowedContent: true,
 			skin: 'kama',

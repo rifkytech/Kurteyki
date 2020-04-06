@@ -9,14 +9,18 @@ class M_Site_Meta_Data_OG_Init extends CI_Model
 
 		if (!empty($image)) {
 
-			@$fastimage = new FastImage($image);
+			// @$fastimage = new FastImage($image);
 
-			if ($fastimage->handle) {
-				list($width, $height) = $fastimage->getSize();
-			}else {
-				$width = 640;
-				$height = 640;	
-			}
+			// if ($fastimage->handle) {
+			// 	list($width, $height) = $fastimage->getSize();
+			// }else {
+			// 	$width = 640;
+			// 	$height = 640;	
+			// }
+
+			$width = 640;
+			$height = 640;	
+			
 		}else {
 
 			if ($site_meta['default_image']) {

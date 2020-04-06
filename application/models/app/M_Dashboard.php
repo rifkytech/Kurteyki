@@ -3,18 +3,14 @@
 class M_Dashboard extends CI_Model
 {
 
-    public $table_app_user = 'tb_app_user';
-    public $table_blog_pages = 'tb_blog_pages';
     public $table_blog_post = 'tb_blog_post';
     public $table_blog_post_category = 'tb_blog_post_category';
     public $table_blog_post_tags = 'tb_blog_post_tags';
     public $table_blog_post_comment = 'tb_blog_post_comment';
-    public $table_product = 'tb_product';
-    public $table_site = 'tb_site';
-    public $table_site_seo = 'tb_site_seo';
+
     public $table_site_visitor = 'tb_site_visitor';
-    public $table_template = 'tb_template';
-    public $table_template_widget = 'tb_template_widget';
+
+    public $table_site_pages = 'tb_site_pages';
 
     public function get_statistic(){
 
@@ -33,7 +29,7 @@ class M_Dashboard extends CI_Model
          */
         $count_pages = $this->db
         ->select("id")
-        ->from($this->table_blog_pages)
+        ->from($this->table_site_pages)
         ->where("time <= NOW()")
         ->where("status = 'Published'")
         ->count_all_results();        
