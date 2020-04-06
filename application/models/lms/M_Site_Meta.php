@@ -33,7 +33,7 @@ class M_Site_Meta extends CI_Model
 	public function page_type(){
 
 		if (empty($this->uri->segment(2)) OR $this->uri->segment(2) == 'index') {
-			if (!empty($this->uri->segment(3))) {
+			if (!empty($this->input->get('page'))) {
 				$type = 'index_page';
 			}else {
 				$type = 'index';
@@ -63,9 +63,9 @@ class M_Site_Meta extends CI_Model
 
 		if ($page_type == 'index' OR $page_type == 'index_page') {
 
-			if (!empty($this->uri->segment(3))) {
-				$title = $site['title'].' - '.$this->lang->line('courses').' - '.$this->lang->line('page').' '.$this->uri->segment(3);
-				$breadcrumbs = $this->lang->line('material_list').' - '.$this->lang->line('page').' '.$this->uri->segment(3);
+			if (!empty($this->input->get('page'))) {
+				$title = $site['title'].' - '.$this->lang->line('courses').' - '.$this->lang->line('page').' '.$this->input->get('page');
+				$breadcrumbs = $this->lang->line('material_list').' - '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title = $site['title'];
 				$breadcrumbs = $this->lang->line('material_list');
@@ -86,9 +86,9 @@ class M_Site_Meta extends CI_Model
 
 			$category = $this->M_Site_Meta_Courses_Category->read(urldecode($this->uri->segment(3)));
 
-			if (!empty($this->uri->segment(5))) {
-				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
-				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
+			if (!empty($this->input->get('page'))) {
+				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
+				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title =  $this->lang->line('category').' - '.$category['name'];
 				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'];

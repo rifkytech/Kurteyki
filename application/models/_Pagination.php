@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('no direct script access allowed');
 class _Pagination extends CI_Model 
 {
 
-    public function pagination($post_count,$max_result,$url,$segment,$display_pages = TRUE,$query = false)
+    public function pagination($post_count,$max_result,$url,$segment = false,$display_pages = true,$query = false)
     {
 
         # load library
@@ -14,12 +14,14 @@ class _Pagination extends CI_Model
         $config['base_url'] = $url;
         $config['total_rows'] = $post_count;
         $config['per_page'] = $max_result;
-        //$config["uri_segment"] = $segment;
+        if ($segment) {
+            $config["uri_segment"] = $segment;
+        }
         $config['use_page_numbers'] = TRUE;
         if ($query) {
             $config['page_query_string'] = TRUE;
             $config['enable_query_strings'] = TRUE;
-            $config['query_string_segment'] = 'index';
+            $config['query_string_segment'] = $query;
         }
         $config['display_pages'] = $display_pages;
         $choice = $config["total_rows"] / $config["per_page"];

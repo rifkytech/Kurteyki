@@ -11,7 +11,7 @@ class M_Site_Meta_Category extends CI_Model
 		$this->db->where('slug',$slug);
 		$query = $this->db->get();
 
-		if ($query->num_rows() < 1) redirect(base_url());
+		if ($query->num_rows() < 1) redirect(base_url('blog'));
 
 		$category = $query->row_array();
 

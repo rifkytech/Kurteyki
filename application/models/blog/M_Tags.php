@@ -12,17 +12,17 @@ class M_Tags extends CI_Model
 		if ($id_tag->num_rows() < 1) redirect(base_url());
 		$id_tag = $id_tag->row()->id;
 
-		$limit = $site['limit_post'];
+		$limit = $site['blog_limit_post'];
 		$count_data = $this->query($id_tag,true);
 
 		if (empty($count_data)) return false;
 
-		$index = ($this->uri->segment(5)) ? $limit*($this->uri->segment(5)-1) : 0;
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/tags/'.$tags.'/index'),5,TRUE);		
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/tags/'.$tags),FALSE,TRUE,'page');
 
 		$read_data = $this->query($id_tag,false,$limit,$index);
-		if (empty($read_data)) redirect(base_url());
+		if (empty($read_data)) redirect(base_url('blog/tags/'.$tags));
 
 		$read_post = $this->query_post($site,$read_data);
 

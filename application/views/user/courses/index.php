@@ -12,8 +12,8 @@
 			<h2 class="u-h3 u-mb-small"><?php echo $this->lang->line('my_courses') ?></h2>
 
 			<div class="c-card u-p-medium u-mb-large">	
-				<?php if (!empty($courses)): ?>					
-					<?php foreach ($courses as $post): ?>
+				<?php if (!empty($courses['data'])): ?>					
+					<?php foreach ($courses['data'] as $post): ?>
 						<div class="c-card u-p-small u-mb-small">	
 							<div class="row">
 								<div class="col-12 col-lg-9 order-lg-1">
@@ -47,18 +47,33 @@
 								</div>
 								<div class="col-12 u-mv-small order-lg-3">
 									<p>
-										<?php echo $this->lang->line('courses_progress') ?> : 45%
+										<?php echo $this->lang->line('courses_progress') ?> : <?php echo $post['user_lesson_progress'] ?>
 									</p>
 									<div class="c-progress c-progress--info u-m-zero" style="height: 10px">
-										<div class="c-progress__bar" style="width:45%;"></div>
+										<div class="c-progress__bar" style="width:<?php echo $post['user_lesson_progress'] ?>;"></div>
 									</div>
 								</div>
 							</div>
 						</div>
-					<?php endforeach ?>				
+					<?php endforeach ?>		
+
+					<?php if (empty($this->input->get('showall')) AND $courses['pagination']['total_rows'] > $courses['pagination']['per_page']): ?>			
+						<div class="u-mv-medium row">
+							<div class="col-6">
+								<?php $this->load->view('lms/_layouts/pagination');?>	
+							</div>
+							<div class="col-6 o-line">
+								<a class="u-ml-auto c-btn c-btn--custom c-btn--info" href="<?php echo base_url('user/courses?showall=true') ?>">
+									<?php echo $this->lang->line('show_all') ?>
+								</a>
+							</div> 
+
+						</div>	
+					<?php endif ?>
+
 				<?php endif ?>
 
-				<?php if (empty($courses)): ?>
+				<?php if (empty($courses['data'])): ?>
 					<div class="col-sm-12 col-lg-12">
 						<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 

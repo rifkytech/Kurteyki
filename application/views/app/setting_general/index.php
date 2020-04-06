@@ -2,327 +2,69 @@
 <?php $this->load->view('app/_layouts/sidebar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-12 u-p-zero">
+<div class="col-12 u-mv-small">
 	<form action="<?php echo base_url('app/setting_general/process') ?>" class="row" method="post" enctype="multipart/form-data">
 
-		<div class="col-12 col-xl-12 col-lg-12">
+		<div class="col-12 col-xl-8 col-lg-10 col-md-12 offset-xl-2 offset-lg-1">
 
-			<div class="c-card c-card--responsive h-100vh u-p-zero">
-				<div class="c-card__header u-bg-white o-line">   
+			<div class="c-card c-card--responsive u-p-zero">
+				<div class="c-card__header o-line">   
 					<h5 class="c-card__title">  
-						<?php  echo $title; ?>
+						<?php echo $title; ?>
 					</h5>     
 					<button class="c-btn c-btn--info u-ml-auto u-mr-small c-btn--custom" type="submit">
 						<i class="fa fa-save" aria-hidden="true"></i>
 					</button>
 				</div>
-				<div class="c-card__body">      
-
-					<?php $this->load->view('app/_layouts/alert'); ?>
+				<div class="c-card__body u-p-zero u-pt-small u-bg-secondary">      
 
 					<div class="row">
 
-						<div class="col-lg-6">
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Title</label> 
-								<input class="c-input" name="title" type="text" placeholder="title" value="<?php echo (!empty($site) ? $site['title'] : '') ?>"> 
+						<div class="col-12">
+
+							<div class="u-ph-medium">
+								<?php $this->load->view('app/_layouts/alert'); ?>
+							</div>
+
+							<div class="c-tabs">
+
+								<ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs u-ph-medium" id="myTab" role="tablist">
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small active show" id="nav-general-tab" data-toggle="tab" href="#nav-general" role="tab" aria-controls="nav-general" aria-selected="false">General</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-lms-tab" data-toggle="tab" href="#nav-lms" role="tab" aria-controls="nav-lms" aria-selected="false">Lms</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-blog-tab" data-toggle="tab" href="#nav-blog" role="tab" aria-controls="nav-blog" aria-selected="false">Blog</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="false">User</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-payment-gateway-tab" data-toggle="tab" href="#nav-payment-gateway" role="tab" aria-controls="nav-payment-gateway" aria-selected="false">Payment Gateway</a></li>
+								</ul>
+
+								<div class="c-tabs__content tab-content" id="nav-tabContent">
+
+									<div class="c-tabs__pane active show u-p-zero u-pt-large" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+										<?php $this->load->view('app/setting_general/form-general'); ?>
+									</div>	
+
+									<div class="c-tabs__pane u-p-medium u-pt-large" id="nav-lms" role="tabpanel" aria-labelledby="nav-lms-tab">
+										<?php $this->load->view('app/setting_general/form-lms'); ?>
+									</div>		
+
+									<div class="c-tabs__pane u-p-medium u-pt-large" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab">
+										<?php $this->load->view('app/setting_general/form-blog'); ?>
+									</div>	
+
+									<div class="c-tabs__pane u-p-medium u-pt-large" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+										<?php $this->load->view('app/setting_general/form-user'); ?>
+									</div>		
+
+									<div class="c-tabs__pane u-p-zero u-pt-large" id="nav-payment-gateway" role="tabpanel" aria-labelledby="nav-payment-gateway-tab">
+										<?php $this->load->view('app/setting_general/form-payment-gateway'); ?>
+									</div>		
+
+								</div>
+
 							</div>
 
 						</div>
 
-						<div class="col-lg-6">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Slogan</label> 
-								<input class="c-input" name="slogan" type="text" placeholder="slogan" value="<?php echo (!empty($site) ? $site['slogan'] : '') ?>"> 
-							</div>
-
-						</div>
-
-						<div class="col-lg-12">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Description</label> 
-								<textarea required="" class="c-input" name="description" placeholder="description"><?php echo (!empty($site) ? $site['description'] : '') ?></textarea>
-							</div>
-
-						</div>
-
-						<div class="c-field u-mb-medium col-md-6">
-							<label class="c-field__label">Language</label>
-							<select required="" name="language" class="c-select select2">
-								<option></option>
-								<option value="english" <?php echo ($site['language'] == 'english') ? 'selected' : ''; ?>>English</option>
-								<option value="indonesia" <?php echo ($site['language'] == 'indonesia') ? 'selected' : ''; ?>>Indonesia</option>
-							</select>
-						</div>						
-
-						<div class="c-field u-mb-medium col-md-6">
-							<label class="c-field__label">Set Timezone</label>
-							<select required="" name="time_zone" class="c-select select2 has-search">
-								<option <?php echo ($site['time_zone'] == 'Pacific/Midway') ? 'selected' : ''; ?> value="Pacific/Midway">(UTC-11:00) Midway Island</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Samoa') ? 'selected' : ''; ?> value="Pacific/Samoa">(UTC-11:00) Samoa</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Honolulu') ? 'selected' : ''; ?> value="Pacific/Honolulu">(UTC-10:00) Hawaii</option>
-								<option <?php echo ($site['time_zone'] == 'US/Alaska') ? 'selected' : ''; ?> value="US/Alaska">(UTC-09:00) Alaska</option>
-								<option <?php echo ($site['time_zone'] == 'America/Los_Angeles') ? 'selected' : ''; ?> value="America/Los_Angeles">(UTC-08:00) Pacific Time (US &amp; Canada)</option>
-								<option <?php echo ($site['time_zone'] == 'America/Tijuana') ? 'selected' : ''; ?> value="America/Tijuana">(UTC-08:00) Tijuana</option>
-								<option <?php echo ($site['time_zone'] == 'US/Arizona') ? 'selected' : ''; ?> value="US/Arizona">(UTC-07:00) Arizona</option>
-								<option <?php echo ($site['time_zone'] == 'America/Chihuahua') ? 'selected' : ''; ?> value="America/Chihuahua">(UTC-07:00) Chihuahua</option>
-								<option <?php echo ($site['time_zone'] == 'America/Chihuahua') ? 'selected' : ''; ?> value="America/Chihuahua">(UTC-07:00) La Paz</option>
-								<option <?php echo ($site['time_zone'] == 'America/Mazatlan') ? 'selected' : ''; ?> value="America/Mazatlan">(UTC-07:00) Mazatlan</option>
-								<option <?php echo ($site['time_zone'] == 'US/Mountain') ? 'selected' : ''; ?> value="US/Mountain">(UTC-07:00) Mountain Time (US &amp; Canada)</option>
-								<option <?php echo ($site['time_zone'] == 'America/Managua') ? 'selected' : ''; ?> value="America/Managua">(UTC-06:00) Central America</option>
-								<option <?php echo ($site['time_zone'] == 'US/Central') ? 'selected' : ''; ?> value="US/Central">(UTC-06:00) Central Time (US &amp; Canada)</option>
-								<option <?php echo ($site['time_zone'] == 'America/Mexico_City') ? 'selected' : ''; ?> value="America/Mexico_City">(UTC-06:00) Guadalajara</option>
-								<option <?php echo ($site['time_zone'] == 'America/Mexico_City') ? 'selected' : ''; ?> value="America/Mexico_City">(UTC-06:00) Mexico City</option>
-								<option <?php echo ($site['time_zone'] == 'America/Monterrey') ? 'selected' : ''; ?> value="America/Monterrey">(UTC-06:00) Monterrey</option>
-								<option <?php echo ($site['time_zone'] == 'Canada/Saskatchewan') ? 'selected' : ''; ?> value="Canada/Saskatchewan">(UTC-06:00) Saskatchewan</option>
-								<option <?php echo ($site['time_zone'] == 'America/Bogota') ? 'selected' : ''; ?> value="America/Bogota">(UTC-05:00) Bogota</option>
-								<option <?php echo ($site['time_zone'] == 'US/Eastern') ? 'selected' : ''; ?> value="US/Eastern">(UTC-05:00) Eastern Time (US &amp; Canada)</option>
-								<option <?php echo ($site['time_zone'] == 'US/East') ? 'selected' : ''; ?> value="US/East-Indiana">(UTC-05:00) Indiana (East)</option>
-								<option <?php echo ($site['time_zone'] == 'America/Lima') ? 'selected' : ''; ?> value="America/Lima">(UTC-05:00) Lima</option>
-								<option <?php echo ($site['time_zone'] == 'America/Bogota') ? 'selected' : ''; ?> value="America/Bogota">(UTC-05:00) Quito</option>
-								<option <?php echo ($site['time_zone'] == 'Canada/Atlantic') ? 'selected' : ''; ?> value="Canada/Atlantic">(UTC-04:00) Atlantic Time (Canada)</option>
-								<option <?php echo ($site['time_zone'] == 'America/Caracas') ? 'selected' : ''; ?> value="America/Caracas">(UTC-04:30) Caracas</option>
-								<option <?php echo ($site['time_zone'] == 'America/La_Paz') ? 'selected' : ''; ?> value="America/La_Paz">(UTC-04:00) La Paz</option>
-								<option <?php echo ($site['time_zone'] == 'America/Santiago') ? 'selected' : ''; ?> value="America/Santiago">(UTC-04:00) Santiago</option>
-								<option <?php echo ($site['time_zone'] == 'Canada/Newfoundland') ? 'selected' : ''; ?> value="Canada/Newfoundland">(UTC-03:30) Newfoundland</option>
-								<option <?php echo ($site['time_zone'] == 'America/Sao_Paulo') ? 'selected' : ''; ?> value="America/Sao_Paulo">(UTC-03:00) Brasilia</option>
-								<option <?php echo ($site['time_zone'] == 'America/Argentina') ? 'selected' : ''; ?> value="America/Argentina/Buenos_Aires">(UTC-03:00) Buenos Aires</option>
-								<option <?php echo ($site['time_zone'] == 'America/Argentina') ? 'selected' : ''; ?> value="America/Argentina/Buenos_Aires">(UTC-03:00) Georgetown</option>
-								<option <?php echo ($site['time_zone'] == 'America/Godthab') ? 'selected' : ''; ?> value="America/Godthab">(UTC-03:00) Greenland</option>
-								<option <?php echo ($site['time_zone'] == 'America/Noronha') ? 'selected' : ''; ?> value="America/Noronha">(UTC-02:00) Mid-Atlantic</option>
-								<option <?php echo ($site['time_zone'] == 'Atlantic/Azores') ? 'selected' : ''; ?> value="Atlantic/Azores">(UTC-01:00) Azores</option>
-								<option <?php echo ($site['time_zone'] == 'Atlantic/Cape_Verde') ? 'selected' : ''; ?> value="Atlantic/Cape_Verde">(UTC-01:00) Cape Verde Is.</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Casablanca') ? 'selected' : ''; ?> value="Africa/Casablanca">(UTC+00:00) Casablanca</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/London') ? 'selected' : ''; ?> value="Europe/London">(UTC+00:00) Edinburgh</option>
-								<option <?php echo ($site['time_zone'] == 'Etc/Greenwich') ? 'selected' : ''; ?> value="Etc/Greenwich">(UTC+00:00) Greenwich Mean Time : Dublin</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Lisbon') ? 'selected' : ''; ?> value="Europe/Lisbon">(UTC+00:00) Lisbon</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/London') ? 'selected' : ''; ?> value="Europe/London">(UTC+00:00) London</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Monrovia') ? 'selected' : ''; ?> value="Africa/Monrovia">(UTC+00:00) Monrovia</option>
-								<option <?php echo ($site['time_zone'] == 'UTC">') ? 'selected' : ''; ?> value="UTC">(UTC+00:00) UTC</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Amsterdam') ? 'selected' : ''; ?> value="Europe/Amsterdam">(UTC+01:00) Amsterdam</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Belgrade') ? 'selected' : ''; ?> value="Europe/Belgrade">(UTC+01:00) Belgrade</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Berlin') ? 'selected' : ''; ?> value="Europe/Berlin">(UTC+01:00) Berlin</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Berlin') ? 'selected' : ''; ?> value="Europe/Berlin">(UTC+01:00) Bern</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Bratislava') ? 'selected' : ''; ?> value="Europe/Bratislava">(UTC+01:00) Bratislava</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Brussels') ? 'selected' : ''; ?> value="Europe/Brussels">(UTC+01:00) Brussels</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Budapest') ? 'selected' : ''; ?> value="Europe/Budapest">(UTC+01:00) Budapest</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Copenhagen') ? 'selected' : ''; ?> value="Europe/Copenhagen">(UTC+01:00) Copenhagen</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Ljubljana') ? 'selected' : ''; ?> value="Europe/Ljubljana">(UTC+01:00) Ljubljana</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Madrid') ? 'selected' : ''; ?> value="Europe/Madrid">(UTC+01:00) Madrid</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Paris') ? 'selected' : ''; ?> value="Europe/Paris">(UTC+01:00) Paris</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Prague') ? 'selected' : ''; ?> value="Europe/Prague">(UTC+01:00) Prague</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Rome') ? 'selected' : ''; ?> value="Europe/Rome">(UTC+01:00) Rome</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Sarajevo') ? 'selected' : ''; ?> value="Europe/Sarajevo">(UTC+01:00) Sarajevo</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Skopje') ? 'selected' : ''; ?> value="Europe/Skopje">(UTC+01:00) Skopje</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Stockholm') ? 'selected' : ''; ?> value="Europe/Stockholm">(UTC+01:00) Stockholm</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Vienna') ? 'selected' : ''; ?> value="Europe/Vienna">(UTC+01:00) Vienna</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Warsaw') ? 'selected' : ''; ?> value="Europe/Warsaw">(UTC+01:00) Warsaw</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Lagos') ? 'selected' : ''; ?> value="Africa/Lagos">(UTC+01:00) West Central Africa</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Zagreb') ? 'selected' : ''; ?> value="Europe/Zagreb">(UTC+01:00) Zagreb</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Athens') ? 'selected' : ''; ?> value="Europe/Athens">(UTC+02:00) Athens</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Bucharest') ? 'selected' : ''; ?> value="Europe/Bucharest" selected="selected">(UTC+02:00) Bucharest</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Cairo') ? 'selected' : ''; ?> value="Africa/Cairo">(UTC+02:00) Cairo</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Harare') ? 'selected' : ''; ?> value="Africa/Harare">(UTC+02:00) Harare</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Helsinki') ? 'selected' : ''; ?> value="Europe/Helsinki">(UTC+02:00) Helsinki</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Istanbul') ? 'selected' : ''; ?> value="Europe/Istanbul">(UTC+02:00) Istanbul</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Jerusalem') ? 'selected' : ''; ?> value="Asia/Jerusalem">(UTC+02:00) Jerusalem</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Helsinki') ? 'selected' : ''; ?> value="Europe/Helsinki">(UTC+02:00) Kyiv</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Johannesburg') ? 'selected' : ''; ?> value="Africa/Johannesburg">(UTC+02:00) Pretoria</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Riga') ? 'selected' : ''; ?> value="Europe/Riga">(UTC+02:00) Riga</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Sofia') ? 'selected' : ''; ?> value="Europe/Sofia">(UTC+02:00) Sofia</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Tallinn') ? 'selected' : ''; ?> value="Europe/Tallinn">(UTC+02:00) Tallinn</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Vilnius') ? 'selected' : ''; ?> value="Europe/Vilnius">(UTC+02:00) Vilnius</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Baghdad') ? 'selected' : ''; ?> value="Asia/Baghdad">(UTC+03:00) Baghdad</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Kuwait') ? 'selected' : ''; ?> value="Asia/Kuwait">(UTC+03:00) Kuwait</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Minsk') ? 'selected' : ''; ?> value="Europe/Minsk">(UTC+03:00) Minsk</option>
-								<option <?php echo ($site['time_zone'] == 'Africa/Nairobi') ? 'selected' : ''; ?> value="Africa/Nairobi">(UTC+03:00) Nairobi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Riyadh') ? 'selected' : ''; ?> value="Asia/Riyadh">(UTC+03:00) Riyadh</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Volgograd') ? 'selected' : ''; ?> value="Europe/Volgograd">(UTC+03:00) Volgograd</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tehran') ? 'selected' : ''; ?> value="Asia/Tehran">(UTC+03:30) Tehran</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Muscat') ? 'selected' : ''; ?> value="Asia/Muscat">(UTC+04:00) Abu Dhabi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Baku') ? 'selected' : ''; ?> value="Asia/Baku">(UTC+04:00) Baku</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Moscow') ? 'selected' : ''; ?> value="Europe/Moscow">(UTC+04:00) Moscow</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Muscat') ? 'selected' : ''; ?> value="Asia/Muscat">(UTC+04:00) Muscat</option>
-								<option <?php echo ($site['time_zone'] == 'Europe/Moscow') ? 'selected' : ''; ?> value="Europe/Moscow">(UTC+04:00) St. Petersburg</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tbilisi') ? 'selected' : ''; ?> value="Asia/Tbilisi">(UTC+04:00) Tbilisi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Yerevan') ? 'selected' : ''; ?> value="Asia/Yerevan">(UTC+04:00) Yerevan</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Kabul') ? 'selected' : ''; ?> value="Asia/Kabul">(UTC+04:30) Kabul</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Karachi') ? 'selected' : ''; ?> value="Asia/Karachi">(UTC+05:00) Islamabad</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Karachi') ? 'selected' : ''; ?> value="Asia/Karachi">(UTC+05:00) Karachi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tashkent') ? 'selected' : ''; ?> value="Asia/Tashkent">(UTC+05:00) Tashkent</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Calcutta') ? 'selected' : ''; ?> value="Asia/Calcutta">(UTC+05:30) Chennai</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Kolkata') ? 'selected' : ''; ?> value="Asia/Kolkata">(UTC+05:30) Kolkata</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Calcutta') ? 'selected' : ''; ?> value="Asia/Calcutta">(UTC+05:30) Mumbai</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Calcutta') ? 'selected' : ''; ?> value="Asia/Calcutta">(UTC+05:30) New Delhi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Calcutta') ? 'selected' : ''; ?> value="Asia/Calcutta">(UTC+05:30) Sri Jayawardenepura</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Katmandu') ? 'selected' : ''; ?> value="Asia/Katmandu">(UTC+05:45) Kathmandu</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Almaty') ? 'selected' : ''; ?> value="Asia/Almaty">(UTC+06:00) Almaty</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Dhaka') ? 'selected' : ''; ?> value="Asia/Dhaka">(UTC+06:00) Astana</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Dhaka') ? 'selected' : ''; ?> value="Asia/Dhaka">(UTC+06:00) Dhaka</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Yekaterinburg') ? 'selected' : ''; ?> value="Asia/Yekaterinburg">(UTC+06:00) Ekaterinburg</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Rangoon') ? 'selected' : ''; ?> value="Asia/Rangoon">(UTC+06:30) Rangoon</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Bangkok') ? 'selected' : ''; ?> value="Asia/Bangkok">(UTC+07:00) Bangkok</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Bangkok') ? 'selected' : ''; ?> value="Asia/Bangkok">(UTC+07:00) Hanoi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Jakarta') ? 'selected' : ''; ?> value="Asia/Jakarta">(UTC+07:00) Jakarta</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Novosibirsk') ? 'selected' : ''; ?> value="Asia/Novosibirsk">(UTC+07:00) Novosibirsk</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Hong_Kong') ? 'selected' : ''; ?> value="Asia/Hong_Kong">(UTC+08:00) Beijing</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Chongqing') ? 'selected' : ''; ?> value="Asia/Chongqing">(UTC+08:00) Chongqing</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Hong_Kong') ? 'selected' : ''; ?> value="Asia/Hong_Kong">(UTC+08:00) Hong Kong</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Krasnoyarsk') ? 'selected' : ''; ?> value="Asia/Krasnoyarsk">(UTC+08:00) Krasnoyarsk</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Kuala_Lumpur') ? 'selected' : ''; ?> value="Asia/Kuala_Lumpur">(UTC+08:00) Kuala Lumpur</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Perth') ? 'selected' : ''; ?> value="Australia/Perth">(UTC+08:00) Perth</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Singapore') ? 'selected' : ''; ?> value="Asia/Singapore">(UTC+08:00) Singapore</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Taipei') ? 'selected' : ''; ?> value="Asia/Taipei">(UTC+08:00) Taipei</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Ulan_Bator') ? 'selected' : ''; ?> value="Asia/Ulan_Bator">(UTC+08:00) Ulaan Bataar</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Urumqi') ? 'selected' : ''; ?> value="Asia/Urumqi">(UTC+08:00) Urumqi</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Irkutsk') ? 'selected' : ''; ?> value="Asia/Irkutsk">(UTC+09:00) Irkutsk</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tokyo') ? 'selected' : ''; ?> value="Asia/Tokyo">(UTC+09:00) Osaka</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tokyo') ? 'selected' : ''; ?> value="Asia/Tokyo">(UTC+09:00) Sapporo</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Seoul') ? 'selected' : ''; ?> value="Asia/Seoul">(UTC+09:00) Seoul</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Tokyo') ? 'selected' : ''; ?> value="Asia/Tokyo">(UTC+09:00) Tokyo</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Adelaide') ? 'selected' : ''; ?> value="Australia/Adelaide">(UTC+09:30) Adelaide</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Darwin') ? 'selected' : ''; ?> value="Australia/Darwin">(UTC+09:30) Darwin</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Brisbane') ? 'selected' : ''; ?> value="Australia/Brisbane">(UTC+10:00) Brisbane</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Canberra') ? 'selected' : ''; ?> value="Australia/Canberra">(UTC+10:00) Canberra</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Guam') ? 'selected' : ''; ?> value="Pacific/Guam">(UTC+10:00) Guam</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Hobart') ? 'selected' : ''; ?> value="Australia/Hobart">(UTC+10:00) Hobart</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Melbourne') ? 'selected' : ''; ?> value="Australia/Melbourne">(UTC+10:00) Melbourne</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Port_Moresby') ? 'selected' : ''; ?> value="Pacific/Port_Moresby">(UTC+10:00) Port Moresby</option>
-								<option <?php echo ($site['time_zone'] == 'Australia/Sydney') ? 'selected' : ''; ?> value="Australia/Sydney">(UTC+10:00) Sydney</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Yakutsk') ? 'selected' : ''; ?> value="Asia/Yakutsk">(UTC+10:00) Yakutsk</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Vladivostok') ? 'selected' : ''; ?> value="Asia/Vladivostok">(UTC+11:00) Vladivostok</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Auckland') ? 'selected' : ''; ?> value="Pacific/Auckland">(UTC+12:00) Auckland</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Fiji') ? 'selected' : ''; ?> value="Pacific/Fiji">(UTC+12:00) Fiji</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Kwajalein') ? 'selected' : ''; ?> value="Pacific/Kwajalein">(UTC+12:00) International Date Line West</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Kamchatka') ? 'selected' : ''; ?> value="Asia/Kamchatka">(UTC+12:00) Kamchatka</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Magadan') ? 'selected' : ''; ?> value="Asia/Magadan">(UTC+12:00) Magadan</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Fiji') ? 'selected' : ''; ?> value="Pacific/Fiji">(UTC+12:00) Marshall Is.</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Magadan') ? 'selected' : ''; ?> value="Asia/Magadan">(UTC+12:00) New Caledonia</option>
-								<option <?php echo ($site['time_zone'] == 'Asia/Magadan') ? 'selected' : ''; ?> value="Asia/Magadan">(UTC+12:00) Solomon Is.</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Auckland') ? 'selected' : ''; ?> value="Pacific/Auckland">(UTC+12:00) Wellington</option>
-								<option <?php echo ($site['time_zone'] == 'Pacific/Tongatapu') ? 'selected' : ''; ?> value="Pacific/Tongatapu">(UTC+13:00) Nuku'alofa</option>
-							</select>
-						</div>								
-
-						<div class="col-lg-6">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Limit Post (Pagination)</label> 
-								<input class="c-input" type="text" name="limit_post" placeholder="limit post" value="<?php echo (!empty($site) ? $site['limit_post'] : '') ?>"> 
-							</div>
-
-						</div>	
-
-						<div class="c-field u-mb-medium col-md-6">
-							<label class="c-field__label">Using Cache ?</label>
-							<select required="" name="cache" class="c-select select2">
-								<option></option>
-								<option value="Yes" <?php echo ($site['cache'] == 'Yes') ? 'selected' : ''; ?>>Yes</option>
-								<option value="No" <?php echo ($site['cache'] == 'No') ? 'selected' : ''; ?>>No</option>
-							</select>
-						</div>			
-
-						<div class="col-lg-12">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Comment Type</label>
-								<select required="" name="comment_type" class="c-select select2 select-comment-type">
-									<option value="disable" <?php echo ($site['comment']['type']== 'disable') ? 'selected' : ''; ?>>Disable</option>
-									<option value="system" <?php echo ($site['comment']['type']== 'system') ? 'selected' : ''; ?>>System</option>
-									<option value="disqus" <?php echo ($site['comment']['type']== 'disqus') ? 'selected' : ''; ?>>Disqus</option>
-								</select>
-							</div>
-						</div>	
-
-						<div style='<?php echo ($site['comment']['type'] == 'system') ? '' : 'display:none'; ?>' class="c-field u-mb-medium col-md-12 type-system">
-							<label class="c-field__label">Comment Moderate</label>
-							<select required="" name="moderate" class="c-select select2">
-								<option></option>
-								<option value="true" <?php echo ($site['comment']['moderate'] == 'true') ? 'selected' : ''; ?>>Yes</option>
-								<option value="false" <?php echo ($site['comment']['moderate'] == 'false') ? 'selected' : ''; ?>>No</option>
-							</select>
-						</div>                          
-
-						<div style='<?php echo ($site['comment']['type'] == 'system') ? '' : 'display:none'; ?>' class="c-field u-mb-medium col-md-12 type-system">
-							<label class="c-field__label">Message Comment : </label>
-							<textarea required="" class="c-input" name="message"" placeholder="comment message"><?php echo (!empty($site) ? $site['comment']['message'] : '') ?></textarea>
-						</div>
-
-						<div style='<?php echo ($site['comment']['type'] == 'disqus') ? '' : 'display:none'; ?>' class="c-field u-mb-medium col-md-6 type-disqus">
-							<label class="c-field__label">disqus_shortname : </label>
-							<input required="" value="<?php echo (!empty($site) ? $site['comment']['disqus_shortname'] : '') ?>" class="c-input" name="disqus_shortname" type="text" placeholder="disqus_shortname">
-						</div>
-
-						<div style='<?php echo ($site['comment']['type'] == 'disqus') ? '' : 'display:none'; ?>' class="c-field u-mb-medium col-md-6 type-disqus">
-							<label class="c-field__label">disqus_developer : </label>
-							<input required="" value="<?php echo (!empty($site) ? $site['comment']['disqus_developer'] : '') ?>" class="c-input" name="disqus_developer" type="text" placeholder="disqus_developer">
-						</div>																				
-
-						<div class="col-lg-6">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Robots.txt</label> 
-								<textarea rows="5" class="c-input" name="robots_txt" placeholder="robots_txt"><?php echo (!empty($site) ? $site['robots_txt'] : '') ?></textarea>
-							</div>
-
-						</div>
-
-						<div class="col-lg-6">
-
-							<div class="c-field u-mb-medium">
-								<label class="c-field__label">Ads.txt</label> 
-								<textarea rows="5" class="c-input" name="ads_txt" placeholder="ads_txt"><?php echo (!empty($site) ? $site['ads_txt'] : '') ?></textarea>
-							</div>
-
-						</div>
-
-						<div class="col-lg-4">
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">Recent Logo : </label>
-								<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['image']) : '') ?>" alt="">
-							</div>
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">New Logo : </label>
-								<input type="hidden" name="image_old" value="<?php echo (!empty($site) ? $site['image'] : '') ?>">
-								<input class="c-input" name="image" type="file">
-							</div>  
-
-						</div>
-
-						<div class="col-lg-4">												
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">Recent Icon : </label>
-								<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['icon']) : '') ?>" alt="">
-							</div>
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">New Icon : </label>
-								<input type="hidden" name="icon_old" value="<?php echo (!empty($site) ? $site['icon'] : '') ?>">
-								<input class="c-input" name="icon" type="file">
-							</div> 
-
-						</div>
-
-						<div class="col-lg-4">												
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">Recent No Image : </label>
-								<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['no_image']) : '') ?>" alt="">
-							</div>
-
-							<div class="c-field u-mb-small">
-								<label class="c-field__label">New No Image : </label>
-								<input type="hidden" name="no_image_old" value="<?php echo (!empty($site) ? $site['no_image'] : '') ?>">
-								<input class="c-input" name="no_image" type="file">
-							</div> 
-
-						</div>						
-					</div>
+					</div>					
 
 				</div>
 			</div>

@@ -1,13 +1,13 @@
 <?php if (!defined('BASEPATH')) {exit('No direct script access allowed');}
 
-class M_Blog_Pages extends CI_Model
+class M_Site_Pages extends CI_Model
 {
 
-    public $table_blog_pages = 'tb_blog_pages';    
+    public $table_site_pages = 'tb_site_pages';    
 
     public function datatables(){
 
-        $url = base_url('app/blog_pages/');
+        $url = base_url('app/site_pages/');
 
         return [
             'datatable' => true,
@@ -27,14 +27,14 @@ class M_Blog_Pages extends CI_Model
         header('Content-Type: application/json');        
 
         $this->datatables->select('
-            tb_blog_pages.id,
-            tb_blog_pages.title,
-            DATE_FORMAT(tb_blog_pages.time, "%d %M %Y %H:%i %p") as time,
-            DATE_FORMAT(tb_blog_pages.updated, "%d %M %Y %H:%i %p") as updated,            
-            tb_blog_pages.permalink,
-            tb_blog_pages.status,  
+            tb_site_pages.id,
+            tb_site_pages.title,
+            DATE_FORMAT(tb_site_pages.time, "%d %M %Y %H:%i %p") as time,
+            DATE_FORMAT(tb_site_pages.updated, "%d %M %Y %H:%i %p") as updated,            
+            tb_site_pages.permalink,
+            tb_site_pages.status,  
             ');
-        $this->datatables->from($this->table_blog_pages);
+        $this->datatables->from($this->table_site_pages);
         $this->datatables->add_column('checkbox', '
             <td>
             <div class="c-choice c-choice--checkbox">
@@ -45,7 +45,7 @@ class M_Blog_Pages extends CI_Model
             ', 'id');
 
         $this->datatables->edit_column('title', '
-            <a title="$1" href="' . base_url('pages/')."$2" . '" target="_blank">$1</a>
+            <a title="$1" href="' . base_url('p/'). "$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">$3</small>           
             </span>
@@ -53,8 +53,8 @@ class M_Blog_Pages extends CI_Model
 
         $this->datatables->add_column('alat', '
             <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
-            <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/blog_pages/').'update/$1"><i class="fa fa-edit"></i></a>
-            <button data-title="are you sure ?" data-text="want to delete $2" class="c-btn--custom c-btn--small c-btn c-btn--danger action-delete" data-id="$1" data-href="'. base_url('app/blog_pages/delete/$1') .'" type="button"><i class="fa fa-trash"></i></button>
+            <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/site_pages/').'update/$1"><i class="fa fa-edit"></i></a>
+            <button data-title="are you sure ?" data-text="want to delete $2" class="c-btn--custom c-btn--small c-btn c-btn--danger action-delete" data-id="$1" data-href="'. base_url('app/site_pages/delete/$1') .'" type="button"><i class="fa fa-trash"></i></button>
             ', 'id,title');
         return $this->datatables->generate();
     } 
@@ -93,7 +93,7 @@ class M_Blog_Pages extends CI_Model
         }else {        
             $permalink_old = strtolower(slug($this->input->post('permalink'."_old")));
             $set_permalink = strtolower(slug($post_data['permalink']));
-            $read_pages = $this->_Process_MYSQL->get_data($this->table_blog_pages, array('permalink' => $set_permalink))->num_rows();
+            $read_pages = $this->_Process_MYSQL->get_data($this->table_site_pages, array('permalink' => $set_permalink))->num_rows();
             if ($read_pages > 0) {
                 if ($permalink_old == $set_permalink) {
                     $permalink_news = $set_permalink;                
@@ -115,7 +115,7 @@ class M_Blog_Pages extends CI_Model
 
         $pages = $this->db
         ->select("id,title")
-        ->from($this->table_blog_pages)
+        ->from($this->table_site_pages)
         ->where("time <= NOW()")
         ->where("status = 'Published'")
         ->get()->result_array();
@@ -126,27 +126,27 @@ class M_Blog_Pages extends CI_Model
     }    
 
     public function data_update($id){
-        return $this->_Process_MYSQL->get_data($this->table_blog_pages,['id' => $id])->row_array();
+        return $this->_Process_MYSQL->get_data($this->table_site_pages,['id' => $id])->row_array();
     }
 
     public function process_create(){
-        return $this->_Process_MYSQL->insert_data($this->table_blog_pages,$this->data_post());
+        return $this->_Process_MYSQL->insert_data($this->table_site_pages,$this->data_post());
     }
 
     public function process_update(){
-        return $this->_Process_MYSQL->update_data($this->table_blog_pages,$this->data_post(),['id' => $this->input->post('id')]);
+        return $this->_Process_MYSQL->update_data($this->table_site_pages,$this->data_post(),['id' => $this->input->post('id')]);
     }   
 
     public function process_delete($id){
-        return $this->_Process_MYSQL->delete_data($this->table_blog_pages, array('id' => $id));
+        return $this->_Process_MYSQL->delete_data($this->table_site_pages, array('id' => $id));
     }
 
     public function process_multiple_update($data){
-        return $this->_Process_MYSQL->update_data_multiple($this->table_blog_pages, $data, 'id');
+        return $this->_Process_MYSQL->update_data_multiple($this->table_site_pages, $data, 'id');
     }
 
     public function process_multiple_delete($id){
-        return $this->_Process_MYSQL->delete_data_multiple($this->table_blog_pages, $id, 'id');
+        return $this->_Process_MYSQL->delete_data_multiple($this->table_site_pages, $id, 'id');
     }        
 
 }

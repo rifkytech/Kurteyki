@@ -37,29 +37,11 @@
 	</a>
 </li>
 
-<li class="c-sidebar__item">
-	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='blog_pages' or $this->uri->segment(2)=='blog_pages' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/blog_pages') ?>">
-		<i class="fa fa-fire u-mr-xsmall"></i>Pages
-	</a>
-</li>
-
 <li class="c-sidebar__item has-submenu <?php if(strpos($this->uri->segment(2), "blog_") !== FALSE){echo "is-open";}?>">
 	<a class="c-sidebar__link" data-toggle="collapse" href="#blog-submenu" aria-expanded="false" aria-controls="blog-submenu">
 		<i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Part of Blog
 	</a>
 	<ul class="c-sidebar__submenu collapse <?php if(strpos($this->uri->segment(2), "blog_") !== FALSE){echo "show";}?>" id="blog-submenu">
-		<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_post_category') ?>">
-			Category
-			<?php if (strpos($this->uri->segment(2), "blog_post_category") !== FALSE): ?>
-				<i class="fa fa-check u-ml-xsmall"></i>
-			<?php endif ?>
-		</a></li>
-		<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_post_tags') ?>">
-			Tags
-			<?php if (strpos($this->uri->segment(2), "blog_post_tags") !== FALSE): ?>
-				<i class="fa fa-check u-ml-xsmall"></i>
-			<?php endif ?>
-		</a></li>
 		<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_post_comment') ?>">
 			Comment
 			<?php if (strpos($this->uri->segment(2), "blog_post_comment") !== FALSE): ?>
@@ -81,6 +63,15 @@
 		</li>
 	</ul>
 </li>
+
+<h4 class="c-sidebar__title">Pages</h4>
+
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='site_pages' or $this->uri->segment(2)=='site_pages' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/site_pages') ?>">
+		<i class="fa fa-file u-mr-xsmall"></i>Pages
+	</a>
+</li>
+
 
 <h4 class="c-sidebar__title">Settings</h4>
 

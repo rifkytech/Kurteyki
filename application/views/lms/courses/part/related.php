@@ -1,6 +1,6 @@
 <?php if (!empty($courses['related_courses'])): ?>
     <div class="container u-ph-small">
-        <div class="row u-mt-small u-p-zero">
+        <div class="row u-mt-small u-p-zero u-flex u-justify-center">
 
             <div class="col-12">
                 <h3 class="u-mb-small u-text-center">                   

@@ -8,7 +8,7 @@ class _Pages extends CI_Model
 		/**
 		 * Edit Permalink
 		 */
-		$post['permalink'] = base_url('blog/pages/' . $post['permalink']);
+		$post['permalink'] = base_url('p/' . $post['permalink']);
 
 		/**
 		 * Edit Time & Updated

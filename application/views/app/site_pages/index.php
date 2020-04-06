@@ -3,11 +3,11 @@
 <?php $this->load->view('app/_layouts/toolbar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-md-12 u-p-zero">
+<div class="col-12 u-mv-small">
 
     <div class="c-card c-card--responsive h-100vh u-p-zero">
         <div class="c-card__header c-card__header--transparent o-line">
-            <a class="c-btn--custom c-btn--small c-btn c-btn--success" href="<?php echo base_url('app/blog_pages/create') ?>">
+            <a class="c-btn--custom c-btn--small c-btn c-btn--success" href="<?php echo base_url('app/site_pages/create') ?>">
                 <i class="fa fa-plus"></i>
             </a>
             <button data-title="are you sure ?" data-text="to post selected item" title="Post Multiple" value="post" class="c-btn--custom c-btn--small c-btn c-btn--info u-ml-auto u-mr-xsmall action-multiple btn-opsi">
@@ -24,10 +24,10 @@
 
             <?php $this->load->view('app/_layouts/alert'); ?>
 
-            <form id='form-multiple' action="<?php echo base_url('app/blog_pages/process_multiple') ?>" method="post">
+            <form id='form-multiple' action="<?php echo base_url('app/site_pages/process_multiple') ?>" method="post">
 
                 <div class="c-table-responsive">
-                    <table data-mysearch="Search..." data-myorder='1' data-myurl="<?php echo base_url('app/blog_pages/datatables') ?>" class="c-table c-table--highlight" id="table" width="100%">
+                    <table data-mysearch="Search..." data-myorder='1' data-myurl="<?php echo base_url('app/site_pages/datatables') ?>" class="c-table c-table--highlight" id="table" width="100%">
                         <caption class="c-table__title cst-table">
                         </caption>
 

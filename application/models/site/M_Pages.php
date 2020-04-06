@@ -3,7 +3,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class M_Pages extends CI_Model {
 
-	public $table_blog_pages = 'tb_blog_pages';
+	public $table_site_pages = 'tb_site_pages';
 
 	public function data_post($site,$slug){
 
@@ -14,8 +14,8 @@ class M_Pages extends CI_Model {
 
 	public function query_post($site,$slug){
 		$this->db->select('*');
-		$this->db->from($this->table_blog_pages);		
-		$this->db->where('tb_blog_pages.permalink',urldecode($slug));
+		$this->db->from($this->table_site_pages);		
+		$this->db->where('permalink',urldecode($slug));
 		$this->db->order_by('time','DESC');
 		$query = $this->db->get();
 

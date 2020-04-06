@@ -23,7 +23,7 @@
                             ?>
                             <div class="wall-comment mb-0 mt-10">
                                 <span class="avatar float-left">
-                                    <img alt="<?php echo $post_comment['name'] ?>" src="<?php echo base_url('storage/templates/pisen/assets/img/person.png') ?>" title="<?php echo $post_comment['name'] ?>">
+                                    <img alt="<?php echo $post_comment['name'] ?>" src="<?php echo base_url('storage/blog/pisen/img/person.png') ?>" title="<?php echo $post_comment['name'] ?>">
                                 </span>
                                 <div class="ml-50 comment-block" id="comment-<?php echo $post_comment['id'] ?>" <?php echo ($post_comment['status'] == 'Blocked') ? 'style="background: #ffdce1;"' : '' ?>>
                                     <div class="media-body text-middle">
@@ -49,7 +49,7 @@
                                     ?>
                                     <div class="wall-comment ml-50 mt-10">
                                         <span class="avatar float-left">
-                                            <img alt="<?php echo $post_comment_child['name'] ?>" src="<?php echo base_url('storage/templates/pisen/assets/img/person.png') ?>" title="<?php echo $post_comment_child['name'] ?>">
+                                            <img alt="<?php echo $post_comment_child['name'] ?>" src="<?php echo base_url('storage/blog/pisen/img/person.png') ?>" title="<?php echo $post_comment_child['name'] ?>">
                                         </span>
                                         <div class="ml-50 comment-block" id="comment-<?php echo $post_comment_child['id'] ?>" <?php echo ($post_comment_child['status'] == 'Blocked') ? 'style="background: #ffdce1;"' : '' ?>>
                                             <div class="media-body text-middle">

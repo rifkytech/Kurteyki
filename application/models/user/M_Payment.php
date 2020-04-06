@@ -51,7 +51,7 @@ class M_Payment extends CI_Model
 
 	public function midtrans_key($site){
 		\Midtrans\Config::$serverKey = $site['midtrans']['server_key'];
-		\Midtrans\Config::$isProduction = false;
+		\Midtrans\Config::$isProduction = ($site['midtrans']['status_production'] == 'Yes') ? true : false;
 		\Midtrans\Config::$isSanitized = true;
 		\Midtrans\Config::$is3ds = true;
 	}	

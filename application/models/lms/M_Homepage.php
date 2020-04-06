@@ -7,14 +7,14 @@ class M_Homepage extends CI_Model
 
 	public function data_courses($site){
 
-		$limit = $site['limit_post'];
+		$limit = $site['lms_limit_post'];
 		$count_data = $this->query(true);
 
 		if (empty($count_data)) return false;
-		
-		$index = ($this->uri->segment(3)) ? $limit*($this->uri->segment(3)-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('courses/index'),3,TRUE);		
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
+
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url(),FALSE,TRUE,'page');			
 
 		$read_data = $this->query(false,$limit,$index);
 		if (empty($read_data)) redirect(base_url());

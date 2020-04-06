@@ -67,6 +67,57 @@ $('.btn-process-courses').on('click', function(e) {
 });	
 
 /**
+* Module user lesson
+*/
+$('.btn-process-lesson').on('click', function(e) {
+	e.preventDefault();
+
+	let button = $(this);
+
+	button.prop("disabled", true);
+
+	var data = [];
+	data.push({ name: "id_courses", value: button.data('id-courses') });
+	data.push({ name: "id_lesson", value: button.data('id-lesson') });	
+
+	$.ajax({
+		url: button.data('action'),
+		method: "POST",
+		data: data,
+		dataType: 'text',
+		success: function(status) {
+
+			if (status == 'set_false') {
+
+				$("i",button).removeClass().addClass('fa fa-check u-color-white u-m-zero');            
+			}
+			else if (status == 'set_true') {
+
+				$("i",button).removeClass().addClass('fa fa-check u-color-success u-m-zero');             
+			}else{
+
+				/** error */
+			}
+
+			button.prop("disabled", false);
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+
+			Swal.fire({
+				title: 'Error Processing !',
+				icon: 'error',
+				confirmButtonColor: '#3085d6',
+			})
+
+			button.prop("disabled", false);
+
+		}
+	});
+
+});	
+
+
+/**
 * Module add to wishlist 
 */
 $('.btn-process-wishlist').on('click', function(e) {

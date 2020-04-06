@@ -7,7 +7,8 @@ class M_Template_Widget extends CI_Model
     public $table_blog_post_category = 'tb_blog_post_category';
     public $table_blog_post_tags = 'tb_blog_post_tags';
     public $table_blog_post_comment = 'tb_blog_post_comment'; 
-    public $table_blog_pages = 'tb_blog_pages';       
+
+    public $table_site_pages = 'tb_site_pages';       
 
     public function init($site,$template){
 
@@ -129,7 +130,7 @@ class M_Template_Widget extends CI_Model
 
         $read =  $this->db
         ->select('*')
-        ->from($this->table_blog_pages)
+        ->from($this->table_site_pages)
         ->where_in('id',$pages['id'])
         ->order_by('title', 'ASC')
         ->get();
@@ -139,7 +140,7 @@ class M_Template_Widget extends CI_Model
         foreach ($read->result_array() as $data_pages) {
             $extract_tags[] = array(
                 'title' => $data_pages['title'],
-                'url' => base_url('blog/pages/'.$data_pages['permalink']),
+                'url' => base_url('p/'.$data_pages['permalink']),
             );   
         }
 

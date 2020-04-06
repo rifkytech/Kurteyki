@@ -56,4 +56,4 @@
     </div>
 </div>
 
-<?php $this->load->view('app/_layouts/footer'); ?>
+<?php $this->load->view('lms/_layouts/footer'); ?>

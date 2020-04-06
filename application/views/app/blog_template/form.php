@@ -2,7 +2,7 @@
 <?php $this->load->view('app/_layouts/sidebar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-12 u-p-zero">
+<div class="col-12 u-mv-small">
 	<form action="<?php echo base_url('app/blog_template/process_update') ?>" method="POST">
 		<div class="c-card c-card--responsive h-100vh u-p-zero">
 			<div class="c-card__header u-bg-white o-line">       

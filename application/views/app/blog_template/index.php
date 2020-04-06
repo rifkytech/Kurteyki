@@ -2,7 +2,7 @@
 <?php $this->load->view('app/_layouts/sidebar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-12 u-p-zero">
+<div class="col-12 u-mv-small">
 
 	<div class="c-stage u-mb-zero">
 		<div class="c-stage__header o-media u-justify-start">

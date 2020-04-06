@@ -58,7 +58,7 @@ class M_Setting_Meta extends CI_Model
 				'organization_logo_url', // file post data
 				$logo_old, // delete file
 				false, // file name
-				true //is image
+				'thumbnail' //is image and set thumbnail
 			);
 
 			if (!$upload_logo) return false;
@@ -81,7 +81,7 @@ class M_Setting_Meta extends CI_Model
 				'person_image', // file post data
 				$person_old, // delete file
 				false, // file name
-				true //is image
+				'thumbnail' //is image and set thumbnail
 			);
 
 			if (!$upload_person) return false;
@@ -124,7 +124,7 @@ class M_Setting_Meta extends CI_Model
 				'open_graph_default_image', // file post data
 				$image_old, // delete file
 				false, // file name
-				true //is image
+				'thumbnail' //is image and set thumbnail
 			);
 
 			if (!$upload_logo) return false;
@@ -160,7 +160,7 @@ class M_Setting_Meta extends CI_Model
 				'twitter_card_default_image', // file post data
 				$image_old, // delete file
 				false, // file name
-				true //is image
+				'thumbnail' //is image and set thumbnail
 			);
 
 			if (!$upload_logo) return false;

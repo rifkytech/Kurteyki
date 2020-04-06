@@ -16,17 +16,14 @@ class Order extends My_User
     {
 
         $site = $this->site;
-        $order = $this->M_Order->read();
+        $order = $this->M_Order->read($site);
 
         $data = array(
             'site' => $site,
             'order' =>  $order,
             'midtrans' => true,
         );
-
-        // echo json_encode($order);
-        // exit;
-
+        
         $this->load->view($this->index, $data);
     }
 

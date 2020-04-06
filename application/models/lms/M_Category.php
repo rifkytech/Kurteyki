@@ -10,14 +10,14 @@ class M_Category extends CI_Model
 
 		$id_category = $this->_Process_MYSQL->get_data($this->table_lms_category,['slug'=>$category])->row()->id;
 
-		$limit = $site['limit_post'];
+		$limit = $site['lms_limit_post'];
 		$count_data = $this->query($id_category,true);
 
 		if (empty($count_data)) return false;
 		
-		$index = ($this->uri->segment(5)) ? $limit*($this->uri->segment(5)-1) : 0;
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('courses/category/'.$category.'/index'),5,TRUE);		
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('courses/category/'.$category),FALSE,TRUE,'page');		
 
 		$read_data = $this->query($id_category,false,$limit,$index);
 		if (empty($read_data)) redirect(base_url());

@@ -8,7 +8,7 @@ class M_Search extends CI_Model
 
 	public function data_courses($site,$keyword){
 
-		$limit = $site['limit_post'];
+		$limit = $site['lms_limit_post'];
 		$count_data = $this->query($keyword,true);
 
 		if (empty($count_data)) return false;

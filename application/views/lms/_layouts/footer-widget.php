@@ -3,7 +3,7 @@
 		<div class="row u-pv-medium">
 
 			<div class="col-12 col-lg-12 u-text-center">	
-				<a class="u-text-dark" href="<?php echo base_url('blog/pages/privacy') ?>">Privacy</a>
+				<a class="u-text-dark" href="<?php echo base_url('p/privacy') ?>">Privacy</a>
 			</div>
 
 			<div class="col-12 col-lg-12">	

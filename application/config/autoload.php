@@ -63,8 +63,7 @@ $autoload['libraries'] = array(
 	'session',
 	'datatables',
 	'minifier',
-	'user_agent',
-	'form_validation'
+	'user_agent'
 );
 
 /*
@@ -97,7 +96,6 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 $autoload['helper'] = array(
-	'form',
 	'url',
 	'string_slug',
 	'string_ctsubstr',

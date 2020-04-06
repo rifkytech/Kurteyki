@@ -24,7 +24,7 @@ class M_Post extends CI_Model {
 	public function query_post($site,$widget,$slug){
 		$this->db->select('*');
 		$this->db->from($this->table_blog_post);		
-		$this->db->where('tb_blog_post.permalink',urldecode($slug));
+		$this->db->where('permalink',urldecode($slug));
 		$this->db->order_by('time','DESC');
 		$query = $this->db->get();
 
@@ -43,6 +43,8 @@ class M_Post extends CI_Model {
 		$this->db->from($this->table_blog_post);		
 		$this->db->limit(1);
 		$this->db->where('time <',$date);
+		// $this->db->where("time <= NOW()");
+		$this->db->where("status = 'Published'"); 			
 		$this->db->order_by('time','DESC');
 		$query = $this->db->get();
 
@@ -69,6 +71,8 @@ class M_Post extends CI_Model {
 		$this->db->from($this->table_blog_post);		
 		$this->db->limit(1);
 		$this->db->where('time >',$date);
+		// $this->db->where("time <= NOW()");
+		$this->db->where("status = 'Published'"); 			
 		$this->db->order_by('time','ASC');
 		$query = $this->db->get();
 
@@ -96,7 +100,9 @@ class M_Post extends CI_Model {
 		$this->db->from($this->table_blog_post);		
 		$this->db->limit(3);
 		$this->db->where('id !=',$id_post);  
-		$this->db->where('id_category',$id_category);  
+		$this->db->where('id_category',$id_category); 
+		$this->db->where("time <= NOW()");
+		$this->db->where("status = 'Published'");		 
 		$this->db->order_by('time','DESC');
 		$query = $this->db->get();
 
@@ -122,10 +128,10 @@ class M_Post extends CI_Model {
 
 	public function comment_post($site,$id_post) {
 
-		if ($site['comment']['type'] == 'disqus') {
+		if ($site['blog_comment']['type'] == 'disqus') {
 
 			return $this->M_Post_Comment->disqus($site);
-		}elseif ($site['comment']['type'] == 'system') {
+		}elseif ($site['blog_comment']['type'] == 'system') {
 
 			return $this->M_Post_Comment->system($site,$id_post);
 		}else{

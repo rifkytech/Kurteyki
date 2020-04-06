@@ -6,8 +6,8 @@ class Pages extends My_Blog{
 	{
 		parent::__construct();
 
-		$this->load->model('blog/_Pages');
-		$this->load->model('blog/M_Pages');
+		$this->load->model('site/_Pages');
+		$this->load->model('site/M_Pages');
 	}  
 
 	public function index($slug)

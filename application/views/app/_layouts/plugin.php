@@ -84,6 +84,7 @@
 <?php endif ?>
 
 
+<?php if (!empty($dragula)): ?>
 <link href="<?php echo base_url('storage/plugin') ?>/dragula/dragula.min.css" rel="stylesheet">
 <script src="<?php echo base_url('storage/plugin') ?>/dragula/dragula.min.js"></script>
 <!-- Init Dragula -->
@@ -160,7 +161,7 @@
         window.jQuery.Dragula.init()
     }();
 </script>
-
+<?php endif ?>
 <!-- <link href="<?php echo base_url('storage/plugin') ?>/font-awesome-iconpicker/awesome4-iconpicker.min.css" rel="stylesheet">
 <script src="<?php echo base_url('storage/plugin') ?>/font-awesome-iconpicker/awesome4-iconpicker.min.js"></script>
 <script type="text/javascript">

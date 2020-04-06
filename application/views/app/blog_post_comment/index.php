@@ -3,7 +3,7 @@
 <?php $this->load->view('app/_layouts/toolbar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-md-12 u-p-zero">
+<div class="col-12 u-mv-small">
 
     <div class="c-card c-card--responsive h-100vh u-p-zero">
         <div class="c-card__header c-card__header--transparent o-line">

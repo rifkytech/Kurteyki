@@ -79,12 +79,10 @@ class Lms_course extends My_App
             redirect(base_url($this->redirect));
         }else {
 
-            for ($i=0; $i < 100 ; $i++) { 
-                $create = $this->M_LMS_Course->process_create();
-            }
+            $create = $this->M_LMS_Course->process_create();
 
             if ($create) {
-               // redirect(base_url('app/lms_course/update/'.$create));
+               redirect(base_url('app/lms_course/update/'.$create.'?editcourse=false&editsection=true'));
             }   
         }
 
@@ -260,7 +258,7 @@ class Lms_course extends My_App
             }               
         }
 
-        redirect(base_url('app/lms_course/update/'.$this->input->post('id_course')));
+        redirect(base_url('app/lms_course/update/'.$this->input->post('id_course').'?editcourse=false&editsection=true'));
     }
 
     public function process_lesson_delete($id) {

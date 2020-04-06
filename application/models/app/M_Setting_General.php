@@ -12,7 +12,8 @@ class M_Setting_General extends CI_Model
 			$site[$data_site['type']] = $data_site['data'];
 		}
 
-		$site['comment'] = json_decode($site['comment'],true);
+		$site['blog_comment'] = json_decode($site['blog_comment'],true);
+		$site['midtrans'] = json_decode($site['midtrans'],true);
 
 		return $site;
 	}
@@ -30,28 +31,32 @@ class M_Setting_General extends CI_Model
 			if ($key == 'disqus_shortname') continue;
 			if ($key == 'disqus_developer') continue;
 			if ($key == 'moderate') continue;
-			if ($key == 'message') continue;			
+			if ($key == 'message') continue;	
+
+			if ($key == 'status_production') continue;	
+			if ($key == 'client_key') continue;	
+			if ($key == 'server_key') continue;			
 
 			$data [] = [
 				'type' => $key,
 				'data' => $value,
 			];
 		}
-
+		
 		/**
 		 * build comment data
 		 */
 		
 		$comment_data = [
-			'type' => $post['comment_type'],
-			'disqus_shortname' => $post['disqus_shortname'],
-			'disqus_developer' => $post['disqus_developer'],
-			'moderate' => $post['moderate'],
-			'message' => $post['message']
+			'type' => $post['blog_comment_type'],
+			'disqus_shortname' => $post['blog_disqus_shortname'],
+			'disqus_developer' => $post['blog_disqus_developer'],
+			'moderate' => $post['blog_moderate'],
+			'message' => $post['blog_message']
 		];
 
 		$data[] = [
-			'type' => 'comment',
+			'type' => 'blog_comment',
 			'data' => json_encode($comment_data,true),
 		];
 
@@ -123,6 +128,25 @@ class M_Setting_General extends CI_Model
 				'data' => $upload_no_image['no_image'],
 			];
 		}
+
+		/**
+		 * build midtrans data
+		 */
+		
+		$midtrans_data = [
+			"status_production" =>  $post['status_production'],			
+			"client_key" =>  $post['client_key'],
+			"server_key" =>   $post['server_key']
+		];
+
+		$data[] = [
+			'type' => 'midtrans',
+			'data' => json_encode($midtrans_data,true),
+		];
+
+		// echo json_encode($data);		
+		// exit;
+
 
 		/**
 		 * Delete Cache if not active

@@ -124,6 +124,7 @@ class M_Auth extends CI_Model
      */
     
     public function set_validation_register(){
+
         $this->form_validation->set_rules([
             [
                 'field' => 'full_name',

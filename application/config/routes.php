@@ -80,15 +80,8 @@ $route['payment/waiting'] = 'user/payment/waiting';
 |
 */
 
-# lms index
-$route['index'] = 'lms/Homepage';
-$route['courses/index'] = 'lms/Homepage/index';
-$route['courses/index/(:any)'] = 'lms/Homepage/index';
-
 # courses category index
 $route['courses/category/(:any)'] = 'lms/Category/index/$1';
-$route['courses/category/(:any)/index'] = 'lms/Category/index/$1';
-$route['courses/category/(:any)/index/(:any)'] = 'lms/Category/index/$1';
 
 # lms courses
 $route['courses/detail/(:any)'] = 'lms/Courses/index/$1';
@@ -108,18 +101,12 @@ $route['courses/search'] = 'lms/Search/index/';
 
 # blog index
 $route['blog'] = 'blog/Homepage/index';
-$route['blog/index'] = 'blog/Homepage/index';
-$route['blog/index/(:any)'] = 'blog/Homepage/index';
 
 # blog category index
 $route['blog/category/(:any)'] = 'blog/Category/index/$1';
-$route['blog/category/(:any)/index'] = 'blog/Category/index/$1';
-$route['blog/category/(:any)/index/(:any)'] = 'blog/Category/index/$1';
 
 # blog tags index
 $route['blog/tags/(:any)'] = 'blog/Tags/index/$1';
-$route['blog/tags/(:any)/index'] = 'blog/Tags/index/$1';
-$route['blog/tags/(:any)/index/(:any)'] = 'blog/Tags/index/$1';
 
 # blog search index
 $route['blog/search'] = 'blog/Search/index/';
@@ -127,8 +114,6 @@ $route['blog/search'] = 'blog/Search/index/';
 # blog post
 $route['blog/post/(:any)'] = 'blog/Post/index/$1';
 
-# blog page
-$route['blog/pages/(:any)'] = 'blog/Pages/index/$1';
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +121,9 @@ $route['blog/pages/(:any)'] = 'blog/Pages/index/$1';
 |--------------------------------------------------------------------------
 |
 */
+
+# pages
+$route['p/(:any)'] = 'site/Pages/index/$1';
 
 # robots.txt, ads.txt
 $route['robots\.txt'] = 'site/Txt/robots_txt';

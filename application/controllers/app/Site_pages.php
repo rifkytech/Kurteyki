@@ -1,16 +1,16 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Blog_pages extends My_App
+class Site_pages extends My_App
 {
 
-    public $index = 'app/blog_pages/index';
-    public $form = 'app/blog_pages/form';
-    public $redirect = 'app/blog_pages';
+    public $index = 'app/site_pages/index';
+    public $form = 'app/site_pages/form';
+    public $redirect = 'app/site_pages';
 
     public function __construct(){
         parent::__construct();
 
-        $this->load->model('app/M_Blog_Pages');         
+        $this->load->model('app/M_Site_Pages');         
     }    
 
     public function index()
@@ -20,14 +20,14 @@ class Blog_pages extends My_App
             'title' => 'Blog Pages',
         ];
 
-        $this->load->view($this->index, array_merge($data,$this->M_Blog_Pages->datatables()));
+        $this->load->view($this->index, array_merge($data,$this->M_Site_Pages->datatables()));
     }    
 
 
     public function datatables()
     {
 
-        $data = $this->M_Blog_Pages->data_table();
+        $data = $this->M_Site_Pages->data_table();
 
         echo $data;
     }
@@ -47,7 +47,7 @@ class Blog_pages extends My_App
         $data = array(
             'title' => 'Update',
             'ckeditor' => true,
-            'blog_pages' => $this->M_Blog_Pages->data_update($id),
+            'site_pages' => $this->M_Site_Pages->data_update($id),
         );
 
         $this->load->view($this->form, $data);
@@ -55,7 +55,7 @@ class Blog_pages extends My_App
 
     public function delete($id)
     {
-        if ($this->M_Blog_Pages->process_delete($id) == TRUE) {
+        if ($this->M_Site_Pages->process_delete($id) == TRUE) {
             echo true;
         }else {
             echo false;
@@ -66,7 +66,7 @@ class Blog_pages extends My_App
 
         if (!empty($this->input->post('id'))) {
 
-            if ($this->M_Blog_Pages->process_update() == TRUE) {
+            if ($this->M_Site_Pages->process_update() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -77,7 +77,7 @@ class Blog_pages extends My_App
 
         }else {
 
-            if ($this->M_Blog_Pages->process_create() == TRUE) {
+            if ($this->M_Site_Pages->process_create() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -114,7 +114,7 @@ class Blog_pages extends My_App
                 );
             }
 
-            if ($this->M_Blog_Pages->process_multiple_update($data) == TRUE) {
+            if ($this->M_Site_Pages->process_multiple_update($data) == TRUE) {
                 echo true;
             }else {
                 echo false;
@@ -134,7 +134,7 @@ class Blog_pages extends My_App
                 );
             }
 
-            if ($this->M_Blog_Pages->process_multiple_update($data) == TRUE) {
+            if ($this->M_Site_Pages->process_multiple_update($data) == TRUE) {
                 echo true;
             }else {
                 echo false;
@@ -146,7 +146,7 @@ class Blog_pages extends My_App
          */
         if ($action == 'delete') {
 
-            if ($this->M_Blog_Pages->process_multiple_delete($id) == TRUE) {
+            if ($this->M_Site_Pages->process_multiple_delete($id) == TRUE) {
                 echo true;
             }else {
                 echo false;

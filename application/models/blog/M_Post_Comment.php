@@ -9,14 +9,14 @@ class M_Post_Comment extends CI_Model {
 	public function disqus($site){
 		$disqus = "
 		<div id='disqus_thread'></div>
-		<script type='text/javascript'> var disqus_developer = ".$site['comment']['disqus_developer']."; var disqus_shortname = '".$site['comment']['disqus_shortname']."'; var disqus_url = '" . current_url() . "'; /* * * DON'T EDIT BELOW THIS LINE * * */ (function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); </script> 
-		<script id='dsq-count-scr' src='//".$site['comment']['disqus_shortname'].".disqus.com/count.js' async></script>
+		<script type='text/javascript'> var disqus_developer = ".$site['blog_comment']['disqus_developer']."; var disqus_shortname = '".$site['blog_comment']['disqus_shortname']."'; var disqus_url = '" . current_url() . "'; /* * * DON'T EDIT BELOW THIS LINE * * */ (function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); </script> 
+		<script id='dsq-count-scr' src='//".$site['blog_comment']['disqus_shortname'].".disqus.com/count.js' async></script>
 		<noscript>Please enable JavaScript to view the <a href='//disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript> 
 		<a href='//disqus.com' class='dsq-brlink'>blog comments powered by <span class='logo-disqus'>Disqus</span></a>
 		";
 		return [
 			'comment_post' => [
-				'type' => $site['comment']['type'],
+				'type' => $site['blog_comment']['type'],
 				'data' => $disqus
 			]
 		];
@@ -28,7 +28,7 @@ class M_Post_Comment extends CI_Model {
 
 
 		$data['comment_post'] = $comments;
-		$data['comment_post']['type'] = $site['comment']['type']; 
+		$data['comment_post']['type'] = $site['blog_comment']['type']; 
 		
 		return $data;
 	}
@@ -54,7 +54,7 @@ class M_Post_Comment extends CI_Model {
 			foreach ($read_parent as $comment) {
 
 				if ($comment->status == 'Blocked') {
-					$content = $site['comment']['message'];
+					$content = $site['blog_comment']['message'];
 				}else {
 					$content = $comment->content;
 				}
@@ -77,7 +77,7 @@ class M_Post_Comment extends CI_Model {
 				foreach ($read_child as $comment_child) {
 
 					if ($comment_child->status == 'Blocked') {
-						$content = $site['comment']['message'];
+						$content = $site['blog_comment']['message'];
 					}else {
 						$content = $comment_child->content;
 					}
@@ -136,7 +136,7 @@ class M_Post_Comment extends CI_Model {
 			'os' => $this->M_Site_Visitor->get_platform(),
 		);
 
-		$status = ($site['comment']['moderate'] == "true") ? 'Pending' : 'Approved';
+		$status = ($site['blog_comment']['moderate'] == "true") ? 'Pending' : 'Approved';
 
 		$post_data = array(
 			'id_blog_post' => htmlentities($this->input->post('id_blog_post')),
@@ -156,7 +156,7 @@ class M_Post_Comment extends CI_Model {
 
 			if ($this->_Process_MYSQL->insert_data($this->table_blog_post_comment, $post_data) == true) {
 
-				if ($site['comment']['moderate'] == "true") {
+				if ($site['blog_comment']['moderate'] == "true") {
 					$this->session->set_flashdata('comment', 'success_pending');
 
 					redirect(uri_string()."#form-comment");

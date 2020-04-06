@@ -56,7 +56,7 @@ class M_Blog_Post_Comment extends CI_Model
             <span class="break-word"><small><i class="fa fa-comment u-color-primary"></i></small> $1</span>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">
-            <i class="fa fa-globe u-color-primary"></i>&nbsp; <a title="$2" href="' . base_url('post/$3#comment-$6') . '" target="_blank">$2</a>
+            <i class="fa fa-globe u-color-primary"></i>&nbsp; <a title="$2" href="' . base_url('blog/post/$3#comment-$6') . '" target="_blank">$2</a>
             </small>
             </span>
             ', 'content,ctsubstr(title,60),permalink,checkparent(name,parent),status,id');

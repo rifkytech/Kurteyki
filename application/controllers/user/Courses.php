@@ -53,4 +53,15 @@ class Courses extends My_User
         }
     }
 
+    public function process_lesson(){
+        /** check if ajax request */
+        if ($this->input->is_ajax_request()) {
+
+            $process = $this->M_Courses->process_lesson();
+
+        }else{
+            redirect(base_url());
+        }
+    }
+
 }

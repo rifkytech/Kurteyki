@@ -7,17 +7,17 @@ class M_Homepage extends CI_Model
 
 	public function data_post($site){
 
-		$limit = $site['limit_post'];
+		$limit = $site['blog_limit_post'];
 		$count_data = $this->query(true);
 
 		if (empty($count_data)) return false;
 		
-		$index = ($this->uri->segment(3)) ? $limit*($this->uri->segment(3)-1) : 0;
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/index'),3,TRUE);		
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog'),FALSE,TRUE,'page');			
 
 		$read_data = $this->query(false,$limit,$index);
-		if (empty($read_data)) redirect(base_url());
+		if (empty($read_data)) redirect(base_url('blog'));
 
 		$read_post = $this->query_post($site,$read_data);
 

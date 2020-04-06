@@ -11,8 +11,9 @@ class Blog_widget extends My_App{
 		parent::__construct();
 
 		$this->load->model('app/M_Blog_Widget');  
-		$this->load->model('app/M_Blog_Post');                
-		$this->load->model('app/M_Blog_Pages');                		
+		$this->load->model('app/M_Blog_Post');
+
+		$this->load->model('app/M_Site_Pages');
 	}   
 
 	public function index()
@@ -23,7 +24,7 @@ class Blog_widget extends My_App{
 			'widget' => $this->M_Blog_Widget->read_widget(),
 		);        
 
-		$data = array_merge($data,$this->M_Blog_Post->required('withpost'),$this->M_Blog_Pages->required());
+		$data = array_merge($data,$this->M_Blog_Post->required('withpost'),$this->M_Site_Pages->required());
 
 		$this->load->view($this->index, $data);
 	}

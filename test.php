@@ -1,20 +1,6 @@
-<?php  
+hello world bosqu 
 
-echo $id_courses;
-?>
-<br/>
-progress courses per user
-buy using midtrans
-
-ID Merchant	
-G242569459
-Client Key	
-SB-Mid-client-kda5uXSFYxy0K5EJ
-Server Key	
-SB-Mid-server-pE6FhBweNWjzV3ZJkDueTaYp
-
-
-
+<img src="oke.png" alt=""/>
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">

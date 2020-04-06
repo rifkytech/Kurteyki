@@ -43,7 +43,7 @@ class _Process_Upload extends CI_Model {
                             exit;
                         }
                     }
-                }else{                    
+                }else{         
                     $create_thumb = $this->Image_Thumbnail($data[$file_data]['file_name'],$path_dir);
                     if ($create_thumb != 'success') {
                         echo $create_thumb;

@@ -36,7 +36,7 @@ class M_Site_Meta extends CI_Model
 	public function page_type(){
 
 		if (empty($this->uri->segment(2)) OR $this->uri->segment(2) == 'index') {
-			if (!empty($this->uri->segment(3))) {
+			if (!empty($this->input->get('page'))) {
 				$type = 'index_page';
 			}else {
 				$type = 'index';
@@ -54,7 +54,7 @@ class M_Site_Meta extends CI_Model
 		elseif ($this->uri->segment(2) == 'post') {
 			$type = 'post';
 		}
-		elseif ($this->uri->segment(2) == 'pages') {
+		elseif ($this->uri->segment(1) == 'p') {
 			$type = 'pages';
 		}
 
@@ -68,9 +68,9 @@ class M_Site_Meta extends CI_Model
 
 		if ($page_type == 'index' OR $page_type == 'index_page') {
 
-			if (!empty($this->uri->segment(3))) {
-				$title = $site['title'].' - '.$this->lang->line('blog').' - '.$this->lang->line('page').' '.$this->uri->segment(3);
-				$breadcrumbs = $this->lang->line('blog_post').' - '.$this->lang->line('page').' '.$this->uri->segment(3);
+			if ($page_type == 'index_page') {
+				$title = $site['title'].' - '.$this->lang->line('blog').' - '.$this->lang->line('page').' '.$this->input->get('page');
+				$breadcrumbs = $this->lang->line('blog_post').' - '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title = $site['title'].' - '.$this->lang->line('blog');
 				$breadcrumbs = $this->lang->line('blog_post');
@@ -91,9 +91,9 @@ class M_Site_Meta extends CI_Model
 
 			$category = $this->M_Site_Meta_Category->read($this->uri->segment(3));	
 
-			if (!empty($this->uri->segment(5))) {
-				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
-				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
+			if (!empty($this->input->get('page'))) {
+				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
+				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title =  $this->lang->line('category').' - '.$category['name'];
 				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'];
@@ -114,9 +114,9 @@ class M_Site_Meta extends CI_Model
 
 			$tags = $this->M_Site_Meta_Tags->read($this->uri->segment(3));	
 
-			if (!empty($this->uri->segment(5))) {
-				$title = $this->lang->line('tags').' - '.$tags['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
-				$breadcrumbs = $this->lang->line('tags').' : '.$tags['name'].' | '.$this->lang->line('page').' '.$this->uri->segment(5);
+			if (!empty($this->input->get('page'))) {
+				$title = $this->lang->line('tags').' - '.$tags['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
+				$breadcrumbs = $this->lang->line('tags').' : '.$tags['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title = $this->lang->line('tags').' - '.$tags['name'];
 				$breadcrumbs = $this->lang->line('tags').' : '.$tags['name'];
@@ -136,7 +136,7 @@ class M_Site_Meta extends CI_Model
 		elseif ($page_type == 'search') {
 			$q = strip_tags($this->input->get('q'));
 
-			if (!$q) redirect(base_url());
+			if (!$q) redirect(base_url('blog'));
 
 			if (!empty($this->input->get('index'))) {
 				$title = $this->lang->line('search').' : '.$q.' | '.$this->lang->line('page').' '.$this->input->get('index');
@@ -188,7 +188,7 @@ class M_Site_Meta extends CI_Model
 		}
 		elseif ($page_type == 'pages') {
 
-			$read_pages = $this->M_Site_Meta_Pages->read(urldecode($this->uri->segment(3)));
+			$read_pages = $this->M_Site_Meta_Pages->read(urldecode($this->uri->segment(2)));
 
 			$title = $read_pages['title'].' - '.$site['title'];
 			$description = ctsubstr($read_pages['content'],150);;

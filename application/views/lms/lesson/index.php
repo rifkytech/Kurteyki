@@ -2,7 +2,7 @@
 
 <?php $this->load->view('lms/lesson/part/nav'); ?>
 
-<div class="container-fluid u-mt-xsmall">                   
+<div class="container-fluid">                   
 
     <div class="row">
 
@@ -37,21 +37,33 @@
 
                         <?php foreach ($courses_data['lesson'] as $lesson): ?>    
                             <?php if (!empty($lesson)): ?>
-                                <a href="<?php echo $lesson['url'] ?>" class="u-mb-zero o-line custom c-stage__header u-justify-start u-pv-xsmall u-ph-medium" style='<?php echo ($lesson['id'] == $this->uri->segment(5)) ? 'background: #a3d3f7' : '' ?>'>
-                                    <?php if ($lesson['type'] == 'Text'): ?>
-                                        <i class="fa fa-file-text-o u-mr-xsmall"></i>
+                                <div class="u-mb-zero o-line c-stage__header u-justify-start u-p-zero" style='<?php echo ($lesson['id'] == $this->uri->segment(5)) ? 'background: #a3d3f7' : '' ?>;position: relative;'>
+                                    <a href="<?php echo $lesson['url'] ?>" class='custom u-pv-xsmall u-ph-medium u-width-100'>
+                                        <?php if ($lesson['type'] == 'Text'): ?>
+                                            <i class="fa fa-file-text-o u-mr-xsmall"></i>
+                                        <?php endif ?>
+                                        <?php if ($lesson['type'] == 'Image'): ?>
+                                            <i class="fa fa-picture-o u-mr-xsmall"></i>
+                                        <?php endif ?>
+                                        <?php if ($lesson['type'] == 'Video'): ?>
+                                            <i class="fa fa-youtube-play u-mr-xsmall"></i>
+                                        <?php endif ?>
+                                        <?php if ($lesson['type'] == 'File'): ?>
+                                            <i class="fa fa-zip-o u-mr-xsmall"></i>
+                                        <?php endif ?>
+                                        <?php echo $lesson['title'] ?>
+                                    </a>
+                                    <?php if ($lesson['user_lesson']): ?>
+                                        <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
+                                            <i class="fa fa-check u-color-success u-m-zero"></i>
+                                        </button >
                                     <?php endif ?>
-                                    <?php if ($lesson['type'] == 'Image'): ?>
-                                        <i class="fa fa-picture-o u-mr-xsmall"></i>
+                                    <?php if (empty($lesson['user_lesson'])): ?>
+                                        <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
+                                            <i class="fa fa-check u-color-white u-m-zero"></i>
+                                        </button >
                                     <?php endif ?>
-                                    <?php if ($lesson['type'] == 'Video'): ?>
-                                        <i class="fa fa-youtube-play u-mr-xsmall"></i>
-                                    <?php endif ?>
-                                    <?php if ($lesson['type'] == 'File'): ?>
-                                        <i class="fa fa-zip-o u-mr-xsmall"></i>
-                                    <?php endif ?>
-                                    <?php echo $lesson['title'] ?>
-                                </a>
+                                </div>
                             <?php endif ?>                
 
                             <?php if (empty($lesson)): ?>

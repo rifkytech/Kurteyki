@@ -20,9 +20,6 @@ class M_Lesson extends CI_Model
 
 		$read_lesson = $this->_Lesson->read_lesson($lesson,$build_lesson,$section);
 
-		// echo json_encode($read_lesson);
-		// exit;
-
 		return array_merge($courses,$build_lesson,$read_lesson);
 	}
 

@@ -9,17 +9,17 @@ class M_Search extends CI_Model
 
 	public function data_post($site,$keyword){
 
-		$limit = $site['limit_post'];
+		$limit = $site['blog_limit_post'];
 		$count_data = $this->query($keyword,true);
 
 		if (empty($count_data)) return false;
 
-		$index = ($this->input->get('index')) ? $limit*($this->input->get('index')-1) : 0;
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/search?q='.$keyword.''),4,TRUE,TRUE);
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/search?q='.$keyword),FALSE,TRUE,'page');
 
 		$read_data = $this->query($keyword,false,$limit,$index);
-		if (empty($read_data)) redirect(base_url());
+		if (empty($read_data)) redirect(base_url('blog/search?q='.$keyword));
 
 		$read_post = $this->query_post($site,$read_data);
 

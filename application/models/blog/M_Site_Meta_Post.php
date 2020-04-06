@@ -18,10 +18,11 @@ class M_Site_Meta_Post extends CI_Model
 			id_tags,		
 			');
 		$this->db->from($this->table_blog_post);		
-		$this->db->where_in('permalink',$slug);
+		$this->db->where('permalink',urldecode($slug));
+		$this->db->where("status = 'Published'");
 		$query = $this->db->get();
 
-		if ($query->num_rows() < 1) redirect(base_url());
+		if ($query->num_rows() < 1) redirect(base_url('blog'));
 
 		$post = $query->row_array();
 

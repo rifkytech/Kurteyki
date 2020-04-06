@@ -12,8 +12,8 @@
 			<h2 class="u-h3 u-mb-small"><?php echo $this->lang->line('my_wishlist') ?></h2>
 
 			<div class="c-card u-p-medium u-mb-large">	
-				<?php if (!empty($wishlist)): ?>					
-					<?php foreach ($wishlist as $post): ?>
+				<?php if (!empty($wishlist['data'])): ?>					
+					<?php foreach ($wishlist['data'] as $post): ?>
 						<div class="c-card u-p-small u-mb-small">	
 							<div class="row">
 								<div class="col-12 col-lg-9 order-lg-1">
@@ -54,10 +54,25 @@
 								</div>
 							</div>
 						</div>
-					<?php endforeach ?>				
+					<?php endforeach ?>	
+
+					<?php if (empty($this->input->get('showall')) AND $wishlist['pagination']['total_rows'] > $wishlist['pagination']['per_page']): ?>			
+						<div class="u-mv-medium row">
+							<div class="col-6">
+								<?php $this->load->view('lms/_layouts/pagination',['courses' => $wishlist]);?>	
+							</div>
+							<div class="col-6 o-line">
+								<a class="u-ml-auto c-btn c-btn--custom c-btn--info" href="<?php echo base_url('user/wishlist?showall=true') ?>">
+									<?php echo $this->lang->line('show_all') ?>
+								</a>
+							</div> 
+
+						</div>	
+					<?php endif ?>
+
 				<?php endif ?>
 
-				<?php if (empty($wishlist)): ?>
+				<?php if (empty($wishlist['data'])): ?>
 					<div class="col-sm-12 col-lg-12">
 						<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 
