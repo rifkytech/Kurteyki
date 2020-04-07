@@ -10,7 +10,7 @@ class M_Site_Meta_Courses_Lesson extends CI_Model
 		$this->db->select('*');
 		$this->db->from($this->table_lms_courses);		
 		$this->db->where('permalink',urldecode($slug));
-		$this->db->where("status = 'Published'");		
+		//$this->db->where("status = 'Published'"); /* bypass if user exist this courses */
 		$query = $this->db->get();
 
 		if ($query->num_rows() < 1) redirect(base_url());

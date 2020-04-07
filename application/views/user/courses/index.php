@@ -47,7 +47,8 @@
 								</div>
 								<div class="col-12 u-mv-small order-lg-3">
 									<p>
-										<?php echo $this->lang->line('courses_progress') ?> : <?php echo $post['user_lesson_progress'] ?>
+										<?php echo $this->lang->line('courses_progress') ?> : <?php echo $post['user_lesson_progress'] ?> 
+										(<?php echo $post['count_lesson_user'].'/'.$post['count_lesson'] ?>)
 									</p>
 									<div class="c-progress c-progress--info u-m-zero" style="height: 10px">
 										<div class="c-progress__bar" style="width:<?php echo $post['user_lesson_progress'] ?>;"></div>

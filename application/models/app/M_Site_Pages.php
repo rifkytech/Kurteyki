@@ -45,11 +45,11 @@ class M_Site_Pages extends CI_Model
             ', 'id');
 
         $this->datatables->edit_column('title', '
-            <a title="$1" href="' . base_url('p/'). "$2" . '" target="_blank">$1</a>
+            <a title="$4" href="' . base_url('p/'). "$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">$3</small>           
             </span>
-            ', 'ctsubstr(title,60),permalink,formatstatus(time,status)');
+            ', 'ctsubstr(title,60),permalink,formatstatus(time,status),title');
 
         $this->datatables->add_column('alat', '
             <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>

@@ -45,7 +45,7 @@ class _Lesson extends CI_Model
 
 			$lesson = $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_lesson, $data_section['id'],'id_section',false,['order','ASC']);
 
-			$total_lesson = $lesson->num_rows();
+			$total_lesson[] = $lesson->num_rows();
 
 			if ($lesson->num_rows() < 1) {
 
@@ -87,7 +87,8 @@ class _Lesson extends CI_Model
 
 			}
 
-			$progress = ($total_lesson_user * 100) / $total_lesson. "%";
+			$count_lesson = count($total_lesson);
+			$progress = floor(($total_lesson_user * 100) / $count_lesson). "%";
 
 			$all_data[] = array_merge($section_data,['lesson' => $lesson_data]);
 			unset($lesson_data);
@@ -98,7 +99,9 @@ class _Lesson extends CI_Model
 			'all_section' => $all_section,
 			'all_data' => $all_data,
 			'first_lesson' => $first_lesson,
-			'user_lesson_progress' => $progress
+			'user_lesson_progress' => $progress,
+			'count_lesson' => $count_lesson,
+			'count_lesson_user' => $total_lesson_user
 		];
 	}
 

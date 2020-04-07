@@ -8,7 +8,7 @@
 
         <div class="col-xl-3 col-lg-4 u-p-zero">
 
-            <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 6rem);min-height: calc(100vh - 6rem);overflow-y: auto;" id="accordion">
+            <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 4.5rem);min-height: calc(100vh - 4.5rem);overflow-y: auto;" id="accordion">
 
                 <div class="c-stage__header u-flex u-justify-between">
 
@@ -83,7 +83,7 @@
         </div>
 
         <div class="col-12 col-xl-9 col-lg-8 col-md-12 u-p-zero order-first order-lg-last">
-            <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 6rem);min-height: calc(100vh - 6rem);overflow-y: auto;">
+            <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 4.5rem);min-height: calc(100vh - 4.5rem);overflow-y: auto;">
 
                 <div class="c-stage__header u-flex u-justify-between">
                     <div class="col-12 col-xl-8 col-md-12 offset-xl-2">
