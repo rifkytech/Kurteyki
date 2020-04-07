@@ -28,7 +28,7 @@ $(function() {
 			format_tags: 'p;h2;h3;h4;h5;h6;pre;address;div',
 
 			/* remove */
-			removePlugins: 'forms,bidi,cloudservices,easyimage,image',
+			removePlugins: 'forms,bidi,cloudservices,easyimage,image,resize',
 			removeDialogTabs: 'link:upload;image:upload;flash:upload',
 			removeButtons: 'Save,NewPage,Preview,Print,Cut,Copy,Paste,PasteText,PasteFromWord,About,Underline,Subscript,Superscript,spellchecker,SelectAll,Scayt,CreateDiv,Outdent,Indent,Language,Anchor,Flash,HorizontalRule',
 			toolbarGroups: [

@@ -7,7 +7,7 @@
 
         <div class="col-12 col-xl-9 col-lg-9">
 
-            <div class="c-card c-card--responsive h-100vh u-p-zero">
+            <div class="c-card c-card--responsive u-p-zero">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <button class="c-btn c-btn--info c-btn--custom" name="publish" type="submit" title="publish">
                         <i class="fa fa-send-o" aria-hidden="true"></i>
@@ -28,11 +28,11 @@
                     </div>
 
                 </div>
-                <div class="c-card__body u-p-small">
+                <div class="c-card__body u-p-zero">
 
                     <?php $this->load->view('app/_layouts/alert'); ?>
 
-                   <div class="c-field u-mb-small">
+                    <div class="c-field u-mb-small u-p-small">
                         <label class="c-field__label">title : </label>
                         <input autofocus autocomplete="off"
                         value="<?php echo (!empty($site_pages['title']) ? $site_pages['title'] : '') ?>" required
@@ -40,56 +40,61 @@
                         placeholder="title">
                     </div>
 
-                    <div class="c-field u-mb-small">
-                        <label class="c-field__label">content</label>
+                    <div class="c-field">
                         <style type="text/css">
-                        #cke_ckeditor img {max-width:100% !important;height:auto !important
-                        </style>
-                        <textarea required class="editor" name="content">
-                            <?php echo (!empty($site_pages['content']) ? $site_pages['content'] : '') ?>
-                        </textarea>
-                    </div>
+                        #cke_ckeditor img {max-width:100% !important;height:auto !important}
+                        .cke_chrome {
+                            display: block;
+                            border-radius: 0;
+                            padding: 0;
 
+                        }
+                    </style>
+                    <textarea required class="editor" name="content">
+                        <?php echo (!empty($site_pages['content']) ? $site_pages['content'] : '') ?>
+                    </textarea>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="col-xl-3 col-lg-3 u-p-zero">
+    </div>
 
-            <div class="c-card c-card--responsive h-100vh  u-p-zero">
-                <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">
-                        Setting
-                    </h5>
-                </div>
-                <div class="c-card__body u-p-small">
+    <div class="col-xl-3 col-lg-3 u-p-zero">
 
-                    <div class="c-field u-mb-small">
-                        <label class="c-field__label">permalink : </label>
+        <div class="c-card c-card--responsive h-100vh  u-p-zero">
+            <div class="c-card__header c-card__header--transparent o-line">
+                <h5 class="c-card__title">
+                    Setting
+                </h5>
+            </div>
+            <div class="c-card__body u-p-small">
 
-                        <?php if ((empty($site_pages['status']))): ?>
-                            <label><input name="permalink_auto" value="auto" type="radio" checked="">Auto</label>
-                            <label><input name="permalink_auto" value="manual" type="radio">Manual</label>
+                <div class="c-field u-mb-small">
+                    <label class="c-field__label">permalink : </label>
+
+                    <?php if ((empty($site_pages['status']))): ?>
+                        <label><input name="permalink_auto" value="auto" type="radio" checked="">Auto</label>
+                        <label><input name="permalink_auto" value="manual" type="radio">Manual</label>
+
+                        <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
+                        <input onClick="this.select();" autocomplete="off"
+                        value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
+                        class="c-input" name="permalink" id="permalink"
+                        type="hidden" placeholder="permalink">
+                        <?php else: ?>
+
+                            <label><input name="permalink_auto" value="auto" type="radio">Auto</label>
+                            <label><input name="permalink_auto" value="manual" type="radio" checked="">Manual</label>
 
                             <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
                             <input onClick="this.select();" autocomplete="off"
                             value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
                             class="c-input" name="permalink" id="permalink"
-                            type="hidden" placeholder="permalink">
-                            <?php else: ?>
-
-                                <label><input name="permalink_auto" value="auto" type="radio">Auto</label>
-                                <label><input name="permalink_auto" value="manual" type="radio" checked="">Manual</label>
-
-                                <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
-                                <input onClick="this.select();" autocomplete="off"
-                                value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
-                                class="c-input" name="permalink" id="permalink"
-                                type="text" placeholder="permalink">                    
-                            <?php endif ?>
-                        </div>
+                            type="text" placeholder="permalink">                    
+                        <?php endif ?>
+                    </div>
                 </div>
 
             </div>

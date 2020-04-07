@@ -15,7 +15,7 @@
 </li>
 
 <li class="c-sidebar__item has-submenu <?php if(strpos($this->uri->segment(2), "lms_") !== FALSE){echo "is-open";}?>">
-	<a class="c-sidebar__link" data-toggle="collapse" href="#lms-submenu" aria-expanded="false" aria-controls="lms-submenu">
+	<a class="c-sidebar__link collapsed" data-toggle="collapse" href="#lms-submenu" aria-expanded="false" aria-controls="lms-submenu">
 		<i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Part of LMS
 	</a>
 	<ul class="c-sidebar__submenu collapse <?php if(strpos($this->uri->segment(2), "lms_") !== FALSE){echo "show";}?>" id="lms-submenu">
@@ -38,7 +38,7 @@
 </li>
 
 <li class="c-sidebar__item has-submenu <?php if(strpos($this->uri->segment(2), "blog_") !== FALSE){echo "is-open";}?>">
-	<a class="c-sidebar__link" data-toggle="collapse" href="#blog-submenu" aria-expanded="false" aria-controls="blog-submenu">
+	<a class="c-sidebar__link collapsed" data-toggle="collapse" href="#blog-submenu" aria-expanded="false" aria-controls="blog-submenu">
 		<i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Part of Blog
 	</a>
 	<ul class="c-sidebar__submenu collapse <?php if(strpos($this->uri->segment(2), "blog_") !== FALSE){echo "show";}?>" id="blog-submenu">
