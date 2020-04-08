@@ -9,7 +9,7 @@ class M_Site_Meta_Data_Twitter_Card_Init extends CI_Model
 
 			if ($site_meta['default_image']) {
 
-				$image = base_url('storage/images/'.$site_meta['default_image']);
+				$image = base_url('storage/uploads/site/'.$site_meta['default_image']);
 
 			}
 		}

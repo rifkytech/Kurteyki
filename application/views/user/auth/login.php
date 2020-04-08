@@ -5,7 +5,7 @@
         <div class="c-login__content-wrapper">
             <header class="c-login__header">
                 <a title='<?php echo $site['title'] ?>' class="c-login__icon c-login__icon--rounded c-login__icon--left" href="<?php echo base_url() ?>">
-                    <img src="<?php echo base_url('storage/user/logo.png') ?>" alt="<?php echo $site['title'] ?>">
+                    <img src="<?php echo base_url('storage/uploads/user/logo.png') ?>" alt="<?php echo $site['title'] ?>">
                 </a>
 
                 <h2 class="c-login__title"><?php echo $this->lang->line('sign_in') ?></h2>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="c-login__content-image">
-            <img src="<?php echo base_url('storage/user/bg.jpg') ?>" alt="<?php echo $site['title'] ?>">
+            <img src="<?php echo base_url('storage/uploads/user/bg.jpg') ?>" alt="<?php echo $site['title'] ?>">
 
             <h3><?php echo $site['title'] ?></h3>
             <p class="u-text-large">

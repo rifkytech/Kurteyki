@@ -60,7 +60,7 @@
                                 <div class="c-field has-addon-right">
                                     <input value="<?php echo (!empty($data['image']) ? $data['image'] : '') ?>" require name="image" class="c-input" id="image" type="text">
                                     <span class="u-ml-auto c-field__addon">
-                                        <button id='button-filemanager' data-src="<?php echo base_url(PATH_FILE_MANAGER."&field_id=image&akey=".$this->session->userdata('key')) ?>" class="c-btn c-btn--fancy u-p-xsmall" type="button" data-toggle="modal" data-target="#modal-filemanager">
+                                        <button id='button-filemanager' data-src="<?php echo base_url(PATH_FILE_MANAGER."?type=1&relative_url=1&field_id=image&multiple=0&akey=".$this->session->userdata('key')) ?>" class="c-btn c-btn--fancy u-p-xsmall" type="button" data-toggle="modal" data-target="#modal-filemanager">
                                             <i class="fa fa-search"></i>
                                         </button>
 

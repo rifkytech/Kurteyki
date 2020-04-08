@@ -19,7 +19,7 @@
 
 					<div class="u-text-center u-mb-medium">
 						<div class="c-avatar c-avatar--xlarge u-inline-block">
-							<img class="c-avatar__img" src="<?php echo (!empty($profile['photo']) ?  base_url('storage/user/'.$profile['photo']) : base_url('storage/user/person.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
+							<img class="c-avatar__img" src="<?php echo (!empty($profile['photo']) ?  base_url('storage/uploads/user/'.$profile['photo']) : base_url('storage/uploads/user/person.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
 						</div>
 
 						<div class="row u-mb-medium">

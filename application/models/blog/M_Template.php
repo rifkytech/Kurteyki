@@ -51,7 +51,7 @@ class M_Template extends CI_Model
                 if ($data_json) {
 
                     if ($data_widget['type'] == 'image') {
-                        $data_json['content'] = base_url('storage/images/'.$data_json['content']);
+                        $data_json['content'] = base_url('storage/uploads/blog/'.$data_json['content']);
                     }
 
                     $data_json = array_merge($data_json,['type' => $data_widget['type']]);

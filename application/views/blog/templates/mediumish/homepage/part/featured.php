@@ -41,7 +41,7 @@
 									<div class="metafooter">
 										<div class="wrapfooter">
 											<span class="meta-footer-thumb">
-												<img class="author-thumb" src="<?php echo $site['image'] ?>" alt="Sal">
+												<img class="author-thumb" src="<?php echo base_url('storage/assets/blog/mediumish/img/person.png') ?>" alt="Sal">
 											</span>
 											<span class="author-meta">
 												<span class="post-name">

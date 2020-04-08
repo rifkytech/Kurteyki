@@ -16,8 +16,10 @@ class M_Site_Pages extends CI_Model
             {'data': 'id',className:'c-table__cell'},
             {'data': 'title',className:'c-table__cell u-pl-small',width:'100%'},
             {'data': 'time',className:'c-table__cell'},            
-            {'data': 'updated',className:'c-table__cell'},                                                          
-            {'data': 'alat',className:'c-table__cell'} ]
+            {'data': 'updated',className:'c-table__cell'},
+            {'data': 'view',className:'c-table__cell'},            
+            {'data': 'alat',className:'c-table__cell'}
+            ]
             ",
         ];        
     }    
@@ -52,10 +54,14 @@ class M_Site_Pages extends CI_Model
             ', 'ctsubstr(title,60),permalink,formatstatus(time,status),title');
 
         $this->datatables->add_column('alat', '
-            <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
             <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/site_pages/').'update/$1"><i class="fa fa-edit"></i></a>
             <button data-title="are you sure ?" data-text="want to delete $2" class="c-btn--custom c-btn--small c-btn c-btn--danger action-delete" data-id="$1" data-href="'. base_url('app/site_pages/delete/$1') .'" type="button"><i class="fa fa-trash"></i></button>
-            ', 'id,title');
+            ', 'id,title');   
+
+        $this->datatables->add_column('view', '
+          <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
+          ', 'id'); 
+
         return $this->datatables->generate();
     } 
 

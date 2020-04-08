@@ -18,7 +18,7 @@ if (!empty($blog_post)) {
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center">
-					<img class="img-fluid" src="<?php echo base_url('storage/templates/pisen/img/nopost.png') ?>" alt="error image">
+					<img class="img-fluid" src="<?php echo base_url('storage/assets/blog/pisen/img/nopost.png') ?>" alt="error image">
 					<?php if ($site['page_type'] == 'search'): ?>
 						<h1><?php echo $this->lang->line('search_not_found') ?></h1>
 						<p><?php echo $this->lang->line('search_instruction') ?></p>

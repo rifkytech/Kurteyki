@@ -25,7 +25,7 @@ class M_Site_Meta_Data_OG_Init extends CI_Model
 
 			if ($site_meta['default_image']) {
 
-				$image = base_url('storage/images/'.$site_meta['default_image']);
+				$image = base_url('storage/uploads/site/'.$site_meta['default_image']);
 
 				if ($getsize = @getimagesize($image)) {
 					$width = $getsize[0];

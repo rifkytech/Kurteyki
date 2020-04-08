@@ -1,6 +1,6 @@
 <div class="c-field u-mb-small col-md-6">
     <label class="c-field__label">Recent open_graph_default_image : </label>
-    <img style="width: 120px" src="<?php echo base_url('storage/images/thumbnail/'.$meta['open_graph']['default_image']) ?>" alt="open_graph_default_image">
+    <img style="width: 120px" src="<?php echo base_url('storage/uploads/site/thumbnail/'.$meta['open_graph']['default_image']) ?>" alt="open_graph_default_image">
 </div>
 
 <div class="c-field u-mb-small col-md-6">

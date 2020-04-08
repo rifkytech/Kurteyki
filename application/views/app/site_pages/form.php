@@ -5,7 +5,7 @@
 <div class="col-12 u-mv-small">
     <form action="<?php echo base_url('app/site_pages/process') ?>" class="row" method="post" enctype="multipart/form-data">
 
-        <div class="col-12 col-xl-9 col-lg-9">
+        <div class="col-12 col-xl-9 col-lg-9 u-mb-small">
 
             <div class="c-card c-card--responsive u-p-zero">
                 <div class="c-card__header c-card__header--transparent o-line">
@@ -22,10 +22,22 @@
                         <input type="hidden" name="id" value="<?php echo (!empty($site_pages['id']) ? $site_pages['id'] : '') ?>">
                     <?php endif ?>                    
 
-                    <div class="u-ml-auto" style="max-width: 150px">
-                        <label><input value="Published" name="status" type="radio" <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Published') ? 'checked' : '' : 'checked'?>>Published</label>
-                        <label><input value="Draft" name="status" type="radio" <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Draft') ? 'checked' : '' : '' ?>>Draft</label>
+                    <div class="u-ml-auto" style="min-width: 150px">
+                        <div class="c-toggle u-mb-small">
+                            <div class="c-toggle__btn <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Published') ? 'is-active' : '' : 'is-active'?>">
+                                <label class="c-toggle__label" for="publish">
+                                    <input value="Published" class="c-toggle__input" id="publish" name="status" type="radio" <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Published') ? 'checked' : '' : 'checked'?>>Publish
+                                </label>
+                            </div>
+
+                            <div class="c-toggle__btn <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Draft') ? 'is-active' : '' : ''?>">
+                                <label class="c-toggle__label" for="draft">
+                                    <input value="Draft" class="c-toggle__input" id="draft" name="status" type="radio" <?php echo (!empty($site_pages['status'])) ? ($site_pages['status'] == 'Draft') ? 'checked' : '' : '' ?>>Draft
+                                </label>
+                            </div>
+                        </div>
                     </div>
+
 
                 </div>
                 <div class="c-card__body u-p-zero">
@@ -61,9 +73,9 @@
 
     </div>
 
-    <div class="col-xl-3 col-lg-3 u-p-zero">
+    <div class="col-xl-3 col-lg-3">
 
-        <div class="c-card c-card--responsive h-100vh  u-p-zero">
+        <div class="c-card c-card--responsive">
             <div class="c-card__header c-card__header--transparent o-line">
                 <h5 class="c-card__title">
                     Setting

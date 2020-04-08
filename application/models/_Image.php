@@ -21,13 +21,17 @@ class _Image extends CI_Model
 
 	public function extract_image($image,$size,$site){
 		if ($image) {
-			$post_image = $image;
-			if (strpos($image,base_url()) !== false || strpos($image,"/") === '0') {
 
-				$filename = basename($post_image);
-				$post_image_thumbnail = base_url('storage/uploads/medium/images/'.$filename);
+			$host_image = explode('/', $image);
 
+			if ($host_image[0]) {
+
+				$post_image = base_url('storage/uploads/'.$image);
+				$post_image_thumbnail = base_url('storage/uploads/medium/'.$image);
 			}else {
+
+				$post_image = $image;
+
 				if (strpos($image,'blogspot.com')) {
 					$extract_image = explode('/', $image);
 					$read_size = end($extract_image);
@@ -43,7 +47,7 @@ class _Image extends CI_Model
 			$post_image_thumbnail = false;
 		}
 
-		$no_image = base_url('storage/images/'.$site['no_image']);
+		$no_image = base_url('storage/uploads/site/'.$site['no_image']);
 
 		return array(
 			'original' => $post_image,

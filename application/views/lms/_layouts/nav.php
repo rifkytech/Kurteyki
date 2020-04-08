@@ -5,7 +5,7 @@
             <div class="c-navbar u-border-bottom-zero">
 
                 <a class="u-text-center u-mr-auto" href="<?php echo base_url() ?>">
-                    <img src="<?php echo base_url('storage/lms/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
+                    <img src="<?php echo base_url('storage/uploads/lms/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
                 </a>
 
                 <h1 class="u-h3 navbar__title u-text-bold u-hidden"><?php echo $site['title'] ?></h1>

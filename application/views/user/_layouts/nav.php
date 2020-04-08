@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 
-		<div class="u-hidden-up@desktop">		
+		<!-- <div class="u-hidden-up@desktop">		
 
 			<h4 class="u-h4">Menu</h4>
 
@@ -57,6 +57,6 @@
 				</option>
 
 			</select>
-		</div>
+		</div> -->
 	</aside>
 </div>

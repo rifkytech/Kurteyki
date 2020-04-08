@@ -25,7 +25,7 @@
 					<div class="col-lg-4">
 						<div class="c-card u-p-medium" data-mh="landing-cards">
 
-							<img class="u-mb-small" src="<?php echo base_url('storage/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
+							<img class="u-mb-small" src="<?php echo base_url('storage/assets/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
 
 							<p class="u-h4 u-text-bold u-mb-small">
 								<?php echo $data['template']['name'] ?>
@@ -71,7 +71,7 @@
 							<div class="col-lg-4 u-mt-small">
 								<div class="c-card u-p-medium" data-mh="landing-cards">
 
-									<img class="u-mb-small" src="<?php echo base_url('storage/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
+									<img class="u-mb-small" src="<?php echo base_url('storage/assets/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
 
 									<p class="u-h4 u-text-bold u-mb-small">
 										<?php echo $style['name'] ?>
@@ -119,7 +119,7 @@
 						<div class="col-lg-4 u-mt-small">
 							<div class="c-card u-p-medium" data-mh="landing-cards">
 
-								<img class="u-mb-small" src="<?php echo base_url('storage/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
+								<img class="u-mb-small" src="<?php echo base_url('storage/assets/blog/'.$data['template']['path'].'/preview.png') ?>" alt="<?php echo $data['template']['name'] ?>">
 
 								<p class="u-h4 u-text-bold u-mb-small">
 									<?php echo $style['name'] ?>

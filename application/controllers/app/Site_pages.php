@@ -38,6 +38,7 @@ class Site_pages extends My_App
         $data = array(
             'title' => 'Create',
             'ckeditor' => true,
+            'onbeforeunload' => true,
         );
 
         $this->load->view($this->form, $data);
@@ -47,6 +48,7 @@ class Site_pages extends My_App
         $data = array(
             'title' => 'Update',
             'ckeditor' => true,
+            'onbeforeunload' => true,
             'site_pages' => $this->M_Site_Pages->data_update($id),
         );
 
@@ -62,7 +64,7 @@ class Site_pages extends My_App
         }
     }
 
-    public function process(){
+    public function process(){       
 
         if (!empty($this->input->post('id'))) {
 

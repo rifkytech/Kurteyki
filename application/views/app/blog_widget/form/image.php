@@ -5,7 +5,7 @@
 
 <div class="c-field u-mb-small">
 	<label class="c-field__label">Recent image : </label>
-	<img style="width: 200px" src="<?php echo base_url('storage/images/thumbnail/'.$widget['data']['content']) ?>" alt="Image">
+	<img style="width: 200px" src="<?php echo base_url('storage/uploads/blog/thumbnail/'.$widget['data']['content']) ?>" alt="Image">
 </div>
 <div class="c-field u-mb-small">
 	<label class="c-field__label">New image (optional) : </label>

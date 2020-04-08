@@ -74,7 +74,7 @@
 
 			<div class="c-field u-mb-small">
 				<label class="c-field__label">Recent Logo : </label>
-				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['image']) : '') ?>" alt="">
+				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/uploads/site/thumbnail/'.$site['image']) : '') ?>" alt="">
 			</div>
 
 			<div class="c-field u-mb-small">
@@ -89,7 +89,7 @@
 
 			<div class="c-field u-mb-small">
 				<label class="c-field__label">Recent Icon : </label>
-				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['icon']) : '') ?>" alt="">
+				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/uploads/site/thumbnail/'.$site['icon']) : '') ?>" alt="">
 			</div>
 
 			<div class="c-field u-mb-small">
@@ -104,7 +104,7 @@
 
 			<div class="c-field u-mb-small">
 				<label class="c-field__label">Recent No Image : </label>
-				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/images/thumbnail/'.$site['no_image']) : '') ?>" alt="">
+				<img style="width: 50px" src="<?php echo (!empty($site) ? base_url('storage/uploads/site/thumbnail/'.$site['no_image']) : '') ?>" alt="">
 			</div>
 
 			<div class="c-field u-mb-small">

@@ -36,7 +36,7 @@
 	<div class="c-field u-mb-small col-md-12">
 		<div style="max-width: 250px;margin: auto;text-align: center">
 			<label class="c-field__label">Recent organization_logo_url : </label>
-			<img style="width: 120px" src="<?php echo base_url('storage/images/thumbnail/'.$meta['schema']['content']['organization_logo_url']) ?>" alt="organization_logo_url">
+			<img style="width: 120px" src="<?php echo base_url('storage/uploads/site/thumbnail/'.$meta['schema']['content']['organization_logo_url']) ?>" alt="organization_logo_url">
 			<label class="c-field__label">New organization_logo_url (optional) : </label>
 			<input type="hidden" name="organization_logo_url_old" value="<?php echo $meta['schema']['content']['organization_logo_url'] ?>">
 			<input class="c-input" name="organization_logo_url" type="file">
@@ -99,7 +99,7 @@
 	<div class="c-field u-mb-small col-md-12">
 		<div style="max-width: 250px;margin: auto;text-align: center">
 			<label class="c-field__label">Recent person_image : </label>
-			<img style="width: 200px" src="<?php echo base_url('storage/images/thumbnail/'.$meta['schema']['content']['person_image']) ?>" alt="person_image">
+			<img style="width: 200px" src="<?php echo base_url('storage/uploads/site/thumbnail/'.$meta['schema']['content']['person_image']) ?>" alt="person_image">
 			<label class="c-field__label">NeW person_image (optional) : </label>
 			<input type="hidden" name="person_image_old" value="<?php echo $meta['schema']['content']['person_image'] ?>">
 			<input class="c-input" name="person_image" type="file">

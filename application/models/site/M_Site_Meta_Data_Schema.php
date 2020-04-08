@@ -22,7 +22,7 @@ class M_Site_Meta_Data_Schema extends CI_Model
 				"birthDate": "'.$data['content']['person_birthDate'].'",
 				"birthPlace": "'.$data['content']['person_birthPlace'].'",
 				"nationality": "'.$data['content']['person_nationality'].'",
-				"image": "'.base_url('storage/images/'.$data['content']['person_image']).'",
+				"image": "'.base_url('storage/uploads/site/'.$data['content']['person_image']).'",
 				"alumniOf": "'.$data['content']['person_alumniOf'].'",
 				"memberOf": "'.$data['content']['person_memberOf'].'",
 				"address": {
@@ -60,7 +60,7 @@ class M_Site_Meta_Data_Schema extends CI_Model
 					"contactType":"'.$data['content']['organization_contactPoint_contactType'].'"
 				}
 				],
-				"logo":"'.base_url('storage/images/'.$data['content']['organization_logo_url']).'",
+				"logo":"'.base_url('storage/uploads/site/'.$data['content']['organization_logo_url']).'",
 				"sameAs": '.$organization_sameAs.'
 			}</script>';
 		}	

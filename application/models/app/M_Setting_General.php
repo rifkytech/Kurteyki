@@ -72,11 +72,11 @@ class M_Setting_General extends CI_Model
 
 			$upload_image = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'image', // file post data
 				$image_old, // delete file
 				'logo', // file name
-				true //is image
+				'thumbnail' //is image
 			);
 
 			$data[] = [
@@ -94,11 +94,11 @@ class M_Setting_General extends CI_Model
 
 			$upload_icon = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'icon', // file post data
 				$icon_old, // delete file
 				'icon', // file name
-				true //is image
+				'thumbnail' //is image
 			);
 
 			$data[] = [
@@ -116,11 +116,11 @@ class M_Setting_General extends CI_Model
 
 			$upload_no_image = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'no_image', // file post data
 				$no_image_old, // delete file
 				'no_image', // file name
-				true //is image
+				'thumbnail' //is image
 			);
 
 			$data[] = [

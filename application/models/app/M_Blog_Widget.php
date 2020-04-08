@@ -289,11 +289,11 @@ class M_Blog_Widget extends CI_Model
 
 			$upload_image = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/blog/', // dir upload
 				'image'.$key, // file post data
 				$image_old, // delete file
 				false, // file name
-				true //is image
+				'thumbnail' //is image
 			);
 
 			if (!$upload_image) return false;

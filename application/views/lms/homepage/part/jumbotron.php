@@ -8,7 +8,7 @@
 				<div class="row u-pt-large">
 
 					<div class="col-lg-4 u-flex u-hidden-down@desktop">
-						<img style="width: 200px" src="<?php echo base_url('storage/lms/intro.png') ?>" alt="intro"> 
+						<img style="width: 200px" src="<?php echo base_url('storage/uploads/lms/intro.png') ?>" alt="intro"> 
 					</div>
 
 					<div class="col-lg-8 u-pb-large">

@@ -5,7 +5,7 @@
         <div class="c-login__content-wrapper u-width-100">
             <header class="c-login__header">
                 <a title='<?php echo $site['title'] ?>' class="c-login__icon c-login__icon--rounded c-login__icon--left" href="<?php echo base_url() ?>">
-                    <img src="<?php echo base_url('storage/user/logo.png') ?>" alt="<?php echo $site['title'] ?>">
+                    <img src="<?php echo base_url('storage/uploads/user/logo.png') ?>" alt="<?php echo $site['title'] ?>">
                 </a>
 
                 <h2 class="c-login__title"><?php echo $this->lang->line('register') ?></h2>

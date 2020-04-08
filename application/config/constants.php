@@ -7,7 +7,7 @@
 */
 
 define('APP_NAME', 'Apps');
-define('APP_LOGO', 'storage/app/img/logo.png');
+define('APP_LOGO', 'storage/assets/app/img/logo.png');
 define('APP_DESC', 'CMS Teyki');
 define('APP_VERSION', 'v1.0');
 define('APP_CREATOR', 'Faanteyki');
@@ -20,8 +20,8 @@ define('APP_CREATOR_WEBSITE', 'https://www.kurteyki.com');
 |--------------------------------------------------------------------------
 |
 */
-define('PATH_FILE_MANAGER', 'storage/filemanager/dialog.php?type=1');
-define('CSS_POST', 'storage/templates/post.css');
+define('PATH_FILE_MANAGER', 'storage/plugins-b/filemanager/dialog.php');
+define('CSS_POST', 'storage/assets/blog/post.css');
 
 /*
 |--------------------------------------------------------------------------

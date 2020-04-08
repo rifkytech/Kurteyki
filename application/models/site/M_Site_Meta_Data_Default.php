@@ -20,12 +20,12 @@ class M_Site_Meta_Data_Default extends CI_Model
 
 		<!-- Image locations -->
 		<link rel='apple-touch-icon' sizes='120x120'
-		href='".base_url('storage/images/'.$site['icon'])."' />
+		href='".base_url('storage/uploads/site/'.$site['icon'])."' />
 		<link rel='apple-touch-icon' sizes='152x152'
-		href='".base_url('storage/images/'.$site['icon'])."' />
-		<link rel='icon' href='".base_url('storage/images/'.$site['icon'])."'
+		href='".base_url('storage/uploads/site/'.$site['icon'])."' />
+		<link rel='icon' href='".base_url('storage/uploads/site/'.$site['icon'])."'
 		type='image/x-icon' />
-		<link rel='shortcut icon' href='".base_url('storage/images/'.$site['icon'])."'
+		<link rel='shortcut icon' href='".base_url('storage/uploads/site/'.$site['icon'])."'
 		type='image/x-icon' />
 		";
 	}

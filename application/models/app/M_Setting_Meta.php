@@ -54,7 +54,7 @@ class M_Setting_Meta extends CI_Model
 
 			$upload_logo = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'organization_logo_url', // file post data
 				$logo_old, // delete file
 				false, // file name
@@ -77,7 +77,7 @@ class M_Setting_Meta extends CI_Model
 
 			$upload_person = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'person_image', // file post data
 				$person_old, // delete file
 				false, // file name
@@ -120,7 +120,7 @@ class M_Setting_Meta extends CI_Model
 
 			$upload_logo = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'open_graph_default_image', // file post data
 				$image_old, // delete file
 				false, // file name
@@ -156,7 +156,7 @@ class M_Setting_Meta extends CI_Model
 
 			$upload_logo = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/images/', // dir upload
+				'storage/uploads/site/', // dir upload
 				'twitter_card_default_image', // file post data
 				$image_old, // delete file
 				false, // file name

@@ -86,7 +86,7 @@
 
 					<div class="u-text-center u-justify-between">
 						<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
-							<img class="c-avatar__img" src="<?php echo base_url('storage/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
+							<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
 						</div>
 
 						<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>

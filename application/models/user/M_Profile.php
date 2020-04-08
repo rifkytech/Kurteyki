@@ -27,7 +27,7 @@ class M_Profile extends CI_Model
 
 			$upload_photo = $this->_Process_Upload->Upload_File(
 				'image', // config upload
-				'storage/user/', // dir upload
+				'storage/uploads/user/', // dir upload
 				'photo', // file post data
 				$image_old, // delete file
 				'user_photo', // file name

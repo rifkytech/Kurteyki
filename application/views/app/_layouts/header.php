@@ -12,9 +12,9 @@
 	<link rel="shortcut icon" href="<?php echo base_url(APP_LOGO) ?>" type="image/x-icon" />
 
 	<!-- CSS template -->
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/all-modules.css') ?>"/> 
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/main.min.css') ?>"/>
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/custom.css') ?>"/>
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/all-modules.css') ?>"/> 
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/main.min.css') ?>"/>
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/custom.css') ?>"/>
 
 </head>
 <body class="o-page <?php if(!empty($classbody)) echo $classbody;?>">

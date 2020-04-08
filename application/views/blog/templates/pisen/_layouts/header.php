@@ -5,10 +5,10 @@
 
     <?php echo $site['meta']; ?>
 
-    <link rel="stylesheet" href="<?php echo base_url('storage/blog/pisen/css/all-modules.css') ?>">    
-    <link rel="stylesheet" href="<?php echo base_url('storage/blog/pisen/css/main.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('storage/blog/post.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('storage/blog/pisen/css/custom.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('storage/assets/blog/pisen/css/all-modules.css') ?>">    
+    <link rel="stylesheet" href="<?php echo base_url('storage/assets/blog/pisen/css/main.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('storage/assets/blog/post.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('storage/assets/blog/pisen/css/custom.css') ?>">
 </head>
 
 <body>
