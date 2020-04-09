@@ -16,6 +16,7 @@ class M_Template_Widget extends CI_Model
 
         $parent_category =  $this->_Process_MYSQL->get_data($this->table_lms_category,['parent =' => ''])->result_array();
 
+        $data = false;
         foreach ($parent_category as $category) {
 
             $id_parent = $category['id'];

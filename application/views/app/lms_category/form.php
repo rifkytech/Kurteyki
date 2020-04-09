@@ -24,34 +24,36 @@
 
                 <div class="c-field u-mb-small">
                     <label class="c-field__label">name : </label>
-                    <input autocomplete="off" required class="c-input" name="name" type="text" placeholder="name">
+                    <input autofocus="" autocomplete="off" required class="c-input" name="name" type="text" placeholder="name" value="<?php echo (!empty($data['name'])) ? $data['name'] : '' ?>">
                 </div>
 
+                <?php if (!empty($parent) AND $parent < 1 or empty($parent)): ?>
+                    <div class="c-field u-mb-medium">
+                        <label class="c-field__label">parent : </label>
 
-                <div class="c-field u-mb-medium">
-                    <label class="c-field__label">parent : </label>
 
-                    <select name="parent" class="has-search select2 category-parent">
-                        <option value="None" selected="">None</option>
-                        <?php
-                        foreach ($categorys as $category) {
-                            if (!empty($data['id_category']) AND $data['id_category'] == $category['id']) {
-                                echo "<option value='".$category['id']."' selected>".$category['name']."</option>";
-                            }else {
-                                echo "<option value='".$category['id']."'>".$category['name']."</option>";
+                        <select name="parent" class="has-search select2 category-parent">
+                            <option value="None" selected="">None</option>
+                            <?php
+                            foreach ($categorys as $category) {
+                                if (!empty($data['parent']) AND $data['parent'] == $category['id']) {
+                                    echo "<option value='".$category['id']."' selected>".$category['name']."</option>";
+                                }else {
+                                    echo "<option value='".$category['id']."'>".$category['name']."</option>";
+                                }
                             }
-                        }
 
-                        ?>
-                    </select>
-                </div>
+                            ?>
+                        </select>
+                    </div>
+                <?php endif ?>
 
-                <div class="c-field u-mb-small input-parent" style=''>
+                <div class="c-field u-mb-small input-parent" style='<?php echo (!empty($data['parent'])) ? 'display:none' : '' ?>'>
                     <label class="c-field__label">Image : </label>
                     <div class="c-field has-addon-right">
-                        <input value="<?php echo (!empty($blog_post['image']) ? $blog_post['image'] : '') ?>" require name="image" class="c-input" id="image" type="text">
+                        <input value="<?php echo (!empty($data['image']) ? $data['image'] : '') ?>" require name="image" class="c-input" id="image" type="text">
                         <span class="u-ml-auto c-field__addon">
-                            <button id='button-filemanager' data-src="<?php echo base_url(PATH_FILE_MANAGER."&field_id=image&akey=".$this->session->userdata('key')) ?>" class="c-btn c-btn--fancy u-p-xsmall" type="button" data-toggle="modal" data-target="#modal-filemanager">
+                            <button id='button-filemanager' data-src="<?php echo base_url(PATH_FILE_MANAGER."?type=1&relative_url=1&multiple=0&field_id=image&akey=".$this->session->userdata('key')) ?>" class="c-btn c-btn--fancy u-p-xsmall" type="button" data-toggle="modal" data-target="#modal-filemanager">
                                 <i class="fa fa-search"></i>
                             </button>
 
@@ -62,8 +64,8 @@
             </div>
 
             <div class="c-stage__panel u-p-medium">
-                <?php if (!empty($widget)): ?>
-                    <input name="id" type="hidden" value="<?php echo $widget['id'] ?>">
+                <?php if (!empty($data)): ?>
+                    <input name="id" type="hidden" value="<?php echo $data['id'] ?>">
                 <?php endif ?>           
                 <button type="submit" class="c-btn c-btn--primary c-btn--custom"> 
                     Submit

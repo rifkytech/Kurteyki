@@ -16,8 +16,8 @@ class M_Blog_Post extends CI_Model
             {'data': 'id',className:'c-table__cell'},
             {'data': 'title',className:'c-table__cell u-pl-small',width:'100%'},
             {'data': 'category',className:'c-table__cell u-text-center'},
-            {'data': 'time',className:'c-table__cell'},            
-            {'data': 'updated',className:'c-table__cell'},                                                          
+            {'data': 'time',className:'c-table__cell'},
+            {'data': 'updated',className:'c-table__cell'},
             {'data': 'view',className:'c-table__cell'},            
             {'data': 'alat',className:'c-table__cell'}
             ]
@@ -160,18 +160,51 @@ class M_Blog_Post extends CI_Model
         /**
          * Check if Have new category
          */
+        $category_old = strtolower($this->input->post('id_category_old'));                    
         if (empty($post_data['id_category'])) {
             $category_news = false;
+
+            if (!empty($category_old)) {
+                if ($this->check_category($category_old)  < 2) {
+                    $this->delete_category($category_old);
+                } 
+            }
+
         }else{
 
-            $category = strtolower($post_data['id_category']);
-            $read_category = $this->_Process_MYSQL->get_data($this->table_blog_post_category, array('id' => $category));
 
-            $read_bpc = $read_category->row();
+            $category = strtolower($post_data['id_category']);
+
+            /**
+             * process check category news or old
+             */
+
+            $read_category = $this->db
+            ->from($this->table_blog_post_category)
+            ->where('id', $category)
+            ->or_where('name', $category)
+            ->get();
+
             if ($read_category->num_rows() > 0) {
 
-                $category_news = $category;
+                if ($category != $category_old) {
+                    /**
+                     * process delete old category if not exist on other post
+                     */
+                    if ($this->check_category($category_old)  < 2) {
+                        $this->delete_category($category_old);
+                    }                              
+                }
+
+                $category_news = $read_category->row()->id;
             } else {
+
+                /**
+                 * process delete old category if not exist on other post
+                 */
+                if ($this->check_category($category_old)  < 2) {
+                    $this->delete_category($category_old);
+                }          
 
                 $data_category = array(
                     'name' => $category,
@@ -187,7 +220,7 @@ class M_Blog_Post extends CI_Model
                 } else {
                     # failed insert new category
                 }
-            }
+            }           
         }
 
         $post_data['id_category'] = $category_news; 
@@ -196,12 +229,30 @@ class M_Blog_Post extends CI_Model
         /**
          * Process check new tags
          */
+        $tags_post_old = (!empty($this->input->post('id_tags_old'))) ? explode(',',$this->input->post('id_tags_old')) : false;     
         if (empty($post_data['id_tags'])) {
+
             $post_data['id_tags'] = false;
+
+            if ($tags_post_old) {
+                $tags_delete = $tags_post_old;
+                if (!empty($tags_delete)) {
+                    foreach ($tags_delete as $tag_old) {
+                        if ($this->check_tags($tag_old)  < 2) {
+                            $this->delete_tags($tag_old);
+                        }
+                    }
+                }
+            }
         }else{
 
             $tags_post = array_map('strtolower', $post_data['id_tags']);
-            $read_tags = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post_tags, $tags_post, 'id', 'name');
+
+            $read_tags = $this->db
+            ->from($this->table_blog_post_tags)
+            ->where_in('id', $tags_post)
+            ->or_where_in('name', $tags_post)
+            ->get();
 
             # read data and set to array data
             foreach ($read_tags->result() as $tag) {
@@ -209,7 +260,6 @@ class M_Blog_Post extends CI_Model
                 $tags[] = $tag->name;
                 $tags_insert[] = $tag->id;
             }
-
 
             # check if tags exist, remove same value and get new tags
             if (!empty($tags)) {
@@ -257,16 +307,29 @@ class M_Blog_Post extends CI_Model
 
             } else {
 
-                # if no new tags
-                foreach ($tags_post as $data_tags) {
-                    if (is_numeric($data_tags)) {
-                        $tags_exist[] = $data_tags;
-                    }
+                foreach ($read_tags->result() as $tags_im) {
+                    $implode_tags[] = $tags_im->id;
                 }
 
-
-                $post_data['id_tags'] = implode(',', $tags_exist); 
+                $post_data['id_tags'] = implode(',',$implode_tags); 
             }
+
+            /** start dynamic tags **/
+            if ($tags_post_old) {
+
+                $tags_delete = array_diff($tags_post_old, explode(',', $post_data['id_tags']));
+
+                if (!empty($tags_delete)) {
+
+                    foreach ($tags_delete as $tag_old) {
+                        if ($this->check_tags($tag_old)  < 2) {
+                            $this->delete_tags($tag_old);
+                        }
+                    }
+                }
+            }
+
+            /** end **/
         }
 
         return $post_data;        

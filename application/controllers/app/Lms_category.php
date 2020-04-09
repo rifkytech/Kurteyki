@@ -18,18 +18,11 @@ class Lms_category extends My_App{
 
         $data = [
             'title' => 'LMS Category',
+            'category' => $this->M_LMS_Category->data()
         ];
 
-        $this->load->view($this->index, array_merge($data,$this->M_LMS_Category->datatables()));
-    }    
-
-    public function datatables()
-    {
-
-        $data = $this->M_LMS_Category->data_table();
-
-        echo $data;
-    }  
+        $this->load->view($this->index, array_merge($data));
+    }
 
     public function create()
     {
@@ -40,15 +33,38 @@ class Lms_category extends My_App{
         );
 
         $this->load->view($this->form, array_merge($data,$this->M_LMS_Category->required()));
-    }       
+    }   
+
+    public function update($id)
+    {
+
+        $data = array(
+            'title' => 'LMS Category',
+            'sub_title' => 'Update Category',
+            'data' => $this->M_LMS_Category->data_update($id),
+            'parent' => $this->M_LMS_Category->check_parent($id),            
+        );
+
+        $this->load->view($this->form, array_merge($data,$this->M_LMS_Category->required()));
+    }           
 
     public function delete($id)
     {
         if ($this->M_LMS_Category->process_delete($id) == TRUE) {
-            echo true;
+            $this->session->set_flashdata([
+                'message' => true,
+                'message_type' => 'danger',
+                'message_text' => $this->lang->line('success_delete'),
+            ]);
         }else {
-            echo false;
+            $this->session->set_flashdata([
+                'message' => true,
+                'message_type' => 'danger',
+                'message_text' => $this->lang->line('failed_delete'),
+            ]);
         }
+
+        redirect(base_url($this->redirect));
     }
 
     public function process(){
@@ -107,23 +123,6 @@ class Lms_category extends My_App{
 
         redirect(base_url($this->redirect));
 
-    }    
-
-    public function process_multiple()
-    {
-
-        $id = explode(',', $this->input->post('id'));
-        $action = $this->input->post('action');
-
-        if ($action == 'delete') {
-
-            if ($this->M_LMS_Category->process_multiple_delete($id) == TRUE) {
-                echo true;
-            }else {
-                echo false;
-            }
-        }
-
-    }    
+    }
 
 }

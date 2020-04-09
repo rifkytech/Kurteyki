@@ -3,47 +3,86 @@
 <?php $this->load->view('app/_layouts/toolbar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
-<div class="col-md-12 u-p-zero">
+<div class="col-12 u-mv-small">
 
-    <div class="c-card c-card--responsive h-100vh u-p-zero">
+    <div class="c-card h-100vh u-p-zero">
         <div class="c-card__header c-card__header--transparent o-line">
             <a class="c-btn--custom c-btn--small c-btn c-btn--success" href="<?php echo base_url('app/lms_category/create') ?>">
                 <i class="fa fa-plus"></i>
             </a>
-            <button data-title="are you sure ?" data-text="to delete selected item" title="Delete Multiple" value="delete" class="c-btn--custom c-btn--small c-btn c-btn--danger action-multiple btn-opsi">
-                <i class="fa fa-trash"></i>
-            </button>
         </div>
-        <div class="c-card__body">
+        <div class="c-card__body row">
 
-            <?php $this->load->view('app/_layouts/alert'); ?>
+            <div class="col-12">
+                <?php $this->load->view('app/_layouts/alert'); ?>
+            </div>
 
-            <form id='form-multiple' action="<?php echo base_url('app/lms_category/process_multiple') ?>" method="post">
+            <?php 
+            foreach ($category as $data) {
+                ?>
 
-                <div class="c-table-responsive">
-                    <table data-mysearch="Search..." data-myorder='1' data-myurl="<?php echo base_url('app/lms_category/datatables') ?>" class="c-table c-table--highlight" id="table" width="100%">
-                        <caption class="c-table__title cst-table">
-                        </caption>
+                <div class="col-12 col-xl-4">
+                    <div class="c-graph-card">
+                        <div class="c-graph-card__content u-flex u-justify-between u-align-items-center u-ph-small u-pv-small">
+                            <h3 class="c-graph-card__title u-h4 u-text-bold">
+                                <?php echo $data['name'] ?>
+                            </h3>
+                            <div>
+                                <a href="<?php echo base_url('app/lms_category/update/'.$data['id']) ?>" class="c-btn c-btn--info c-btn--custom c-btn--small">
+                                    <i class="fa fa-edit u-text-xsmall"></i>
+                                </a>
+                                <?php if (empty($data['sub_category'])): ?>
+                                    <button data-title="are you sure ?" data-text="want to delete <?php echo $data['name'] ?> category" class="c-btn--custom c-btn--small c-btn c-btn--danger single-action" data-id="$1" data-href="<?php echo base_url('app/lms_category/delete/'.$data['id']) ?>" type="button">
+                                        <i class="fa fa-trash u-text-xsmall"></i>
+                                    </button>
+                                <?php endif ?>
+                            </div>
+                        </div>
 
-                        <thead class="c-table__head c-table__head--slim">
-                            <tr class="c-table__row">
-                                <th class="c-table__cell c-table__cell--head text-center no-sort all">
-                                    <input name="select_all" type="checkbox" id="checkbox-all">
-                                </th>
-                                <th class="c-table__cell c-table__cell--head none">id</th>
-                                <th class="c-table__cell c-table__cell--head all">name</th>
-                                <th class="c-table__cell c-table__cell--head all">parent</th>
-                                <th class="c-table__cell c-table__cell--head no-sort all">tools</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
 
-            </form>
+                        <div class="c-graph-card__footer u-p-zero" style="max-height: 200px;overflow-y: auto">
+                            <?php
+                            if (!empty($data['sub_category'])) {
+                                foreach ($data['sub_category'] as $sub_category) {
+                                    ?>
+                                    <div class="u-flex u-justify-between u-align-items-center u-border-bottom u-ph-small u-pv-xsmall">
 
-        </div>
-    </div>
+                                        <span class="u-text-small u-color-primary">
+                                            <a class="u-text-dark" target='_blank' href="<?php echo $sub_category['url'] ?>"><?php echo $sub_category['name'] ?></a>
+                                        </span>
+
+                                        <div class="u-text-right u-color-primary">
+                                            <a href="<?php echo base_url('app/lms_category/update/'.$sub_category['id']) ?>" class="c-btn c-btn--info c-btn--custom c-btn--small">
+                                                <i class="fa fa-edit u-text-xsmall"></i>
+                                            </a>
+                                            <button data-title="are you sure ?" data-text="want to delete <?php echo $sub_category['name'] ?> category" class="c-btn--custom c-btn--small c-btn c-btn--danger single-action" data-id="$1" data-href="<?php echo base_url('app/lms_category/delete/'.$sub_category['id']) ?>" type="button">
+                                                <i class="fa fa-trash u-text-xsmall"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            <?php if (empty($data['sub_category'])): ?>
+                                <div class="u-flex u-justify-between u-align-items-center u-border-bottom u-ph-small u-pv-xsmall">
+
+                                    <span class="u-text-small u-color-primary">
+                                       No Sub Category.
+                                   </span>
+                               </div>
+                           <?php endif ?>
+                       </div><!-- // .c-graph-card__footer -->
+
+                   </div>
+               </div>                              
+
+               <?php
+           }
+           ?>       
+
+       </div>
+   </div>
 </div>
 
 <?php $this->load->view('app/_layouts/footer'); ?>

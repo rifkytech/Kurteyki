@@ -105,11 +105,24 @@ function open_popup(url) {
     $('.target-filemanager').html(iframe)
 });
 
- function responsive_filemanager_callback(){ 
+ if ($("#image").val()) {
+    $('.btn-remove-image').show();
+}else{
+    $('.btn-remove-image').hide();
+}
+
+$('.btn-remove-image').on('click', function(e) {
+    $("#image").val(''); 
+    $('#preview-image').attr('src', $('#preview-image').data('default_image'));
+    $(this).hide();
+});
+
+function responsive_filemanager_callback(){ 
     var base_url = $('#preview-image').data('base_url');
     var pict = $('#image').val();
     var url = base_url + pict;
     $('#preview-image').attr('src', url).show();
+    $('.btn-remove-image').show();
 }
 
 /* https://stackoverflow.com/questions/11189136/fire-oninput-event-with-jquery */
@@ -183,7 +196,25 @@ $('#title').on('input', function() {
 
         if (!$found) data.unshift(tag);
     }
-});    
+});   
+
+ if ($("select[name='id_category']").val()) {
+    $('.btn-remove-category').show();
+}else{
+    $('.btn-remove-category').hide();
+}
+
+$('.btn-remove-category').on('click', function(e) {
+    $("select[name='id_category']").val('').change(); 
+    $(this).hide();
+});
+
+$("select[name='id_category']").on('change', function() {
+    var optional = $(this).find('option:selected').text();
+    if (optional) {
+        $('.btn-remove-category').show();
+    }
+});
 
 /**
  * Select 2 Tags

@@ -8,7 +8,7 @@
 
         <div class="col-12 col-xl-9 col-lg-9 u-mb-small">
 
-         <div class="c-card c-card--responsive u-p-zero">
+           <div class="c-card c-card--responsive u-p-zero">
             <div class="c-card__header c-card__header--transparent o-line">
 
                 <button class="c-btn c-btn--info c-btn--custom" name="publish" type="submit" title="publish">
@@ -81,7 +81,7 @@
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">permalink</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">category</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -137,13 +137,21 @@
                             ?>
                         </select>
 
+                        <?php if (!empty($blog_post['id_category'])): ?>
+                            <input type="hidden" name="id_category_old" value="<?php echo (!empty($blog_post['id_category']) ? $blog_post['id_category'] : '') ?>">
+                        <?php endif ?>
+
+                        <a class="btn-remove-category u-mv-small c-btn c-btn--danger c-btn--custom c-btn--small" href="javascript:;">
+                            <i class="fa fa-trash"></i>
+                        </a>
+
                     </div>
 
                     <div class="c-stage__header o-media u-justify-start collapsed u-pv-xsmall u-ph-small" data-toggle="collapse" href="#stage-description" aria-expanded="false" aria-controls="stage-description">
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">description</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -158,7 +166,7 @@
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">image</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -166,7 +174,7 @@
                     <div data-parent="#accordion" class="c-stage__panel u-p-xsmall collapse" id="stage-image">
 
                         <div class="c-field u-mb-small">
-                            <img data-base_url='<?php echo base_url('storage/uploads/medium/') ?>' id='preview-image' style="width: 100%;max-height: 160px" src="<?php echo (!empty($blog_post['image'])) ? base_url('storage/uploads/medium/'.$blog_post['image']) : base_url('storage/assets/app/img/preview-image.jpg') ?>" alt="Image">
+                            <img data-default_image='<?php echo base_url('storage/assets/app/img/preview-image.jpg') ?>' data-base_url='<?php echo base_url('storage/uploads/medium/') ?>' id='preview-image' style="width: 100%;max-height: 160px" src="<?php echo (!empty($blog_post['image'])) ? base_url('storage/uploads/medium/'.$blog_post['image']) : base_url('storage/assets/app/img/preview-image.jpg') ?>" alt="Image">
                         </div>
 
                         <div class="c-field has-addon-right">
@@ -178,13 +186,17 @@
                             </span>
                         </div>
 
+                        <a class="btn-remove-image u-mv-small c-btn c-btn--danger c-btn--custom c-btn--small" href="javascript:;">
+                            <i class="fa fa-trash"></i>
+                        </a>
+
                     </div>   
 
                     <div class="c-stage__header o-media u-justify-start collapsed u-pv-xsmall u-ph-small" data-toggle="collapse" href="#stage-time" aria-expanded="false" aria-controls="stage-time">
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">time</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -201,7 +213,7 @@
                         <div class="c-stage__header-title o-media__body">
                             <h6 class="u-mb-zero">tags</h6>
                         </div>
-                        <div class="c-stage__icon o-media__img u-ml-auto">
+                        <div class="c-stage__icon o-media__img u-ml-auto u-mr-zero">
                             <i class="fa fa-info"></i>
                         </div>
                     </div>
@@ -219,6 +231,8 @@
                             }
                             ?>
                         </select>
+
+                        <input type="hidden" name="id_tags_old" value="<?php echo (!empty($blog_post['id_tags']) ? $blog_post['id_tags'] : '') ?>">
 
                     </div>                    
 
