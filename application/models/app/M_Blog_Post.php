@@ -18,7 +18,9 @@ class M_Blog_Post extends CI_Model
             {'data': 'category',className:'c-table__cell u-text-center'},
             {'data': 'time',className:'c-table__cell'},            
             {'data': 'updated',className:'c-table__cell'},                                                          
-            {'data': 'alat',className:'c-table__cell'} ]
+            {'data': 'view',className:'c-table__cell'},            
+            {'data': 'alat',className:'c-table__cell'}
+            ]
             ",
         ];
     }
@@ -57,7 +59,7 @@ class M_Blog_Post extends CI_Model
             ', 'id');
 
         $this->datatables->edit_column('title', '
-            <a title="$1" href="' . base_url('post/') ."$2" . '" target="_blank">$1</a>
+            <a title="$1" href="' . base_url('blog/post/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">$3</small>
             <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
@@ -67,12 +69,15 @@ class M_Blog_Post extends CI_Model
         $this->datatables->edit_column('category', '$1', 'ucwords(category)');
 
         $this->datatables->add_column('alat', '
-            <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
             <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/blog_post/').'update/$1"><i class="fa fa-edit"></i></a>
             <button type="button" data-title="are you sure ?" data-text="want to delete $2" class="c-btn c-btn--danger c-btn--custom action-delete" data-href="'. base_url('app/blog_post/delete/$1') .'">
             <i class="fa fa-trash"></i>
             </button>
             ', 'id,title');
+
+        $this->datatables->add_column('view', '
+          <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
+          ', 'id');         
 
         return $this->datatables->generate();
     }
@@ -155,28 +160,33 @@ class M_Blog_Post extends CI_Model
         /**
          * Check if Have new category
          */
-        $category = strtolower($post_data['id_category']);
-        $read_category = $this->_Process_MYSQL->get_data($this->table_blog_post_category, array('id' => $category));
+        if (empty($post_data['id_category'])) {
+            $category_news = false;
+        }else{
 
-        $read_bpc = $read_category->row();
-        if ($read_category->num_rows() > 0) {
+            $category = strtolower($post_data['id_category']);
+            $read_category = $this->_Process_MYSQL->get_data($this->table_blog_post_category, array('id' => $category));
 
-            $category_news = $category;
-        } else {
+            $read_bpc = $read_category->row();
+            if ($read_category->num_rows() > 0) {
 
-            $data_category = array(
-                'name' => $category,
-                'slug' => slug($category),
-            );
-
-            if ($this->_Process_MYSQL->insert_data($this->table_blog_post_category, $data_category)) {
-
-                $read_category = $this->_Process_MYSQL->get_data($this->table_blog_post_category, array('name' => $category))->row();
-
-                $category_news = $read_category->id;
-
+                $category_news = $category;
             } else {
-                # failed insert new category
+
+                $data_category = array(
+                    'name' => $category,
+                    'slug' => slug($category),
+                );
+
+                if ($this->_Process_MYSQL->insert_data($this->table_blog_post_category, $data_category)) {
+
+                    $read_category = $this->_Process_MYSQL->get_data($this->table_blog_post_category, array('name' => $category))->row();
+
+                    $category_news = $read_category->id;
+
+                } else {
+                    # failed insert new category
+                }
             }
         }
 
@@ -186,74 +196,79 @@ class M_Blog_Post extends CI_Model
         /**
          * Process check new tags
          */
-        $tags_post = array_map('strtolower', $post_data['id_tags']);
-        $read_tags = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post_tags, $tags_post, 'id', 'name');
+        if (empty($post_data['id_tags'])) {
+            $post_data['id_tags'] = false;
+        }else{
 
-        # read data and set to array data
-        foreach ($read_tags->result() as $tag) {
-            $tags[] = $tag->id;
-            $tags[] = $tag->name;
-            $tags_insert[] = $tag->id;
-        }
+            $tags_post = array_map('strtolower', $post_data['id_tags']);
+            $read_tags = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post_tags, $tags_post, 'id', 'name');
 
-
-        # check if tags exist, remove same value and get new tags
-        if (!empty($tags)) {
-            $tags_news = array_diff(array_unique($tags_post), $tags);
-        } else {
-            $tags_news = array_unique($tags_post);
-        }  
-
-        # check if tags_news $tags_news exist
-        if (count($tags_news) > 0) {
-
-            # build data for new tag
-            foreach ($tags_news as $name) {
-                $post_tags[] = array(
-                    'name' => strtolower($name),
-                    'slug' => strtolower(slug($name)),
-                );
+            # read data and set to array data
+            foreach ($read_tags->result() as $tag) {
+                $tags[] = $tag->id;
+                $tags[] = $tag->name;
+                $tags_insert[] = $tag->id;
             }
 
-            # insert all new tag
-            if ($this->_Process_MYSQL->insert_data_multiple($this->table_blog_post_tags, $post_tags, 'true')) {
 
-                # read id after insert
-                $read_tags = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post_tags, $tags_news, 'name')->result();
-
-                # create id for insert post
-                foreach ($read_tags as $data_tags) {
-                    $tags_id[] = $data_tags->id;
-                }
-
-                # check if add tag insert, join new tag and old tag
-                if (!empty($tags_insert)) {
-                    $all_tags = array_merge($tags_id, $tags_insert);
-                } else {
-                    $all_tags = $tags_id;
-                }
-
-                # set value post data tags
-                $post_data['id_tags'] = implode(',', $all_tags);
-                
+            # check if tags exist, remove same value and get new tags
+            if (!empty($tags)) {
+                $tags_news = array_diff(array_unique($tags_post), $tags);
             } else {
-                #failed insert category
-            }
-            
-            
-        } else {
+                $tags_news = array_unique($tags_post);
+            }  
 
-            # if no new tags
-            foreach ($tags_post as $data_tags) {
-                if (is_numeric($data_tags)) {
-                    $tags_exist[] = $data_tags;
+            # check if tags_news $tags_news exist
+            if (count($tags_news) > 0) {
+
+                # build data for new tag
+                foreach ($tags_news as $name) {
+                    $post_tags[] = array(
+                        'name' => strtolower($name),
+                        'slug' => strtolower(slug($name)),
+                    );
                 }
+
+                # insert all new tag
+                if ($this->_Process_MYSQL->insert_data_multiple($this->table_blog_post_tags, $post_tags, 'true')) {
+
+                    # read id after insert
+                    $read_tags = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post_tags, $tags_news, 'name')->result();
+
+                    # create id for insert post
+                    foreach ($read_tags as $data_tags) {
+                        $tags_id[] = $data_tags->id;
+                    }
+
+                    # check if add tag insert, join new tag and old tag
+                    if (!empty($tags_insert)) {
+                        $all_tags = array_merge($tags_id, $tags_insert);
+                    } else {
+                        $all_tags = $tags_id;
+                    }
+
+                    # set value post data tags
+                    $post_data['id_tags'] = implode(',', $all_tags);
+
+                } else {
+                    #failed insert category
+                }
+
+
+            } else {
+
+                # if no new tags
+                foreach ($tags_post as $data_tags) {
+                    if (is_numeric($data_tags)) {
+                        $tags_exist[] = $data_tags;
+                    }
+                }
+
+
+                $post_data['id_tags'] = implode(',', $tags_exist); 
             }
-
-
-            $post_data['id_tags'] = implode(',', $tags_exist); 
         }
-        
+
         return $post_data;        
     }
 
@@ -262,10 +277,10 @@ class M_Blog_Post extends CI_Model
     }
 
     public function process_create(){
-        for ($i=0; $i < 100 ; $i++) { 
-            $this->_Process_MYSQL->insert_data($this->table_blog_post,$this->data_post());
-        }
-        // return $this->_Process_MYSQL->insert_data($this->table_blog_post,$this->data_post());
+        // for ($i=0; $i < 100 ; $i++) { 
+        //     $this->_Process_MYSQL->insert_data($this->table_blog_post,$this->data_post());
+        // }
+        return $this->_Process_MYSQL->insert_data($this->table_blog_post,$this->data_post());
     }
 
     public function process_update(){
@@ -277,6 +292,21 @@ class M_Blog_Post extends CI_Model
      * Delete Blog Post Comment
      */
     public function process_delete($id){
+
+        $read = $this->data_update($id);
+        $category = $read['id_category'];
+        $tags = explode(',', $read['id_tags']);
+
+        foreach ($tags as $tag) {
+            if ($this->check_tags($tag)  < 2) {
+                $this->delete_tags($tag);
+            }
+        }
+
+        if ($this->check_category($category)  < 2) {
+            $this->delete_category($category);
+        }
+
         if ($this->_Process_MYSQL->delete_data($this->table_blog_post, array('id' => $id)) == true AND $this->_Process_MYSQL->delete_data($this->table_blog_post_comment, array('id_blog_post' => $id)) == true) {
             return true;
         } else {
@@ -294,11 +324,62 @@ class M_Blog_Post extends CI_Model
      */
     public function process_multiple_delete($id){
 
+        $read = $this->_Process_MYSQL->get_data_multiple($this->table_blog_post, $id, 'id');
+        $count_read = $read->num_rows();
+
+        foreach ($read->result_array() as $post) {
+
+            $category_delete[$post['id_category']][] = true;
+            $category = $post['id_category'];
+
+            $tags = explode(',', $post['id_tags']);
+
+            foreach ($tags as $tag) {
+                $tag_delete[$tag][] = true;
+                if ($this->check_tags($tag)  < 2 OR $this->check_tags($tag) == count($tag_delete[$tag])) {
+                    $this->delete_tags($tag);
+                }
+            }
+
+            if ($this->check_category($category)  < 2 OR $this->check_category($category) == count($category_delete[$post['id_category']])) {
+                $this->delete_category($category);
+            }
+        }
+
         if ($this->_Process_MYSQL->delete_data_multiple($this->table_blog_post, $id, 'id') == true AND $this->_Process_MYSQL->delete_data_multiple($this->table_blog_post_comment, $id, 'id_blog_post') == true) {
             echo true;
         } else {
             echo false;
         }
+    }    
+
+
+    /**
+     * Logic Category
+     */
+    public function check_category($id){
+        return $this->_Process_MYSQL->get_data($this->table_blog_post,['id_category' => $id])->num_rows();
+    }
+
+    public function delete_category($id){
+        return $this->_Process_MYSQL->delete_data($this->table_blog_post_category, array('id' => $id));
+    }
+
+    /**
+     * Logic Tags
+     */
+    public function check_tags($id){
+
+        $tags = $this->db
+        ->from($this->table_blog_post)
+        ->where('FIND_IN_SET('.$id.', id_tags)')
+        ->get()->num_rows();
+
+        return $tags;
+    }
+
+    public function delete_tags($id){
+        return $this->_Process_MYSQL->delete_data($this->table_blog_post_tags, array('id' => $id));
     }    
 
 }

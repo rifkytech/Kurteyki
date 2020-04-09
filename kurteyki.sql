@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 05:05 AM
+-- Generation Time: Apr 09, 2020 at 05:06 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -48,7 +48,7 @@ CREATE TABLE `tb_blog_post` (
 --
 
 INSERT INTO `tb_blog_post` (`id`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
-(1, 'Konten Baru dan Rencana Kedepannya Situs ini.', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'http://xin.com/storage/uploads/images/1911368.jpg', '2020-03-21 18:44:54', '2020-04-03 07:33:44', '1', '1', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 14, 'Published');
+(1, 'Konten Baru dan Rencana Kedepannya Situs ini.', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/1911368.jpg', '2020-03-21 18:44:54', '2020-04-09 08:00:18', '1', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 18, 'Published');
 
 -- --------------------------------------------------------
 
@@ -99,13 +99,6 @@ CREATE TABLE `tb_blog_post_tags` (
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_blog_post_tags`
---
-
-INSERT INTO `tb_blog_post_tags` (`id`, `name`, `slug`) VALUES
-(1, 'Basa Basi', 'basa-basi');
 
 -- --------------------------------------------------------
 
@@ -177,10 +170,10 @@ CREATE TABLE `tb_blog_template_widget` (
 --
 
 INSERT INTO `tb_blog_template_widget` (`id`, `id_template`, `name`, `var`, `type`, `data_json`) VALUES
-(1, 1, 'Footer 1', 'link1_footer', 'pages', '{\"status\":\"active\",\"title\":\"Pages\",\"id\":[\"1\"]}'),
+(1, 1, 'Footer 1', 'link1_footer', 'pages', '{\"status\":\"active\",\"title\":\"Pages\",\"id\":[\"6\"]}'),
 (2, 1, 'Footer 2', 'link2_footer', 'link', '{\"status\":\"active\",\"title\":\"Other Site\",\"content\":[{\"text\":\"Riedayme\",\"url\":\"https:\\/\\/riedayme.kurteyki.com\\/\"},{\"text\":\"Shinmu\",\"url\":\"https:\\/\\/shinmu.kurteyki.com\\/\"}]}'),
 (3, 1, 'Contact Footer', 'contact_footer', 'text', '{\"status\":\"active\",\"title\":\"Contact Us\",\"content\":\"Bogor, Indonesia \\r\\nkurteyki@gmail.com\\r\\n<div class=\\\"social-contact\\\"> <a title=\\\"Facebook\\\" target=\\\"_blank\\\" class=\\\"icon-btn\\\" href=\\\"https:\\/\\/facebook.com\\/kurteyki\\\" style=\'background:#fff\'><i class=\\\"fa fa-facebook\\\"><\\/i><\\/a> <\\/div>\"}'),
-(4, 1, 'Logo Template', 'logo', 'image', '{\"status\":\"active\",\"content\":\"image4_20200324104021.png\"}'),
+(4, 1, 'Logo Template', 'logo', 'image', '{\"status\":\"active\",\"content\":\"image4_20200408064749.jpg\"}'),
 (5, 1, 'Ads Content Top', 'ads_content_top', 'ads', '{\"status\":\"nonactive\",\"content\":\"<a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a>\"}'),
 (6, 1, 'Ads Content Bottom', 'ads_content_bottom', 'ads', '{\"status\":\"nonactive\",\"content\":\"<div><a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a><\\/div>\"}'),
 (7, 1, 'Ads Content Middle', 'ads_content_middle', 'ads-content', '{\"status\":\"nonactive\",\"content\":\"<a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a>\",\"loop_ads\":\"2\"}'),
@@ -192,9 +185,9 @@ INSERT INTO `tb_blog_template_widget` (`id`, `id_template`, `name`, `var`, `type
 (13, 2, 'Featured Homepage', 'featured_homepage', 'featured-post', '{\"status\":\"nonactive\",\"title\":\"Artikel Pilihan\",\"id\":[\"1\"]}'),
 (14, 2, 'Ads Content Top', 'ads_content_top', 'ads', '{\"status\":\"nonactive\",\"content\":\"\"}'),
 (15, 2, 'Ads Content Bottom', 'ads_content_bottom', 'ads', '{\"status\":\"nonactive\",\"content\":\"\"}'),
-(16, 2, 'Logo Header', 'logo_header', 'image', '{\"status\":\"active\",\"content\":\"image16_20200324110603.png\"}'),
-(17, 2, 'Ads Post Content', 'ads_post_content', 'ads-content', '{\"status\":\"nonactive\",\"content\":\"<a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a>\",\"loop_ads\":\"2\"}'),
-(18, 2, 'footer_pages', 'footer_pages', 'pages', '{\"status\":\"active\",\"title\":\"Pages\",\"id\":[\"1\"]}'),
+(16, 2, 'Logo Header', 'logo_header', 'image', '{\"status\":\"active\",\"content\":\"image16_20200408092129.png\"}'),
+(17, 2, 'Ads Post Content', 'ads_post_content', 'ads-content', '{\"status\":\"nonactive\",\"content\":\"<a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a>\",\"loop_ads\":\"1\"}'),
+(18, 2, 'footer_pages', 'footer_pages', 'pages', '{\"status\":\"active\",\"title\":\"Pages\",\"id\":null}'),
 (19, 2, 'Navigation Header', 'navigation_header', 'category', '{\"status\":\"nonactive\",\"title\":\"Menu\",\"id\":[\"1\"]}');
 
 -- --------------------------------------------------------
@@ -255,10 +248,7 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(484, 'WAWA', 'wawa', 'http://xin.com/storage/uploads/images/tooopen_sy_21330733728965.jpg', '&lt;p&gt;ww&lt;/p&gt;\r\n', '&lt;p&gt;ww&lt;/p&gt;\r\n', '3', '11', '2020-04-05 07:03:00', '0000-00-00 00:00:00', 10000, 0, 3, 'Published'),
-(613, 'koko', 'koko', 'http://xin.com/storage/uploads/images/1911368.jpg', '&lt;p&gt;q&lt;/p&gt;\r\n', '&lt;p&gt;q&lt;/p&gt;\r\n', '3', '11', '2020-04-05 14:38:42', '2020-04-06 08:07:05', 0, 0, 3, 'Published'),
-(614, 'jajajaja', 'jajajaja', 'http://xin.com/storage/uploads/images/1911368.jpg', '&lt;p&gt;babhi kimpet&lt;/p&gt;\r\n', '', '3', '11', '2020-04-05 14:39:34', '2020-04-06 08:06:56', 0, 0, 3, 'Draft'),
-(615, 'wawe', 'wawe', 'https://lh3.googleusercontent.com/d/1R6Pi_RjL8YSW3s0fxKQJmEZL3SZUWtRi=s600', '&lt;p&gt;qq&lt;/p&gt;\r\n', '', '3', '11', '2020-04-05 14:40:05', '2020-04-06 05:34:31', 0, 0, 3, 'Published');
+(616, 'ehehee', 'ehehee', 'images/wow/logo_20200324103241.png', '&lt;p&gt;&lt;img alt=&quot;&quot; height=&quot;480&quot; src=&quot;http://localhost/kurteyki/storage/uploads/images/wow/logo_20200324103241.png?1586305318278&quot; width=&quot;640&quot; /&gt;asdsa&lt;/p&gt;\r\n', '&lt;p&gt;&lt;img alt=&quot;&quot; height=&quot;480&quot; src=&quot;http://localhost/kurteyki/storage/uploads/images/wow/logo_20200324103241.png?1586305995459&quot; width=&quot;640&quot; /&gt;asdasdsa&lt;/p&gt;\r\n', '3', '11', '2020-04-08 07:20:41', '2020-04-08 07:33:27', 0, 0, 2, 'Published');
 
 -- --------------------------------------------------------
 
@@ -291,7 +281,9 @@ INSERT INTO `tb_lms_courses_lesson` (`id`, `id_course`, `id_section`, `title`, `
 (31, 613, 49, 'ww', 'Video', '<p>www</p>\r\n', 0),
 (32, 614, 50, '11', 'Video', '<p>111</p>\r\n', 0),
 (33, 615, 51, 'asd', 'Text', '<p>asd</p>\r\n', 0),
-(34, 615, 51, 'www', 'Video', '<p>qq</p>\r\n', 0);
+(34, 615, 51, 'www', 'Video', '<p>qq</p>\r\n', 0),
+(35, 614, 50, 'qwqwq', 'Video', '<p>qwqw</p>\r\n', 0),
+(36, 614, 52, 'asdsad', 'Video', '<p>asdsadsa</p>\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -321,7 +313,8 @@ INSERT INTO `tb_lms_courses_section` (`id`, `id_course`, `title`, `order`) VALUE
 (48, 484, 'qq', 0),
 (49, 613, 'qq', 0),
 (50, 614, 'kwaowka babhi', 0),
-(51, 615, 'zzzz', 0);
+(51, 615, 'zzzz', 0),
+(52, 614, 'ww', 0);
 
 -- --------------------------------------------------------
 
@@ -363,8 +356,8 @@ CREATE TABLE `tb_lms_user_lesson` (
 --
 
 INSERT INTO `tb_lms_user_lesson` (`id`, `id_user`, `id_courses`, `data`) VALUES
-(1, 11, 614, '[{\"id_lesson\":\"32\",\"status\":false}]'),
-(2, 11, 615, '[{\"id_lesson\":\"34\",\"status\":false},{\"id_lesson\":\"33\",\"status\":false}]'),
+(1, 11, 614, '[{\"id_lesson\":\"32\",\"status\":true},{\"id_lesson\":\"35\",\"status\":true},{\"id_lesson\":\"36\",\"status\":true}]'),
+(2, 11, 615, '[{\"id_lesson\":\"33\",\"status\":false},{\"id_lesson\":\"34\",\"status\":false}]'),
 (3, 11, 613, '[{\"id_lesson\":\"31\",\"status\":false}]');
 
 -- --------------------------------------------------------
@@ -442,12 +435,12 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('cache', 'No'),
 ('currency_format', 'IDR'),
 ('description', 'Ilmu Pengembangan Diri untuk Hidup yang lebih baik.'),
-('icon', 'icon_20200324110612.png'),
-('image', 'logo_20200324103241.png'),
+('icon', 'icon_20200408075727.png'),
+('image', 'logo_20200408075726.png'),
 ('language', 'indonesia'),
 ('lms_limit_post', '5'),
 ('midtrans', '{\"status_production\":\"No\",\"client_key\":\"SB-Mid-client-kda5uXSFYxy0K5EJ\",\"server_key\":\"SB-Mid-server-pE6FhBweNWjzV3ZJkDueTaYp\"}'),
-('no_image', 'no_image_20200324100516.jpg'),
+('no_image', 'no_image_20200408075727.jpg'),
 ('robots_txt', ''),
 ('slogan', 'Belajar pengembangan diri'),
 ('time_zone', 'Asia/Jakarta'),
@@ -471,9 +464,9 @@ CREATE TABLE `tb_site_meta` (
 --
 
 INSERT INTO `tb_site_meta` (`id`, `type`, `data_json`) VALUES
-(1, 'schema', '{\"type\":\"Organization\",\"content\":{\"person_name\":\"Faanteyki\",\"person_alternateName\":\"Faan\",\"person_gender\":\"male\",\"person_height\":\"163 centimetre\",\"person_birthDate\":\"1999-08-30\",\"person_birthPlace\":\"Bogor, Jawabarat\",\"person_nationality\":\"Indonesia\",\"person_alumniOf\":\"SMK Generasi Madani\",\"person_memberOf\":\"Kurteyki\",\"person_streetAddress\":\"RT.05 RW.04 NO.C23\",\"person_addressLocality\":\"Cibinong\",\"person_addressRegion\":\"Indonesia\",\"person_postalCode\":\"16916\",\"person_email\":\"life.irfaan@gmail.com\",\"person_telephone\":\"+62 813 8921 5100\",\"person_url\":\"https:\\/\\/kurteyki.com\",\"person_sameAs\":\"https:\\/\\/facebook.com\\/faanteyki\",\"person_jobTitle\":\"Bobobib\",\"person_worksFor_name\":\"Bobobib\",\"person_worksFor_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_name\":\"Kurteyki\",\"organization_url\":\"https:\\/\\/www.kurteyki.com\\/\",\"organization_contactPoint_telephone\":\"+62 813 8921 5100\",\"organization_contactPoint_contactType\":\"customer service\",\"organization_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_logo_url\":\"organization_logo_url_20200406055322.jpg\",\"person_image\":\"person_image_20200406055323.jpg\"}}'),
-(2, 'open_graph', '{\"app_id\":\"\",\"publisher\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"author\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"default_image\":\"open_graph_default_image_20200406055323.jpg\"}'),
-(3, 'twitter_card', '{\"publisher\":\"@kurteyki\",\"default_image\":\"twitter_card_default_image_20200406055323.jpg\"}');
+(1, 'schema', '{\"type\":\"Organization\",\"content\":{\"person_name\":\"Faanteyki\",\"person_alternateName\":\"Faan\",\"person_gender\":\"male\",\"person_height\":\"163 centimetre\",\"person_birthDate\":\"1999-08-30\",\"person_birthPlace\":\"Bogor, Jawabarat\",\"person_nationality\":\"Indonesia\",\"person_alumniOf\":\"SMK Generasi Madani\",\"person_memberOf\":\"Kurteyki\",\"person_streetAddress\":\"RT.05 RW.04 NO.C23\",\"person_addressLocality\":\"Cibinong\",\"person_addressRegion\":\"Indonesia\",\"person_postalCode\":\"16916\",\"person_email\":\"life.irfaan@gmail.com\",\"person_telephone\":\"+62 813 8921 5100\",\"person_url\":\"https:\\/\\/kurteyki.com\",\"person_sameAs\":\"https:\\/\\/facebook.com\\/faanteyki\",\"person_jobTitle\":\"Bobobib\",\"person_worksFor_name\":\"Bobobib\",\"person_worksFor_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_name\":\"Kurteyki\",\"organization_url\":\"https:\\/\\/www.kurteyki.com\\/\",\"organization_contactPoint_telephone\":\"+62 813 8921 5100\",\"organization_contactPoint_contactType\":\"customer service\",\"organization_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_logo_url\":\"organization_logo_url_20200408103244.png\",\"person_image\":\"person_image_20200408103244.png\"}}'),
+(2, 'open_graph', '{\"app_id\":\"\",\"publisher\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"author\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"default_image\":\"open_graph_default_image_20200408103244.png\"}'),
+(3, 'twitter_card', '{\"publisher\":\"@kurteyki\",\"default_image\":\"twitter_card_default_image_20200408103244.png\"}');
 
 -- --------------------------------------------------------
 
@@ -496,10 +489,7 @@ CREATE TABLE `tb_site_pages` (
 --
 
 INSERT INTO `tb_site_pages` (`id`, `title`, `permalink`, `time`, `updated`, `content`, `status`) VALUES
-(1, 'Privacy', 'privacy', '2020-03-21 18:36:40', '2020-04-06 09:27:00', '&lt;p&gt;If you require any more information or have any questions about our privacy policy, please feel free to contact us by email at http://www.kurteyki.com/p/contact.html&lt;/p&gt;\r\n\r\n&lt;p&gt;At www.kurteyki.com we consider the privacy of our visitors to be extremely important. This privacy policy document describes in detail the types of personal information is collected and recorded by www.kurteyki.com and how we use it.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Log Files&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Like many other Web sites, www.kurteyki.com makes use of log files. These files merely logs visitors to the site - usually a standard procedure for hosting companies and a part of hosting services&amp;#39;s analytics. The information inside the log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks. This information is used to analyze trends, administer the site, track user&amp;#39;s movement around the site, and gather demographic information. IP addresses, and other such information are not linked to any information that is personally identifiable.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Cookies and Web Beacons&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;www.kurteyki.com uses cookies to store information about visitors&amp;#39; preferences, to record user-specific information on which pages the site visitor accesses or visits, and to personalize or customize our web page content based upon visitors&amp;#39; browser type or other information that the visitor sends via their browser.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Our Advertising Partners&lt;/b&gt; Some of our advertising partners may use cookies and web beacons on our site. Our advertising partners include ...&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Google&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;While each of these advertising partners has their own Privacy Policy for their site. You may consult this listing to find the privacy policy for each of the advertising partners of www.kurteyki.com.&lt;/em&gt; These third-party ad servers or ad networks use technology in their respective advertisements and links that appear on www.kurteyki.com and which are sent directly to your browser. They automatically receive your IP address when this occurs. Other technologies (such as cookies, JavaScript, or Web Beacons) may also be used by our site&amp;#39;s third-party ad networks to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on the site. www.kurteyki.com has no access to or control over these cookies that are used by third-party advertisers.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Third Party Privacy Policies&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices as well as for instructions about how to opt-out of certain practices. www.kurteyki.com&amp;#39;s privacy policy does not apply to, and we cannot control the activities of, such other advertisers or web sites. If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found at the browsers&amp;#39; respective websites.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Children&amp;#39;s Information&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;We believe it is important to provide added protection for children online. We encourage parents and guardians to spend time online with their children to observe, participate in and/or monitor and guide their online activity. www.kurteyki.com does not knowingly collect any personally identifiable information from children under the age of 13. If a parent or guardian believes that www.kurteyki.com has in its database the personally-identifiable information of a child under the age of 13, please contact us immediately (using the contact in the first paragraph) and we will use our best efforts to promptly remove such information from our records.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Online Privacy Policy Only&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This privacy policy applies only to our online activities and is valid for visitors to our website and regarding information shared and/or collected there. This policy does not apply to any information collected offline or via channels other than this website.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Consent&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;By using our website, you hereby consent to our privacy policy and agree to its terms.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Update&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This Privacy Policy was last updated on: Sunday, December 3rd, 2017.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;Should we update, amend or make any changes to our privacy policy, those changes will be posted here.&lt;/em&gt;&lt;/p&gt;\r\n', 'Published'),
-(2, 'www babhi betul kau ini', 'www-babhi-betul-kau-ini', '2020-04-06 09:25:29', '2020-04-06 09:25:43', '&lt;p&gt;www&lt;/p&gt;\r\n', 'Draft'),
-(3, 'privacy', 'privacy-1802081068', '2020-04-06 09:26:13', '0000-00-00 00:00:00', '&lt;p&gt;asdsadsadsa&lt;/p&gt;\r\n', 'Draft'),
-(4, 'hello works', 'hello-works', '2020-04-06 09:29:38', '2020-04-06 09:33:32', '&lt;p&gt;&lt;iframe allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/q7RtHkWkYyQ&quot; width=&quot;560&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;\r\n', 'Draft');
+(1, 'Privacy', 'privacy', '2020-03-21 18:36:40', '2020-04-09 06:06:48', '&lt;p&gt;If you require any more information or have any questions about our privacy policy, please feel free to contact us by email at http://www.kurteyki.com/p/contact.html&lt;/p&gt;\r\n\r\n&lt;p&gt;At www.kurteyki.com we consider the privacy of our visitors to be extremely important. This privacy policy document describes in detail the types of personal information is collected and recorded by www.kurteyki.com and how we use it.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Log Files&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Like many other Web sites, www.kurteyki.com makes use of log files. These files merely logs visitors to the site - usually a standard procedure for hosting companies and a part of hosting services&amp;#39;s analytics. The information inside the log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks. This information is used to analyze trends, administer the site, track user&amp;#39;s movement around the site, and gather demographic information. IP addresses, and other such information are not linked to any information that is personally identifiable.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Cookies and Web Beacons&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;www.kurteyki.com uses cookies to store information about visitors&amp;#39; preferences, to record user-specific information on which pages the site visitor accesses or visits, and to personalize or customize our web page content based upon visitors&amp;#39; browser type or other information that the visitor sends via their browser.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Our Advertising Partners&lt;/b&gt; Some of our advertising partners may use cookies and web beacons on our site. Our advertising partners include ...&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Google&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;While each of these advertising partners has their own Privacy Policy for their site. You may consult this listing to find the privacy policy for each of the advertising partners of www.kurteyki.com.&lt;/em&gt; These third-party ad servers or ad networks use technology in their respective advertisements and links that appear on www.kurteyki.com and which are sent directly to your browser. They automatically receive your IP address when this occurs. Other technologies (such as cookies, JavaScript, or Web Beacons) may also be used by our site&amp;#39;s third-party ad networks to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on the site. www.kurteyki.com has no access to or control over these cookies that are used by third-party advertisers.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Third Party Privacy Policies&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices as well as for instructions about how to opt-out of certain practices. www.kurteyki.com&amp;#39;s privacy policy does not apply to, and we cannot control the activities of, such other advertisers or web sites. If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found at the browsers&amp;#39; respective websites.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Children&amp;#39;s Information&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;We believe it is important to provide added protection for children online. We encourage parents and guardians to spend time online with their children to observe, participate in and/or monitor and guide their online activity. www.kurteyki.com does not knowingly collect any personally identifiable information from children under the age of 13. If a parent or guardian believes that www.kurteyki.com has in its database the personally-identifiable information of a child under the age of 13, please contact us immediately (using the contact in the first paragraph) and we will use our best efforts to promptly remove such information from our records.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Online Privacy Policy Only&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This privacy policy applies only to our online activities and is valid for visitors to our website and regarding information shared and/or collected there. This policy does not apply to any information collected offline or via channels other than this website.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Consent&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;By using our website, you hereby consent to our privacy policy and agree to its terms.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Update&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This Privacy Policy was last updated on: Sunday, December 3rd, 2017.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;Should we update, amend or make any changes to our privacy policy, those changes will be posted here.&lt;/em&gt;&lt;/p&gt;\r\n', 'Published');
 
 -- --------------------------------------------------------
 
@@ -526,21 +516,82 @@ CREATE TABLE `tb_site_visitor` (
 
 INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_name`, `country_code`, `hits`, `url`, `referrer`) VALUES
 (1, '127.0.0.1', '2020-04-06 09:33:00', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://xin.com/p/hello-works', ''),
-(2, '127.0.0.1', '2020-04-06 09:37:06', 'Chrome', 'Windows 10', 'Other', 'Other', 35, 'http://xin.com/', ''),
+(2, '127.0.0.1', '2020-04-06 09:37:06', 'Chrome', 'Windows 10', 'Other', 'Other', 77, 'http://xin.com/', ''),
 (3, '127.0.0.1', '2020-04-06 09:37:09', 'Chrome', 'Windows 10', 'Other', 'Other', 26, 'http://xin.com/p/privacy', ''),
-(4, '127.0.0.1', '2020-04-06 09:37:16', 'Chrome', 'Windows 10', 'Other', 'Other', 8, 'http://xin.com/courses/detail/wawa', ''),
-(5, '127.0.0.1', '2020-04-06 09:37:47', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://xin.com/courses/lesson/wawe/51/33', ''),
+(4, '127.0.0.1', '2020-04-06 09:37:16', 'Chrome', 'Windows 10', 'Other', 'Other', 21, 'http://xin.com/courses/detail/wawa', ''),
+(5, '127.0.0.1', '2020-04-06 09:37:47', 'Chrome', 'Windows 10', 'Other', 'Other', 42, 'http://xin.com/courses/lesson/wawe/51/33', ''),
 (6, '127.0.0.1', '2020-04-06 09:37:53', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://xin.com/courses/lesson/koko/49/31', ''),
 (7, '127.0.0.1', '2020-04-06 09:38:04', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://xin.com/courses/lesson/jajajaja/50/32', ''),
-(8, '127.0.0.1', '2020-04-06 09:40:29', 'Chrome', 'Windows 10', 'Other', 'Other', 23, 'http://xin.com/blog', ''),
-(9, '127.0.0.1', '2020-04-06 09:40:31', 'Chrome', 'Windows 10', 'Other', 'Other', 29, 'http://xin.com/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(10, '127.0.0.1', '2020-04-06 09:40:32', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://xin.com/blog/category/tidak-diketahui', ''),
-(11, '127.0.0.1', '2020-04-06 09:40:41', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://xin.com/blog/tags/basa-basi', ''),
+(8, '127.0.0.1', '2020-04-06 09:40:29', 'Chrome', 'Windows 10', 'Other', 'Other', 25, 'http://xin.com/blog', ''),
+(9, '127.0.0.1', '2020-04-06 09:40:31', 'Chrome', 'Windows 10', 'Other', 'Other', 31, 'http://xin.com/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(10, '127.0.0.1', '2020-04-06 09:40:32', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://xin.com/blog/category/tidak-diketahui', ''),
+(11, '127.0.0.1', '2020-04-06 09:40:41', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://xin.com/blog/tags/basa-basi', ''),
 (12, '127.0.0.1', '2020-04-06 09:41:12', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://xin.com/courses/detail/jajajaja', ''),
-(13, '127.0.0.1', '2020-04-06 09:41:31', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://xin.com/courses/detail/koko', ''),
+(13, '127.0.0.1', '2020-04-06 09:41:31', 'Chrome', 'Windows 10', 'Other', 'Other', 13, 'http://xin.com/courses/detail/koko', ''),
 (14, '127.0.0.1', '2020-04-06 09:41:58', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://xin.com/p/www-babhi-betul-kau-ini', ''),
 (15, '127.0.0.1', '2020-04-06 09:42:12', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://xin.com/p/privacy-1802081068', ''),
-(16, '127.0.0.1', '2020-04-06 09:51:42', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://xin.com/courses/detail/wawe', '');
+(16, '127.0.0.1', '2020-04-06 09:51:42', 'Chrome', 'Windows 10', 'Other', 'Other', 14, 'http://xin.com/courses/detail/wawe', ''),
+(17, '127.0.0.1', '2020-04-06 15:33:37', 'Chrome', 'Windows 10', 'Other', 'Other', 23, 'http://xin.com/courses/lesson/wawe/51/34', ''),
+(18, '127.0.0.1', '2020-04-06 16:34:51', 'Chrome', 'Windows 10', 'Other', 'Other', 15, 'http://xin.com/p/hello-world-bosqu-mantap-hehehe', ''),
+(19, '127.0.0.1', '2020-04-06 17:26:53', 'Chrome', 'Windows 10', 'Other', 'Other', 9, 'http://xin.com/p/helo-works', ''),
+(20, '::1', '2020-04-06 18:02:20', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/', ''),
+(21, '::1', '2020-04-06 18:05:10', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://localhost/kurteyki/', ''),
+(22, '::1', '2020-04-06 18:48:17', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog', ''),
+(23, '::1', '2020-04-06 18:48:19', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(24, '::1', '2020-04-07 04:44:03', 'Chrome', 'Windows 10', 'Other', 'Other', 26, 'http://localhost/kurteyki/', ''),
+(25, '::1', '2020-04-07 04:46:13', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses/detail/wawe', ''),
+(26, '::1', '2020-04-07 05:36:54', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/helo-works', ''),
+(27, '::1', '2020-04-07 07:42:05', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog', ''),
+(28, '::1', '2020-04-07 07:42:07', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(29, '::1', '2020-04-08 06:01:10', 'Chrome', 'Windows 10', 'Other', 'Other', 139, 'http://localhost/kurteyki/', ''),
+(30, '::1', '2020-04-08 06:01:17', 'Chrome', 'Windows 10', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses/detail/wawe', ''),
+(31, '::1', '2020-04-08 06:13:36', 'Chrome', 'Windows 10', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses/lesson/wawe/51/33', ''),
+(32, '::1', '2020-04-08 06:14:01', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses/lesson/wawe/51/34', ''),
+(33, '::1', '2020-04-08 06:14:41', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses/lesson/jajajaja/50/32', ''),
+(34, '::1', '2020-04-08 06:15:05', 'Chrome', 'Windows 10', 'Other', 'Other', 78, 'http://localhost/kurteyki/blog', ''),
+(35, '::1', '2020-04-08 06:15:57', 'Chrome', 'Windows 10', 'Other', 'Other', 39, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(36, '::1', '2020-04-08 06:16:00', 'Chrome', 'Windows 10', 'Other', 'Other', 16, 'http://localhost/kurteyki/blog/tags/basa-basi', ''),
+(37, '::1', '2020-04-08 06:19:53', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses/lesson/jajajaja/50/35', ''),
+(38, '::1', '2020-04-08 06:19:55', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses/lesson/jajajaja/52/36', ''),
+(39, '::1', '2020-04-08 06:26:31', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://localhost/kurteyki/p/helo-works', ''),
+(40, '::1', '2020-04-08 06:44:13', 'Chrome', 'Windows 10', 'Other', 'Other', 20, 'http://localhost/kurteyki/blog/category/tidak-diketahui', ''),
+(41, '::1', '2020-04-08 06:45:53', 'Chrome', 'Windows 10', 'Other', 'Other', 8, 'http://localhost/kurteyki/blog/search', ''),
+(42, '::1', '2020-04-08 07:31:07', 'Chrome', 'Windows 10', 'Other', 'Other', 36, 'http://localhost/kurteyki/courses/detail/ehehee', ''),
+(43, '::1', '2020-04-08 07:36:19', 'Chrome', 'Windows 10', 'Other', 'Other', 8, 'http://localhost/kurteyki/courses/category/kentang', ''),
+(44, '::1', '2020-04-08 07:36:21', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses/category/php', ''),
+(45, '::1', '2020-04-08 07:36:22', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses/category/html', ''),
+(46, '::1', '2020-04-08 07:38:24', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/post/hello-works-145027405', ''),
+(47, '::1', '2020-04-08 07:38:31', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/post/hello-works-21740455', ''),
+(48, '::1', '2020-04-08 07:39:17', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/hello-works-1307569046', ''),
+(49, '::1', '2020-04-08 07:42:06', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/hello-works-333687450', ''),
+(50, '::1', '2020-04-08 07:42:20', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/hello-works-134769998', ''),
+(51, '::1', '2020-04-08 08:14:20', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/hello-works-1134265012', ''),
+(52, '::1', '2020-04-08 08:49:06', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/helo-works-hehehehe-awwee-awwe-oawkoawkaw', ''),
+(53, '::1', '2020-04-08 08:49:11', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/hello-world-bosqu-mantap-hehehe', ''),
+(54, '::1', '2020-04-08 08:49:12', 'Chrome', 'Windows 10', 'Other', 'Other', 10, 'http://localhost/kurteyki/p/privacy', ''),
+(55, '::1', '2020-04-08 09:11:05', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/hello-works', ''),
+(56, '::1', '2020-04-08 09:21:47', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/hello-works-1438401501', ''),
+(57, '::1', '2020-04-08 10:28:00', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://localhost/kurteyki/p/www', ''),
+(58, '::1', '2020-04-09 05:30:47', 'Chrome', 'Windows 10', 'Other', 'Other', 23, 'http://localhost/kurteyki/', ''),
+(59, '::1', '2020-04-09 05:30:56', 'Chrome', 'Windows 10', 'Other', 'Other', 17, 'http://localhost/kurteyki/courses/detail/ehehee', ''),
+(60, '::1', '2020-04-09 05:33:59', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses/category/kentang', ''),
+(61, '::1', '2020-04-09 05:40:37', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/privacy', ''),
+(62, '::1', '2020-04-09 06:01:39', 'Chrome', 'Windows 10', 'Other', 'Other', 10, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(63, '::1', '2020-04-09 06:02:27', 'Chrome', 'Windows 10', 'Other', 'Other', 14, 'http://localhost/kurteyki/blog/post/asdsadsa', ''),
+(64, '::1', '2020-04-09 06:02:35', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog/tags/ganteng', ''),
+(65, '::1', '2020-04-09 06:03:14', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/tags/mantap', ''),
+(66, '::1', '2020-04-09 06:03:16', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog/tags/broww', ''),
+(67, '::1', '2020-04-09 06:03:19', 'Chrome', 'Windows 10', 'Other', 'Other', 11, 'http://localhost/kurteyki/blog', ''),
+(68, '::1', '2020-04-09 06:09:10', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/tags/basa-basi', ''),
+(69, '::1', '2020-04-09 06:09:12', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog/category/tidak-diketahui', ''),
+(70, '::1', '2020-04-09 07:43:25', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/post/wwww', ''),
+(71, '::1', '2020-04-09 07:47:13', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog/post/ronan-keating-when-you-say-nothing-at-all', ''),
+(72, '::1', '2020-04-09 07:47:17', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/tags/brow', ''),
+(73, '::1', '2020-04-09 07:47:21', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/tags/gragal', ''),
+(74, '::1', '2020-04-09 07:47:24', 'Chrome', 'Windows 10', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog/tags/grogol', ''),
+(75, '::1', '2020-04-09 08:51:08', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog/post/www', ''),
+(76, '::1', '2020-04-09 08:51:10', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/tags/g', ''),
+(77, '::1', '2020-04-09 08:51:13', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog/tags/e', '');
 
 -- --------------------------------------------------------
 
@@ -565,8 +616,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `no_handphone`, `photo`, `grade`, `created`, `last_login`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', '', '0', '', 'App', '0000-00-00 00:00:00', '2020-04-06 04:47:54'),
-(11, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', '85212321', 'user_photo_20200406043846.jpg', 'User', '2020-03-31 15:35:51', '2020-04-06 04:27:09'),
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', '', '0', '', 'App', '0000-00-00 00:00:00', '2020-04-09 06:30:14'),
+(11, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', '85212321', 'user_photo_20200408075916.png', 'User', '2020-03-31 15:35:51', '2020-04-09 07:21:29'),
 (12, 'aye', '329053c86586dfab3facb0478d574a5c888d3ad7', 'aye@aye.cc', '1234', '', 'User', '2020-04-01 03:59:02', '2020-04-01 03:59:11'),
 (13, 'ww', '1c4f0c6eb8bf8bbf11cc2ae1cdcc5c5d1f3a3c16', 'ww@ww.cc', '123456', 'user_photo_20200405130108.jpg', 'User', '2020-04-03 10:51:17', '2020-04-06 04:26:41'),
 (14, 'kaowkaowkaowk', 'cb158e782ff86423b61d9f045bd90bce8f1bfd50', 'okaowkaowk@akwoakw.cc', '1234567890', '', 'User', '2020-04-05 11:19:39', '0000-00-00 00:00:00'),
@@ -746,25 +797,25 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_blog_post`
 --
 ALTER TABLE `tb_blog_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post_category`
 --
 ALTER TABLE `tb_blog_post_category`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post_comment`
 --
 ALTER TABLE `tb_blog_post_comment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post_tags`
 --
 ALTER TABLE `tb_blog_post_tags`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_template`
@@ -794,13 +845,13 @@ ALTER TABLE `tb_lms_category`
 -- AUTO_INCREMENT for table `tb_lms_courses`
 --
 ALTER TABLE `tb_lms_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=616;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=617;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_lesson`
 --
 ALTER TABLE `tb_lms_courses_lesson`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_section`
@@ -830,7 +881,7 @@ ALTER TABLE `tb_lms_user_review`
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -842,13 +893,13 @@ ALTER TABLE `tb_site_meta`
 -- AUTO_INCREMENT for table `tb_site_pages`
 --
 ALTER TABLE `tb_site_pages`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

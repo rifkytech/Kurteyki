@@ -18,7 +18,7 @@
 }
 
 .c-table__row.selected:hover {
-   background-color: #efe 
+ background-color: #efe 
 }
 
 
@@ -53,4 +53,14 @@ a.custom {
 }
 a.custom:hover {
     background: #e6eaee;
+}
+
+/**
+ * ckeditor
+ */
+ #cke_ckeditor img {max-width:100% !important;height:auto !important}
+ #cke_content {
+    display: block;
+    border-radius: 0;
+    padding: 0;
 }

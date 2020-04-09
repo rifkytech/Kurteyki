@@ -40,6 +40,7 @@ class Blog_post extends My_App
         $data = array(
             'title' => 'Create',
             'ckeditor' => true,
+            'onbeforeunload' => false,
             'datetimepicker' => true,
         );
 
@@ -50,6 +51,7 @@ class Blog_post extends My_App
         $data = array(
             'title' => 'Update',
             'ckeditor' => true,
+            'onbeforeunload' => false,
             'datetimepicker' => true,
             'blog_post' => $this->M_Blog_Post->data_update($id),
         );
@@ -91,7 +93,11 @@ class Blog_post extends My_App
             }   
         }
 
-        redirect(base_url($this->redirect));
+        if (!empty($this->input->post('save'))) {
+            redirect($this->input->post('save'),'refresh');
+        }else {                
+            redirect(base_url($this->redirect));
+        }
     }
 
     public function process_multiple()

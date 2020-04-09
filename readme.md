@@ -28,7 +28,7 @@ http://localhost/kurteyki
 
 ## Built With
 
-* [CodeIgniter](https://codeigniter.com/)
+* [CodeIgniter 3.11](https://codeigniter.com/)
 
 ## Authors
 

@@ -38,7 +38,6 @@
                                         <input class="c-choice__input" id="checkbox-all" name="select_all" type="checkbox">
                                         <label class="c-choice__label" for="checkbox-all"></label>
                                     </div>
-                                    <!-- <input name="select_all" type="checkbox" id="checkbox-all"> -->
                                 </th>
                                 <th class="c-table__cell c-table__cell--head none">id</th>
                                 <th class="c-table__cell c-table__cell--head all">title</th>

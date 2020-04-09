@@ -29,7 +29,7 @@
 			<?php
 			if ($post['tags']) {
 				foreach ($post['tags'] as $tag) {
-					echo "<li><a title='{$tag['name']}' href='{$tag['url']}'>{$tag['name']}</a></li>";
+					echo "<li><a title='{$tag['name']}' href='{$tag['url']}'>{$tag['name']}</a></li>&nbsp;";
 				}
 			}
 			?>

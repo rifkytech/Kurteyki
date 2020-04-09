@@ -38,7 +38,6 @@
                         </div>
                     </div>
 
-
                 </div>
                 <div class="c-card__body u-p-zero">
 
@@ -53,68 +52,59 @@
                     </div>
 
                     <div class="c-field">
-                        <style type="text/css">
-                        #cke_ckeditor img {max-width:100% !important;height:auto !important}
-                        .cke_chrome {
-                            display: block;
-                            border-radius: 0;
-                            padding: 0;
+                        <textarea required class="editor" name="content">
+                            <?php echo (!empty($site_pages['content']) ? $site_pages['content'] : '') ?>
+                        </textarea>
+                    </div>
 
-                        }
-                    </style>
-                    <textarea required class="editor" name="content">
-                        <?php echo (!empty($site_pages['content']) ? $site_pages['content'] : '') ?>
-                    </textarea>
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+        <div class="col-xl-3 col-lg-3">
 
-    <div class="col-xl-3 col-lg-3">
+            <div class="c-card c-card--responsive">
+                <div class="c-card__header c-card__header--transparent o-line">
+                    <h5 class="c-card__title">
+                        Setting
+                    </h5>
+                </div>
+                <div class="c-card__body u-p-small">
 
-        <div class="c-card c-card--responsive">
-            <div class="c-card__header c-card__header--transparent o-line">
-                <h5 class="c-card__title">
-                    Setting
-                </h5>
-            </div>
-            <div class="c-card__body u-p-small">
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label">permalink : </label>
 
-                <div class="c-field u-mb-small">
-                    <label class="c-field__label">permalink : </label>
-
-                    <?php if ((empty($site_pages['status']))): ?>
-                        <label><input name="permalink_auto" value="auto" type="radio" checked="">Auto</label>
-                        <label><input name="permalink_auto" value="manual" type="radio">Manual</label>
-
-                        <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
-                        <input onClick="this.select();" autocomplete="off"
-                        value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
-                        class="c-input" name="permalink" id="permalink"
-                        type="hidden" placeholder="permalink">
-                        <?php else: ?>
-
-                            <label><input name="permalink_auto" value="auto" type="radio">Auto</label>
-                            <label><input name="permalink_auto" value="manual" type="radio" checked="">Manual</label>
+                        <?php if ((empty($site_pages['status']))): ?>
+                            <label><input name="permalink_auto" value="auto" type="radio" checked="">Auto</label>
+                            <label><input name="permalink_auto" value="manual" type="radio">Manual</label>
 
                             <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
                             <input onClick="this.select();" autocomplete="off"
                             value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
                             class="c-input" name="permalink" id="permalink"
-                            type="text" placeholder="permalink">                    
-                        <?php endif ?>
+                            type="hidden" placeholder="permalink">
+                            <?php else: ?>
+
+                                <label><input name="permalink_auto" value="auto" type="radio">Auto</label>
+                                <label><input name="permalink_auto" value="manual" type="radio" checked="">Manual</label>
+
+                                <input name="permalink_old" type="hidden" value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>">
+                                <input onClick="this.select();" autocomplete="off"
+                                value="<?php echo (!empty($site_pages['permalink']) ? $site_pages['permalink'] : '') ?>"
+                                class="c-input" name="permalink" id="permalink"
+                                type="text" placeholder="permalink">                    
+                            <?php endif ?>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
 
-        </div>
+        </form>
 
-    </form>
+    </div>
 
-</div>
-
-<?php $this->load->view('app/_layouts/footer'); ?>
+    <?php $this->load->view('app/_layouts/footer'); ?>

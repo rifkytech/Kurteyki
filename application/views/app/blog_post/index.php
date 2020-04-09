@@ -34,13 +34,17 @@
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
                                 <th class="c-table__cell c-table__cell--head text-center no-sort all">
-                                    <input name="select_all" type="checkbox" id="checkbox-all">
+                                    <div class="c-choice c-choice--checkbox">
+                                        <input class="c-choice__input" id="checkbox-all" name="select_all" type="checkbox">
+                                        <label class="c-choice__label" for="checkbox-all"></label>
+                                    </div>
                                 </th>
                                 <th class="c-table__cell c-table__cell--head none">id</th>
                                 <th class="c-table__cell c-table__cell--head all">title</th>
                                 <th class="c-table__cell c-table__cell--head all u-text-center">category</th>
                                 <th class="c-table__cell c-table__cell--head all">time</th> 
                                 <th class="c-table__cell c-table__cell--head none">update</th>
+                                <th class="c-table__cell c-table__cell--head no-sort all u-text-center">view</th>
                                 <th class="c-table__cell c-table__cell--head no-sort all u-text-center">tools</th>
                             </tr>
                         </thead>

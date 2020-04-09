@@ -17,7 +17,7 @@ class Site_pages extends My_App
     {
 
         $data = [
-            'title' => 'Blog Pages',
+            'title' => 'Site Pages',
         ];
 
         $this->load->view($this->index, array_merge($data,$this->M_Site_Pages->datatables()));

@@ -19,6 +19,7 @@ class M_Site_Meta_Post extends CI_Model
 			');
 		$this->db->from($this->table_blog_post);		
 		$this->db->where('permalink',urldecode($slug));
+		$this->db->where("time <= NOW()");
 		$this->db->where("status = 'Published'");
 		$query = $this->db->get();
 

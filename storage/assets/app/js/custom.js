@@ -105,8 +105,15 @@ function open_popup(url) {
     $('.target-filemanager').html(iframe)
 });
 
- /* https://stackoverflow.com/questions/11189136/fire-oninput-event-with-jquery */
- $('#title').on('input', function() {
+ function responsive_filemanager_callback(){ 
+    var base_url = $('#preview-image').data('base_url');
+    var pict = $('#image').val();
+    var url = base_url + pict;
+    $('#preview-image').attr('src', url).show();
+}
+
+/* https://stackoverflow.com/questions/11189136/fire-oninput-event-with-jquery */
+$('#title').on('input', function() {
     let title = this;
     $('input[name="permalink_auto"]:checked').each(function() {
         if (this.value == 'auto') {
@@ -294,7 +301,7 @@ function remove_link(target){
 /**
  * Module User
  */
-function toggle(id,button) {
+ function toggle(id,button) {
     var password = document.getElementById(id);
     if (password.type == "password") {
         password.type = "text";
