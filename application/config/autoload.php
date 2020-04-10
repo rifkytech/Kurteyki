@@ -101,9 +101,7 @@ $autoload['helper'] = array(
 	'string_ctsubstr',
 	'app/datatables_formatstatus',
 	'app/datatables_statuscomment',
-	'app/datatables_countcomment',
-	'app/datatables_checkparent',
-	'app/datatables_getparent',	
+	'app/datatables_countcomment'
 );
 
 /*

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form action="<?php echo base_url('app/lms_course/process_section') ?>" method="POST">
+<form action="<?php echo base_url('app/lms_courses/process_section') ?>" method="POST">
     <div class="c-modal c-modal--small modal fade" id="modal-section" tabindex="-1">
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content">
@@ -15,7 +15,7 @@
                     </div>
 
                     <input class="input-section-id" type="hidden" name="id">   
-                    <input type="hidden" name="id_course" value="<?php echo $data['id']; ?>">   
+                    <input type="hidden" name="id_courses" value="<?php echo $data['id']; ?>">   
                     <input type="hidden" name="redirect" value="<?php echo ($_SERVER['QUERY_STRING'] ? current_url().'?'.$_SERVER['QUERY_STRING'] : current_url()) ?>">   
                     <button class="c-btn c-btn--info" name="submit" type="submit">
                         <i class="fa fa-save"></i>

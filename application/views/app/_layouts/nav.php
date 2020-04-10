@@ -9,8 +9,8 @@
 <h4 class="c-sidebar__title">LMS</h4>
 
 <li class="c-sidebar__item">
-	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='lms_course' or $this->uri->segment(2)=='lms_course' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/lms_course') ?>">
-		<i class="fa fa-send-o u-mr-xsmall"></i>Course
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='lms_courses' or $this->uri->segment(2)=='lms_courses' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/lms_courses') ?>">
+		<i class="fa fa-send-o u-mr-xsmall"></i>Courses
 	</a>
 </li>
 

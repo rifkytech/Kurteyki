@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) {exit('No direct script access allowed');}
 
-class M_LMS_Course extends CI_Model
+class M_LMS_Courses extends CI_Model
 {
 
     public $table_lms_courses = 'tb_lms_courses';
@@ -18,7 +18,9 @@ class M_LMS_Course extends CI_Model
             {'data': 'category',className:'c-table__cell u-text-center'},
             {'data': 'time',className:'c-table__cell'},            
             {'data': 'updated',className:'c-table__cell'},                                                          
-            {'data': 'alat',className:'c-table__cell'} ]
+            {'data': 'view',className:'c-table__cell'},            
+            {'data': 'alat',className:'c-table__cell'}
+            ]
             ",
         ];
     }
@@ -51,7 +53,7 @@ class M_LMS_Course extends CI_Model
             ', 'id');
 
         $this->datatables->edit_column('title', '
-            <a title="$1" href="' . base_url('post/') ."$2" . '" target="_blank">$1</a>
+            <a title="$1" href="' . base_url('courses/detail/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">$3</small>
             <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
@@ -61,21 +63,17 @@ class M_LMS_Course extends CI_Model
         $this->datatables->edit_column('category', '$1', 'ucwords(category)');
 
         $this->datatables->add_column('alat', '
-            <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
 
-            <div class="c-dropdown dropdown">
-            <button class="c-btn--custom c-btn--small c-btn c-btn--info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-edit"></i></button>
+            <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/lms_courses/').'update/$1"><i class="fa fa-edit"></i></a>
 
-            <div class="c-dropdown__menu dropdown-menu">
-            <a class="c-dropdown__item dropdown-item" href="'.base_url('app/lms_course/').'update/$1?editcourse=true&editsection=false">Course</a>
-            <a class="c-dropdown__item dropdown-item" href="'.base_url('app/lms_course/').'update/$1?editcourse=false&editsection=true">Section & Lesson</a>
-            </div>
-            </div>
-
-            <button type="button" data-title="are you sure ?" data-text="want to delete $2" class="c-btn c-btn--danger c-btn--custom action-delete" data-href="'. base_url('app/lms_course/delete/$1') .'">
+            <button type="button" data-title="are you sure ?" data-text="want to delete $2" class="c-btn c-btn--danger c-btn--custom action-delete" data-href="'. base_url('app/lms_courses/delete/$1') .'">
             <i class="fa fa-trash"></i>
             </button>
             ', 'id,title');
+
+        $this->datatables->add_column('view', '
+          <button type="button" class="c-btn--custom c-btn--small c-btn c-btn--primary" name="action-view"><i class="fa fa-eye"></i></button>
+          ', 'id');                 
 
         return $this->datatables->generate();
     }  
@@ -116,7 +114,7 @@ class M_LMS_Course extends CI_Model
             'image' => strip_tags($this->input->post('image')),
             'description' => htmlentities($this->input->post('description')),
             'faq' => htmlentities($this->input->post('faq')),
-            'status' => 'Draft',
+            'status' => $this->input->post('status'),
         ];
 
         /**
@@ -195,13 +193,18 @@ class M_LMS_Course extends CI_Model
         }
     }  
 
+
+    /**
+     * Process Section
+     */
+
     public function data_section($id){
-        return $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_section, $id,'id_course',false,['order','ASC'])->result_array();
+        return $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_section, $id,'id_courses',false,['order','ASC'])->result_array();
     }
 
     public function data_section_post(){
         return [
-            'id_course' => $this->input->post('id_course'),
+            'id_courses' => $this->input->post('id_courses'),
             'title' => $this->input->post('title'),
         ];
     }
@@ -236,17 +239,21 @@ class M_LMS_Course extends CI_Model
         return $this->_Process_MYSQL->update_data_multiple($this->table_lms_courses_section, $data, 'id');
     }
 
+    /**
+     * Process Lesson
+     */    
+
     public function required_lesson($id_section){
 
         $data = $this->db
         ->select("
             tb_lms_courses_section.id as section_id,
-            tb_lms_courses.id as course_id,
+            tb_lms_courses.id as courses_id,
             tb_lms_courses_section.title as section_title,
             tb_lms_courses.title as course_title            
             ")
         ->from($this->table_lms_courses_section)
-        ->join($this->table_lms_courses,'tb_lms_courses_section.id_course = tb_lms_courses.id','LEFT OUTER')        
+        ->join($this->table_lms_courses,'tb_lms_courses_section.id_courses = tb_lms_courses.id','LEFT OUTER')        
         ->where('tb_lms_courses_section.id',$id_section)
         ->get()->row_array();
 
@@ -259,7 +266,7 @@ class M_LMS_Course extends CI_Model
 
     public function data_lesson_post(){
         return [
-            'id_course' => $this->input->post('id_course'),
+            'id_courses' => $this->input->post('id_courses'),
             'id_section' => $this->input->post('id_section'),
             'title' => $this->input->post('title'),
             'type' => $this->input->post('type'),

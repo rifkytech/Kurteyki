@@ -4,7 +4,7 @@
 		<div class="c-modal__content">
 			<div class="c-modal__body" data-plugin="dragula" data-containers='["lesson-list-<?php echo $section['id'] ?>"]'>
 
-				<form id="form-lesson-sort-<?php echo $section['id'] ?>" action="<?php echo base_url('app/lms_course/process_lesson_sort') ?>" method="POST">
+				<form id="form-lesson-sort-<?php echo $section['id'] ?>" action="<?php echo base_url('app/lms_courses/process_lesson_sort') ?>" method="POST">
 
 					<h3 class="modal-title">  
 						Sort lesson                      

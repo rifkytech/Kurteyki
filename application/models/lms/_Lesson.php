@@ -22,7 +22,7 @@ class _Lesson extends CI_Model
 			$user_lesson = $user_lesson->row()->data;
 		}
 
-		$section = $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_section, $courses['id'],'id_course',false,['order','ASC']);
+		$section = $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_section, $courses['id'],'id_courses',false,['order','ASC']);
 
 		if ($section->num_rows() < 1) {
 			return [
@@ -87,7 +87,7 @@ class _Lesson extends CI_Model
 
 			}
 
-			$count_lesson = count($total_lesson);
+			$count_lesson = array_sum($total_lesson);
 			$progress = floor(($total_lesson_user * 100) / $count_lesson). "%";
 
 			$all_data[] = array_merge($section_data,['lesson' => $lesson_data]);

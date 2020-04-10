@@ -30,6 +30,7 @@ class Lms_category extends My_App{
         $data = array(
             'title' => 'LMS Category',
             'sub_title' => 'Create Category',
+            'fontawesomepicker' => true,
         );
 
         $this->load->view($this->form, array_merge($data,$this->M_LMS_Category->required()));
@@ -41,6 +42,7 @@ class Lms_category extends My_App{
         $data = array(
             'title' => 'LMS Category',
             'sub_title' => 'Update Category',
+            'fontawesomepicker' => true,
             'data' => $this->M_LMS_Category->data_update($id),
             'parent' => $this->M_LMS_Category->check_parent($id),            
         );

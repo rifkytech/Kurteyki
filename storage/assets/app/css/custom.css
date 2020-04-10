@@ -59,7 +59,7 @@ a.custom:hover {
  * ckeditor
  */
  #cke_ckeditor img {max-width:100% !important;height:auto !important}
- #cke_content {
+ #cke_content, #cke_description, #cke_faq{
     display: block;
     border-radius: 0;
     padding: 0;

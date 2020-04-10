@@ -89,85 +89,88 @@
 
 
 <?php if (!empty($dragula)): ?>
-<link href="<?php echo base_url('storage/plugins-f') ?>/dragula/dragula.min.css" rel="stylesheet">
-<script src="<?php echo base_url('storage/plugins-f') ?>/dragula/dragula.min.js"></script>
-<!-- Init Dragula -->
-<script type="text/javascript">
+    <link href="<?php echo base_url('storage/plugins-f') ?>/dragula/dragula.min.css" rel="stylesheet">
+    <script src="<?php echo base_url('storage/plugins-f') ?>/dragula/dragula.min.js"></script>
+    <!-- Init Dragula -->
+    <script type="text/javascript">
 
-    $(".btn-lesson-sort").click(function(){
+        $(".btn-lesson-sort").click(function(){
 
-        var id = $(this).data('id');
-        var section_id = 'lesson-list-' + id;            
+            var id = $(this).data('id');
+            var section_id = 'lesson-list-' + id;            
 
-        var containerArray = [section_id];
-        var itemArray = [];
-        var itemJSON;
-        for(var i = 0; i < containerArray.length; i++) {
-            $('#'+containerArray[i]).each(function () {
-                $(this).find('.draggable-item-' + id).each(function() {
-                    itemArray.push(this.id);
+            var containerArray = [section_id];
+            var itemArray = [];
+            var itemJSON;
+            for(var i = 0; i < containerArray.length; i++) {
+                $('#'+containerArray[i]).each(function () {
+                    $(this).find('.draggable-item-' + id).each(function() {
+                        itemArray.push(this.id);
+                    });
                 });
-            });
-        }
+            }
 
-        itemJSON = JSON.stringify(itemArray);
-        console.log(itemJSON); 
+            itemJSON = JSON.stringify(itemArray);
+            console.log(itemJSON); 
 
-        $(".input-lesson-order-" + id).val(itemArray);    
-        
-        $("#form-lesson-sort-" + id).submit(); 
-    });    
+            $(".input-lesson-order-" + id).val(itemArray);    
 
-    $("#btn-section-sort").click(function(){        
+            $("#form-lesson-sort-" + id).submit(); 
+        });    
 
-        var containerArray = ['section-list'];
-        var itemArray = [];
-        var itemJSON;
-        for(var i = 0; i < containerArray.length; i++) {
-            $('#'+containerArray[i]).each(function () {
-                $(this).find('.draggable-item').each(function() {
-                    itemArray.push(this.id);
+        $("#btn-section-sort").click(function(){        
+
+            var containerArray = ['section-list'];
+            var itemArray = [];
+            var itemJSON;
+            for(var i = 0; i < containerArray.length; i++) {
+                $('#'+containerArray[i]).each(function () {
+                    $(this).find('.draggable-item').each(function() {
+                        itemArray.push(this.id);
+                    });
                 });
-            });
-        }
+            }
 
-        itemJSON = JSON.stringify(itemArray);
-        console.log(itemJSON); 
+            itemJSON = JSON.stringify(itemArray);
+            console.log(itemJSON); 
 
-        $(".input-section-order").val(itemArray);    
-        
-        $("#form-section-sort").submit(); 
-    });
+            $(".input-section-order").val(itemArray);    
 
-    ! function(r) {
-        "use strict";
-        var a = function() {
-            this.$body = r("body")
-        };
-        a.prototype.init = function() {
-            r('[data-plugin="dragula"]').each(function() {
-                var a = r(this).data("containers"),
-                t = [];
-                if (a)
-                    for (var n = 0; n < a.length; n++) t.push(r("#" + a[n])[0]);
-                        else t = [r(this)[0]];
-                    var i = r(this).data("handleclass");
-                    i ? dragula(t, {
-                        moves: function(a, t, n) {
-                            return n.classList.contains(i)
-                        }
-                    }) : dragula(t)
-                })
-        }, r.Dragula = new a, r.Dragula.Constructor = a
-    }(window.jQuery),
-    function(a) {
-        "use strict";
-        window.jQuery.Dragula.init()
-    }();
-</script>
+            $("#form-section-sort").submit(); 
+        });
+
+        ! function(r) {
+            "use strict";
+            var a = function() {
+                this.$body = r("body")
+            };
+            a.prototype.init = function() {
+                r('[data-plugin="dragula"]').each(function() {
+                    var a = r(this).data("containers"),
+                    t = [];
+                    if (a)
+                        for (var n = 0; n < a.length; n++) t.push(r("#" + a[n])[0]);
+                            else t = [r(this)[0]];
+                        var i = r(this).data("handleclass");
+                        i ? dragula(t, {
+                            moves: function(a, t, n) {
+                                return n.classList.contains(i)
+                            }
+                        }) : dragula(t)
+                    })
+            }, r.Dragula = new a, r.Dragula.Constructor = a
+        }(window.jQuery),
+        function(a) {
+            "use strict";
+            window.jQuery.Dragula.init()
+        }();
+    </script>
 <?php endif ?>
-<!-- <link href="<?php echo base_url('storage/plugins-f') ?>/font-awesome-iconpicker/awesome4-iconpicker.min.css" rel="stylesheet">
-<script src="<?php echo base_url('storage/plugins-f') ?>/font-awesome-iconpicker/awesome4-iconpicker.min.js"></script>
-<script type="text/javascript">
-   $('.demo').iconpicker( {  outputType : 'icon-name'  } );
-</script> -->
+
+<?php if (!empty($fontawesomepicker)): ?>    
+    <link href="<?php echo base_url('storage/plugins-f') ?>/font-awesome-iconpicker/simple-iconpicker.min.css" rel="stylesheet">
+    <script src="<?php echo base_url('storage/plugins-f') ?>/font-awesome-iconpicker/simple-iconpicker.min.js"></script>
+    <script type="text/javascript">
+        $('.icon-picker').iconpicker(".icon-picker");
+    </script>
+<?php endif ?>

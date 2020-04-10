@@ -14,7 +14,9 @@ class M_LMS_Category extends CI_Model
 
             $category_data = [
                 'id' => $category['id'],
-                'name' => $category['name']
+                'name' => $category['name'],
+                'icon' => $category['icon'],
+                'image' => $category['image'],                
             ];
 
             $id_parent = $category['id'];
@@ -24,9 +26,10 @@ class M_LMS_Category extends CI_Model
             foreach ($child_category as $category_child) {
 
                 $sub_category_data[] = [
-                    'id' => $category_child['id'],                    
-                    'url' => base_url('courses/category/'.$category_child['slug']),
+                    'id' => $category_child['id'],
                     'name' => $category_child['name'],
+                    'icon' => $category_child['icon'],
+                    'url' => base_url('courses/category/'.$category_child['slug']),
                 ]; 
 
             }
@@ -85,7 +88,7 @@ class M_LMS_Category extends CI_Model
         /**
          * remove data image if sub category
          */
-        if ($post_data['parent'] != 'None') {
+        if (!empty($post_data['parent']) AND $post_data['parent'] != 'None') {
             $post_data['image'] = '';
         }
 

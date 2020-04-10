@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form id="form-section-sort" action="<?php echo base_url('app/lms_course/process_section_sort') ?>" method="POST">
+<form id="form-section-sort" action="<?php echo base_url('app/lms_courses/process_section_sort') ?>" method="POST">
 	<div class="c-modal c-modal--small modal fade" id="modal-section-sort" tabindex="-1">
 		<div class="c-modal__dialog modal-dialog" role="document">
 			<div class="c-modal__content">

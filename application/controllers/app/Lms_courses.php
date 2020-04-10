@@ -1,33 +1,33 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Lms_course extends My_App
+class Lms_courses extends My_App
 {
 
-    public $index = 'app/lms_course/index';
-    public $form = 'app/lms_course/form';
-    public $form_lesson = 'app/lms_course/form-lesson';    
-    public $redirect = 'app/lms_course';
+    public $index = 'app/lms_courses/index';
+    public $form = 'app/lms_courses/form';
+    public $form_lesson = 'app/lms_courses/form-lesson';    
+    public $redirect = 'app/lms_courses';
 
     public function __construct(){
         parent::__construct();
 
-        $this->load->model('app/M_LMS_Course');         
+        $this->load->model('app/M_LMS_Courses');         
     }    
 
     public function index()
     {
 
         $data = [
-            'title' => 'Course',
+            'title' => 'Courses',
         ];
 
-        $this->load->view($this->index, array_merge($data,$this->M_LMS_Course->datatables()));
+        $this->load->view($this->index, array_merge($data,$this->M_LMS_Courses->datatables()));
     }
 
     public function datatables()
     {
 
-        $data = $this->M_LMS_Course->data_table();
+        $data = $this->M_LMS_Courses->data_table();
 
         echo $data;
     }
@@ -36,27 +36,31 @@ class Lms_course extends My_App
     {
 
         $data = array(
-            'title' => 'Create Course',
+            'title' => 'Create Courses',
             'ckeditor' => true,
+            'onbeforeunload' => false,
+            'dragula' => true,
         );
 
-        $this->load->view($this->form, array_merge($data,$this->M_LMS_Course->required()));
+        $this->load->view($this->form, array_merge($data,$this->M_LMS_Courses->required()));
     }    
 
     public function update($id){
         $data = array(
-            'title' => 'Update',
+            'title' => 'Update Courses',
             'ckeditor' => true,
-            'data' => $this->M_LMS_Course->data_update($id),
-            'section' => $this->M_LMS_Course->data_section($id),           
+            'onbeforeunload' => false,
+            'dragula' => true,
+            'data' => $this->M_LMS_Courses->data_update($id),
+            'section' => $this->M_LMS_Courses->data_section($id),           
         );
 
-        $this->load->view($this->form, array_merge($data,$this->M_LMS_Course->required()));
+        $this->load->view($this->form, array_merge($data,$this->M_LMS_Courses->required()));
     }    
 
     public function delete($id)
     {
-        if ($this->M_LMS_Course->process_delete($id) == TRUE) {
+        if ($this->M_LMS_Courses->process_delete($id) == TRUE) {
             echo true;
         }else {
             echo false;
@@ -67,7 +71,7 @@ class Lms_course extends My_App
 
         if (!empty($this->input->post('id'))) {
 
-            if ($this->M_LMS_Course->process_update() == TRUE) {
+            if ($this->M_LMS_Courses->process_update() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -76,13 +80,17 @@ class Lms_course extends My_App
                 ]);
             }   
 
-            redirect(base_url($this->redirect));
+            if (!empty($this->input->post('save'))) {
+                redirect($this->input->post('save'),'refresh');
+            }else {
+                redirect(base_url($this->redirect));
+            }
         }else {
 
-            $create = $this->M_LMS_Course->process_create();
+            $create = $this->M_LMS_Courses->process_create();
 
             if ($create) {
-               redirect(base_url('app/lms_course/update/'.$create.'?editcourse=false&editsection=true'));
+                redirect(base_url('app/lms_courses/update/'.$create));
             }   
         }
 
@@ -107,7 +115,7 @@ class Lms_course extends My_App
                 );
             }
 
-            if ($this->M_LMS_Course->process_multiple_update($data) == TRUE) {
+            if ($this->M_LMS_Courses->process_multiple_update($data) == TRUE) {
                 echo true;
             }else {
                 echo false;
@@ -127,7 +135,7 @@ class Lms_course extends My_App
                 );
             }
 
-            if ($this->M_LMS_Course->process_multiple_update($data) == TRUE) {
+            if ($this->M_LMS_Courses->process_multiple_update($data) == TRUE) {
                 echo true;
             }else {
                 echo false;
@@ -139,7 +147,7 @@ class Lms_course extends My_App
          */
         if ($action == 'delete') {
 
-            if ($this->M_LMS_Course->process_multiple_delete($id) == TRUE) {
+            if ($this->M_LMS_Courses->process_multiple_delete($id) == TRUE) {
                 echo true;
             }else {
                 echo false;
@@ -149,11 +157,14 @@ class Lms_course extends My_App
     }         
 
 
+    /**
+     * process section
+     */
     public function process_section() {
 
         if (!empty($this->input->post('id'))) {
 
-            if ($this->M_LMS_Course->process_section_update() == TRUE) {
+            if ($this->M_LMS_Courses->process_section_update() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -164,7 +175,7 @@ class Lms_course extends My_App
 
         }else {
 
-            if ($this->M_LMS_Course->process_section_create() == TRUE) {
+            if ($this->M_LMS_Courses->process_section_create() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -179,7 +190,7 @@ class Lms_course extends My_App
 
     public function process_section_delete($id) {
 
-        if ($this->M_LMS_Course->process_section_delete($id) == TRUE) {
+        if ($this->M_LMS_Courses->process_section_delete($id) == TRUE) {
             $this->session->set_flashdata([
                 'message' => true,
                 'message_type' => 'danger',
@@ -198,7 +209,7 @@ class Lms_course extends My_App
 
     public function process_section_sort(){
 
-        if ($this->M_LMS_Course->process_section_sort() == TRUE) {
+        if ($this->M_LMS_Courses->process_section_sort() == TRUE) {
 
             $this->session->set_flashdata([
                 'message' => true,
@@ -210,12 +221,16 @@ class Lms_course extends My_App
         redirect($this->input->post('redirect'));
     }
 
+
+    /**
+     * process lesson
+     */
     public function create_lesson($id_section){
 
         $data = array(
             'title' => 'Create Lesson',
             'ckeditor' => true,
-            'data' => $this->M_LMS_Course->required_lesson($id_section),
+            'data' => $this->M_LMS_Courses->required_lesson($id_section),
         );
 
         $this->load->view($this->form_lesson, $data);
@@ -226,8 +241,8 @@ class Lms_course extends My_App
         $data = array(
             'title' => 'Update Lesson',
             'ckeditor' => true,
-            'data' => $this->M_LMS_Course->required_lesson($id_section),
-            'lesson' => $this->M_LMS_Course->data_lesson_update($id_lesson),           
+            'data' => $this->M_LMS_Courses->required_lesson($id_section),
+            'lesson' => $this->M_LMS_Courses->data_lesson_update($id_lesson),           
         );
 
         $this->load->view($this->form_lesson, $data);
@@ -237,7 +252,7 @@ class Lms_course extends My_App
 
         if (!empty($this->input->post('id'))) {
 
-            if ($this->M_LMS_Course->process_lesson_update() == TRUE) {
+            if ($this->M_LMS_Courses->process_lesson_update() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -248,7 +263,7 @@ class Lms_course extends My_App
 
         }else {
 
-            if ($this->M_LMS_Course->process_lesson_create() == TRUE) {
+            if ($this->M_LMS_Courses->process_lesson_create() == TRUE) {
 
                 $this->session->set_flashdata([
                     'message' => true,
@@ -258,12 +273,12 @@ class Lms_course extends My_App
             }               
         }
 
-        redirect(base_url('app/lms_course/update/'.$this->input->post('id_course').'?editcourse=false&editsection=true'));
+        redirect(base_url('app/lms_courses/update/'.$this->input->post('id_courses')));
     }
 
     public function process_lesson_delete($id) {
 
-        if ($this->M_LMS_Course->process_lesson_delete($id) == TRUE) {
+        if ($this->M_LMS_Courses->process_lesson_delete($id) == TRUE) {
             $this->session->set_flashdata([
                 'message' => true,
                 'message_type' => 'danger',
@@ -282,7 +297,7 @@ class Lms_course extends My_App
 
     public function process_lesson_sort(){
 
-        if ($this->M_LMS_Course->process_lesson_sort() == TRUE) {
+        if ($this->M_LMS_Courses->process_lesson_sort() == TRUE) {
 
             $this->session->set_flashdata([
                 'message' => true,
