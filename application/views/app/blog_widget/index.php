@@ -16,7 +16,7 @@
 
 			<form action="<?php echo base_url('app/blog_widget/process_update_widget') ?>"  method="post" enctype="multipart/form-data">
 
-				<div class="c-stage u-mb-zero">
+				<div class="c-stage u-mb-zero" id="accordion">
 
 					<?php if ($widget): foreach ($widget as $data): ?>
 
@@ -51,7 +51,7 @@
 							</div>
 						</a>
 
-						<div class="c-stage__panel u-p-medium collapse" id="stage-<?php echo $data['var'] ?>">
+						<div data-parent="#accordion" class="c-stage__panel u-p-medium collapse" id="stage-<?php echo $data['var'] ?>">
 
 							<?php  
 							if ($data['type'] == 'ads') {

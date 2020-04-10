@@ -229,8 +229,9 @@ class _Courses extends CI_Model
 	{
 		$this->db
 		->select("
-			tb_lms_category.name, 
-			tb_lms_category.slug,
+			name,
+			icon, 
+			slug,
 			")
 		->from($this->table_lms_category)
 		->where("tb_lms_category.id",$id);
@@ -244,6 +245,7 @@ class _Courses extends CI_Model
 
 		$category = [
 			'name' => $read['name'],
+			'icon' => $read['icon'],			
 			'url' => base_url('courses/category/'.$read['slug']),
 		];
 

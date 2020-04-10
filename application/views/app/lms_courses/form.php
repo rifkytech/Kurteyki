@@ -10,7 +10,7 @@
 
         <div class="c-stage u-mb-zero">
 
-            <div class="c-stage__header o-media u-justify-start <?php echo ($this->input->get('editcourse') == 'false') ? 'u-hidden' : '' ?>">
+            <div class="c-stage__header o-media u-justify-start cursor-default <?php echo ($this->input->get('editcourse') == 'false') ? 'u-hidden' : '' ?>">
                 <div class="c-stage__header-title o-media__body">
                     <?php if (!empty($data)): ?>
                         <input name="id" type="hidden" value="<?php echo $data['id'] ?>">
@@ -137,7 +137,7 @@
     <div class="c-stage u-mb-zero">
 
         <?php if (!empty($data)): ?>
-            <div class="c-stage__header o-media u-justify-start <?php echo ($this->input->get('editsection') == 'false') ? 'u-hidden' : '' ?>">
+            <div class="c-stage__header cursor-default o-media u-justify-start <?php echo ($this->input->get('editsection') == 'false') ? 'u-hidden' : '' ?>">
                 <div class="o-media">
                     <div class="c-stage__icon o-media__img">
                         <i class="fa fa-info"></i>
@@ -167,14 +167,14 @@
                 <?php endif ?>
 
                 <?php if (!empty($section)): ?>
-                    <div class="c-stage u-mb-zero">
-                        <?php 
-                        $no_section = 1;
-                        foreach ($section as $section_data): ?>   
+                    <?php 
+                    $no_section = 1;
+                    foreach ($section as $section_data): ?>   
 
-                            <?php  
-                            $lesson = $this->M_LMS_Courses->data_lesson($section_data['id']);
-                            ?>                                                                            
+                        <?php  
+                        $lesson = $this->M_LMS_Courses->data_lesson($section_data['id']);
+                        ?>                                                                            
+                        <div class="c-stage u-mb-small">
 
                             <div class="c-stage__header o-media u-justify-start">
                                 <div class="c-stage__header-title o-media__body">
@@ -209,9 +209,9 @@
                                     <?php 
                                     $no_lesson = 1;
                                     foreach ($lesson as $lesson_data): ?>
-                                        <div class="c-stage__header o-media u-justify-start" style="background: #1d2531">
+                                        <div class="c-stage__header o-media u-justify-start u-border-top u-border-left u-border-right">
                                             <div class="c-stage__header-title o-media__body">
-                                                <h6 class="u-mb-zero u-text-white">
+                                                <h6 class="u-mb-zero">
                                                     Lesson <?php echo $no_lesson++ ?> : <?php echo $lesson_data['title'] ?>
                                                 </h6>
                                             </div>
@@ -225,9 +225,8 @@
                                     <?php endforeach ?>
                                 </div>
                             <?php endif ?>
-
-                        <?php endforeach ?>
-                    </div>
+                        </div>
+                    <?php endforeach ?>
                 <?php endif ?>
 
             </div>

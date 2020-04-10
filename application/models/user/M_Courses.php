@@ -130,8 +130,9 @@ class M_Courses extends CI_Model
 			'id_courses' => $id_courses,
 		];
 
-		/** check if user have wishlist */
+		/** check if user have lesson data */
 		$user_lesson = $this->_Process_MYSQL->get_data($this->table_lms_user_lesson,$post_data);
+
 
 		/**
 		 * if not exist create first
@@ -150,11 +151,14 @@ class M_Courses extends CI_Model
 			}
 		}else{
 
-			$user_lesson = json_decode($user_lesson->row()->data,TRUE);
+			$user_lesson = json_decode($user_lesson->row()->data,TRUE);		
 
 			$previous_data = false;
 			$status = false;
+			$lesson_data_temp = [];
 			foreach ($user_lesson as $lesson_data) {
+
+				$lesson_data_temp[] = $lesson_data['id_lesson'];
 
 				if ($lesson_data['id_lesson'] == $id_lesson) {				
 
@@ -167,6 +171,11 @@ class M_Courses extends CI_Model
 						'status' => $lesson_data['status'],
 					];
 				}
+			}
+
+			/** if id_lesson not in user_lesson set status true **/
+			if (!in_array($id_lesson, $lesson_data_temp)) {
+				$status = true;
 			}
 
 			$data[] = [

@@ -30,7 +30,7 @@
 
                                     <?php foreach ($courses_data['lesson'] as $lesson): ?>                    
                                         <?php if (!empty($lesson)): ?>
-                                            <div class="c-stage__header u-justify-start u-bg-primary u-p-xsmall">
+                                            <div class="c-stage__header u-justify-start u-bg-primary u-p-xsmall cursor-default">
                                                 <h6 class="u-mb-zero u-text-white o-line">
                                                     <?php if ($lesson['type'] == 'Text'): ?>
                                                         <i class="fa fa-file-text-o u-mr-xsmall"></i>

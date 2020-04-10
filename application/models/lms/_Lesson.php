@@ -87,8 +87,13 @@ class _Lesson extends CI_Model
 
 			}
 
+
 			$count_lesson = array_sum($total_lesson);
-			$progress = floor(($total_lesson_user * 100) / $count_lesson). "%";
+			if ($count_lesson > 0) {
+				$progress = floor(($total_lesson_user * 100) / $count_lesson). "%";
+			}else {
+				$progress = false;
+			}
 
 			$all_data[] = array_merge($section_data,['lesson' => $lesson_data]);
 			unset($lesson_data);

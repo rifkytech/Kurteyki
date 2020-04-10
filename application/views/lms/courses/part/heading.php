@@ -61,7 +61,12 @@
                             <div class="col-12 col-lg-4">
                                 <div class="c-state-card u-m-zero u-p-small" data-mh="state-cards" style="height: 62px;">
                                     <div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
-                                        <i class="fa fa-folder"></i>
+                                        <?php if ($courses['sub_category']['icon']): ?>
+                                            <i class="fa <?php echo $courses['sub_category']['icon'] ?>"></i>
+                                        <?php endif ?>
+                                        <?php if (empty($courses['sub_category']['icon'])): ?>
+                                            <i class="fa fa-folder"></i>
+                                        <?php endif ?>
                                     </div>
                                     <div class="c-state-card__content">
                                         <a class='u-text-dark' href="<?php echo $courses['sub_category']['url'] ?>" title="<?php echo $courses['sub_category']['name'] ?>">

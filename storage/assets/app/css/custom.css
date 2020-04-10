@@ -55,6 +55,10 @@ a.custom:hover {
     background: #e6eaee;
 }
 
+.cursor-default {
+    cursor: default;
+}
+
 /**
  * ckeditor
  */

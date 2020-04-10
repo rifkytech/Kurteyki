@@ -20,7 +20,7 @@
 						<div class="row">
 							
 							<div class="col-12 col-lg-4">
-								<div class="c-state-card u-m-zero u-p-small" data-mh="state-cards">
+								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
 										<i class="fa fa-dollar"></i>
 									</div>
@@ -33,7 +33,7 @@
 							</div>
 
 							<div class="col-12 col-lg-4">
-								<div class="c-state-card u-m-zero u-p-small" data-mh="state-cards">
+								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
 										<i class="fa fa-book"></i>
 									</div>
@@ -46,7 +46,7 @@
 							</div>
 
 							<div class="col-12 col-lg-4">
-								<div class="c-state-card u-m-zero u-p-small" data-mh="state-cards">
+								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
 										<i class="fa fa-star"></i>
 									</div>
