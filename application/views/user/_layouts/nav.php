@@ -1,4 +1,4 @@
-<div class="col-xl-3">
+<div class="col-xl-3 u-hidden-down@desktop">
 	<aside class="c-menu u-mb-small">
 
 		<div class="u-hidden-down@desktop">		

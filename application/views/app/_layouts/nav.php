@@ -19,12 +19,27 @@
 		<i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Part of LMS
 	</a>
 	<ul class="c-sidebar__submenu collapse <?php if(strpos($this->uri->segment(2), "lms_") !== FALSE){echo "show";}?>" id="lms-submenu">
+
 		<li><a class="c-sidebar__link" href="<?php echo base_url('app/lms_category') ?>">
 			Category
 			<?php if (strpos($this->uri->segment(2), "lms_category") !== FALSE): ?>
 				<i class="fa fa-check u-ml-xsmall"></i>
 			<?php endif ?>
 		</a></li>
+
+		<li><a class="c-sidebar__link" href="<?php echo base_url('app/lms_template') ?>">
+			Template
+			<?php if (strpos($this->uri->segment(2), "lms_template") !== FALSE): ?>
+				<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
+			</a>
+		</li>
+		<li><a class="c-sidebar__link" href="<?php echo base_url('app/lms_widget') ?>">
+			Widget
+			<?php if (strpos($this->uri->segment(2), "lms_widget") !== FALSE): ?>
+				<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
+			</a>
+		</li>
+
 	</ul>
 </li>
 
@@ -42,12 +57,15 @@
 		<i class="fa fa-caret-square-o-down u-mr-xsmall"></i>Part of Blog
 	</a>
 	<ul class="c-sidebar__submenu collapse <?php if(strpos($this->uri->segment(2), "blog_") !== FALSE){echo "show";}?>" id="blog-submenu">
-		<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_post_comment') ?>">
-			Comment
-			<?php if (strpos($this->uri->segment(2), "blog_post_comment") !== FALSE): ?>
-				<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
-			</a>
-		</li>
+		
+		<?php if ($this->site['blog_comment']['type'] == 'system'): ?>
+			<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_post_comment') ?>">
+				Comment
+				<?php if (strpos($this->uri->segment(2), "blog_post_comment") !== FALSE): ?>
+					<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
+				</a>
+			</li>
+		<?php endif ?>
 
 		<li><a class="c-sidebar__link" href="<?php echo base_url('app/blog_template') ?>">
 			Template

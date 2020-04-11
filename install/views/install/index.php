@@ -3,7 +3,7 @@
     <div class="c-card u-mb-xsmall">
         <header class="c-card__header u-pt-large">
             <div class="c-card__icon">
-                <img src="<?php echo base_url('storage/app/img/logo.png') ?>" alt="Dashboard UI Kit">
+                <img src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="Dashboard UI Kit">
             </div>
             <h1 class="u-h3 u-text-center u-mb-zero"><?php echo $title ?></h1>
         </header>

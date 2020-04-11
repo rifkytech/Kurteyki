@@ -3,9 +3,7 @@
 class My_App extends MY_Controller
 {
 
-    /**
-     * First Load Module App    
-     */
+    public $site;
     
     public function __construct()
     {
@@ -20,7 +18,14 @@ class My_App extends MY_Controller
          * Check Auth
          */
         $this->load->model('app/M_Auth'); 
-        $this->M_Auth->check('not_exist', 'status', 'app/auth');      
+        $this->M_Auth->check('not_exist', 'status', 'app/auth');
+
+
+        /**
+         * Read Site Setting > Comment Type
+         */
+        $this->load->model('app/M_Setting_General');     
+        $this->site = $this->M_Setting_General->read_data();
     }
 
 }

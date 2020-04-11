@@ -9,8 +9,7 @@
 			<div class="col-12 col-lg-12">	
 				<div class="c-panel__widget">
 					<p class="u-text-center u-text-large">
-						<?php echo $this->lang->line('copyright') ?> <?php echo "©".date('Y '); echo $site['title']; ?>.<br/>
-						<?php echo $this->lang->line('rendered_in') ?> {elapsed_time} <?php echo $this->lang->line('seconds') ?>.
+						<?php echo $this->lang->line('copyright') ?> <?php echo "©".date('Y '); echo $site['title']; ?>.						
 					</p>
 				</div>				
 			</div>			

@@ -6,15 +6,15 @@
 	<meta content='width=device-width, initial-scale=1' name='viewport'/>
 	<title><?php echo $title ?></title>
 
-	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url('storage/app/img/logo.png') ?>" />
-	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('storage/app/img/logo.png') ?>" />
-	<link rel="icon" href ="<?php echo base_url('storage/app/img/logo.png') ?>" type="image/x-icon" /> 
-	<link rel="shortcut icon" href="<?php echo base_url('storage/app/img/logo.png') ?>" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url('storage/assets/app/img/logo.png') ?>" />
+	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('storage/assets/app/img/logo.png') ?>" />
+	<link rel="icon" href ="<?php echo base_url('storage/assets/app/img/logo.png') ?>" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="<?php echo base_url('storage/assets/app/img/logo.png') ?>" type="image/x-icon" />
 
 	<!-- CSS template -->
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/all-modules.css') ?>"/> 
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/main.min.css') ?>"/>
-	<link rel="stylesheet" href="<?php echo base_url('storage/app/css/custom.css') ?>"/>
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/all-modules.css') ?>"/> 
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/main.min.css') ?>"/>
+	<link rel="stylesheet" href="<?php echo base_url('storage/assets/app/css/custom.css') ?>"/>
 
 </head>
 <body class="o-page o-page--center">

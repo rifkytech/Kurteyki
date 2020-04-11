@@ -8,7 +8,10 @@ class Blog_post_comment extends My_App{
         parent::__construct();
 
         $this->load->model('app/M_Blog_Post_Comment');        
-        #$this->M_Blog_Post_Comment->read_comment();         
+
+        if ($this->site['blog_comment']['type'] != 'system') {
+            redirect(base_url('app'));
+        }       
     }  
 
     public function index()

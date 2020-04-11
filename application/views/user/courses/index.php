@@ -11,10 +11,10 @@
 
 			<h2 class="u-h3 u-mb-small"><?php echo $this->lang->line('my_courses') ?></h2>
 
-			<div class="c-card u-p-medium u-mb-large">	
+			<div class="c-card u-p-zero u-mb-xsmall">	
 				<?php if (!empty($courses['data'])): ?>					
 					<?php foreach ($courses['data'] as $post): ?>
-						<div class="c-card u-p-small u-mb-small">	
+						<div class="c-card u-p-small">	
 							<div class="row">
 								<div class="col-12 col-lg-9 order-lg-1">
 
@@ -76,13 +76,11 @@
 
 				<?php if (empty($courses['data'])): ?>
 					<div class="col-sm-12 col-lg-12">
-						<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 
-							<div class="u-text-center u-justify-between">
-								<p class="u-h5"><?php echo $this->lang->line('user_courses_not_found') ?></p>
-							</div>
-
+						<div class="u-text-center u-justify-between u-pv-medium">
+							<p class="u-h5"><?php echo $this->lang->line('user_courses_not_found') ?></p>
 						</div>
+
 					</div>		
 				<?php endif ?>
 			</div>

@@ -37,7 +37,7 @@
                         <div class="c-field u-ph-medium u-pv-small u-mb-small">
                             <label class="c-field__label">type : </label>
 
-                            <select name="type" class="select2-search">
+                            <select required name="type" class="select2-search">
                                 <option></option>
                                 <option <?php echo (!empty($lesson['type']) AND $lesson['type'] == 'Text') ? 'selected' : ''; ?> value="Text">Text</option>
                                 <option <?php echo (!empty($lesson['type']) AND $lesson['type'] == 'Video') ? 'selected' : ''; ?> value="Video">Video</option>

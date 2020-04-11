@@ -83,7 +83,7 @@
                             <?php if (!empty($courses['first_lesson'])): ?>
 
                                 <?php if ($courses['user_courses']): ?>
-                                    <a class="c-btn c-btn--primary c-btn--custom" href="<?php echo $courses['first_lesson'] ?>">
+                                    <a class="c-btn c-btn--info c-btn--custom" href="<?php echo $courses['first_lesson'] ?>">
                                         <i class="fa fa-send-o u-mr-xsmall"></i><?php echo $this->lang->line('learn_now') ?>
                                     </a>
                                 <?php endif ?>
@@ -91,7 +91,7 @@
                                 <?php if (empty($courses['user_courses'])): ?>
 
                                     <?php if (empty($courses['price'])): ?>
-                                        <button data-redirect='<?php echo current_url() ?>' data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--primary c-btn--custom btn-process-courses" data-action="<?php echo base_url('user/courses/add_courses/') ?>">
+                                        <button data-redirect='<?php echo current_url() ?>' data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--info c-btn--custom btn-process-courses" data-action="<?php echo base_url('user/courses/add_courses/') ?>">
                                             <i class="fa fa-plus u-mr-xsmall"></i><?php echo $this->lang->line('add_to_my_courses') ?>
                                         </button >
                                     <?php endif ?>
