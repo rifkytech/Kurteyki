@@ -70,7 +70,7 @@ class M_Payment extends CI_Model
 
 		$transaction_details = [
 			'order_id' => $user['id'].'C'.$courses['id'].'T'.date('ymdHis'),
-			'gross_amount' => $courses['price_original'], 
+			'gross_amount' => $courses['price_total_original'], 
 		];
 
 		$expiry = [
@@ -82,7 +82,7 @@ class M_Payment extends CI_Model
 		$item_details = [
 			[
 				'id' => $courses['id'],
-				'price' => $courses['price_original'],
+				'price' => $courses['price_total_original'],
 				'quantity' => 1,
 				'name' => $courses['title']
 			]

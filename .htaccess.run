@@ -29,6 +29,7 @@ SetEnvIf Request_URI "/sitemap(.*).xml" NO_INDEX_FOLLOW
 
 #courses
 SetEnvIf Request_URI "/courses/search" NO_INDEX
+SetEnvIf Request_URI "/courses/lesson" NO_INDEX
 SetEnvIf Request_URI "/courses/category/(.*)" NO_INDEX_FOLLOW
 
 # blog

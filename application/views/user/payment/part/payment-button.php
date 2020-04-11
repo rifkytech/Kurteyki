@@ -17,7 +17,12 @@
                             <?php echo $this->lang->line('discount'); ?> 
                         </span>
                         <h4 class="c-toolbar__state-number u-h4">
-                            <?php echo $courses['price'] ?>
+                            <?php if (!empty($courses['discount'])): ?>
+                                <?php echo $courses['discount'] ?>
+                            <?php endif ?>
+                            <?php if (empty($courses['discount'])): ?>
+                                <?php echo $courses['discount_original'] ?>
+                            <?php endif ?>
                         </h4>
                     </div>
 
@@ -25,7 +30,7 @@
                         <div class="c-toolbar__state-number u-h4">
                             <?php echo $this->lang->line('total_price'); ?> 
                             <div class="u-block">
-                                <?php echo $courses['price'] ?>
+                                <?php echo $courses['price_total'] ?>
                             </div>
                         </div>
                         <button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' value="<?php echo $midtrans['token'] ?>" id="pay-button" class="c-btn c-btn--custom u-mb-small">

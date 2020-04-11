@@ -11,7 +11,7 @@
                         <?php echo $courses['faq']; ?> 
                     <?php endif ?>
                     <?php if (empty($courses['faq'])): ?>
-                        <div class="c-alert u-bg-primary">
+                        <div class="c-alert u-bg-secondary u-text-dark">
                             <?php echo $this->lang->line('no_faq') ?>
                         </div>                   
                     <?php endif ?>

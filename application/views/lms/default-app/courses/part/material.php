@@ -19,7 +19,7 @@
                                         <div class="c-stage__icon o-media__img">
                                             <i class="fa fa-info"></i>
                                         </div>
-                                        <div class="c-stage__header-title o-media__body">
+                                        <div class="c-stage__header-title o-media__body u-text-bold">
                                             <?php echo $courses_data['title_section'] ?>
                                         </div>
                                     </div>
@@ -30,8 +30,8 @@
 
                                     <?php foreach ($courses_data['lesson'] as $lesson): ?>                    
                                         <?php if (!empty($lesson)): ?>
-                                            <div class="c-stage__header u-justify-start u-bg-primary u-p-xsmall cursor-default">
-                                                <h6 class="u-mb-zero u-text-white o-line">
+                                            <div class="c-stage__header u-justify-start u-bg-secondary u-p-xsmall cursor-default">
+                                                <h6 class="u-mb-zero u-text-dark o-line">
                                                     <?php if ($lesson['type'] == 'Text'): ?>
                                                         <i class="fa fa-file-text-o u-mr-xsmall"></i>
                                                     <?php endif ?>
@@ -49,7 +49,7 @@
                                             </div>
                                         <?php endif ?>
                                         <?php if (empty($lesson)): ?>
-                                            <div class="c-alert u-bg-primary">
+                                            <div class="c-alert u-bg-secondary u-text-dark">
                                                 <?php echo $this->lang->line('no_material') ?>
                                             </div>
                                         <?php endif ?>
@@ -62,7 +62,9 @@
                         </article> 
                     <?php endif ?>
                     <?php if (empty($courses['all_data'])): ?>
-                        <?php echo $this->lang->line('no_material') ?>
+                        <div class="c-alert u-bg-secondary u-text-dark">
+                            <?php echo $this->lang->line('no_material') ?>
+                        </div>
                     <?php endif ?>
                 </div>
             </div>

@@ -72,4 +72,4 @@
     </div>
 </div>
 
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

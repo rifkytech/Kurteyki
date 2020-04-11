@@ -10,11 +10,12 @@ class M_Install_Table extends CI_Model {
 		$config = $this->build_database_configuration($post);
 		$check = $this->load->database($config, TRUE);
 
+
 		if (!$check->conn_id){
 			return 'error_database_connection';
 		}else {
 
-			$this->load->database();
+			$this->load->database($config);
 		}
 
 		/**

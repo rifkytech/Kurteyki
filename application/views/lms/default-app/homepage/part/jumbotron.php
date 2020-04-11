@@ -14,7 +14,7 @@
 					<div class="col-lg-8 u-pb-large">
 
 						<h2 class="u-h3 u-text-bold">
-							<?php echo $site['description'] ?>
+							Belajar <?php echo $site['description'] ?>
 						</h2>   
 
 						<div class="row">
@@ -45,6 +45,7 @@
 								</div>
 							</div>
 
+                          	<!-- -->
 							<div class="col-12 col-lg-4">
 								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
@@ -57,6 +58,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- -->
 
 						</div>
 

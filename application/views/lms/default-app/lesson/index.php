@@ -1,6 +1,6 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
 
-<?php $this->load->view('lms/lesson/part/nav'); ?>
+<?php $this->load->view('lms/default-app/lesson/part/nav'); ?>
 
 <div class="container-fluid">                   
 
@@ -53,15 +53,17 @@
                                         <?php endif ?>
                                         <?php echo $lesson['title'] ?>
                                     </a>
-                                    <?php if ($lesson['user_lesson']): ?>
-                                        <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
-                                            <i class="fa fa-check u-color-success u-m-zero"></i>
-                                        </button >
-                                    <?php endif ?>
-                                    <?php if (empty($lesson['user_lesson'])): ?>
-                                        <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
-                                            <i class="fa fa-check u-color-white u-m-zero"></i>
-                                        </button >
+                                    <?php if (!empty($this->session->userdata('user'))): ?>
+                                        <?php if ($lesson['user_lesson']): ?>
+                                            <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
+                                                <i class="fa fa-check u-color-success u-m-zero"></i>
+                                            </button >
+                                        <?php endif ?>
+                                        <?php if (empty($lesson['user_lesson'])): ?>
+                                            <button data-id-courses='<?php echo $courses['id'] ?>' data-id-lesson='<?php echo $lesson['id'] ?>' class="c-btn c-btn--primary c-btn--small btn-process-lesson u-ml-auto" data-action="<?php echo base_url('user/courses/process_lesson/') ?>" style='overflow: unset;position: absolute;right: 10px;padding: 2px 4px;'>
+                                                <i class="fa fa-check u-color-white u-m-zero"></i>
+                                            </button >
+                                        <?php endif ?>
                                     <?php endif ?>
                                 </div>
                             <?php endif ?>                
@@ -115,4 +117,4 @@
 
 </div><!-- // .container -->
 
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

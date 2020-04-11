@@ -112,6 +112,8 @@ class M_LMS_Courses extends CI_Model
             'title' => strip_tags($this->input->post('title')),
             'permalink' => slug(strip_tags($this->input->post('title'))),
             'image' => strip_tags($this->input->post('image')),
+            'price' => strip_tags($this->input->post('price')),
+            'discount' => strip_tags($this->input->post('discount')),
             'description' => htmlentities($this->input->post('description')),
             'faq' => htmlentities($this->input->post('faq')),
             'status' => $this->input->post('status'),
@@ -156,6 +158,12 @@ class M_LMS_Courses extends CI_Model
             $post_data = array_merge($post_data, $post_merge);   
         }   
 
+        /**
+         * check if discount > price
+         */
+        if ($post_data['discount'] >= $post_data['price']) {
+            $post_data['discount'] = false;
+        }
 
         return $post_data;        
     }     

@@ -11,7 +11,7 @@
                         <?php echo $courses['description']; ?> 
                     <?php endif ?>
                     <?php if (empty($courses['description'])): ?>
-                        <div class="c-alert u-bg-primary">
+                        <div class="c-alert u-bg-secondary u-text-dark">
                             <?php echo $this->lang->line('no_description') ?>
                         </div>                   
                     <?php endif ?>                 

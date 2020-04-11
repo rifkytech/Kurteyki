@@ -25,7 +25,7 @@ class Homepage extends My_Lms{
 			'courses' => $courses
 		];
 
-		$this->load->view('lms/homepage/index', $data);
+		$this->load->view('lms/'.$template['name'].'/homepage/index', $data);
 	}
 
 }

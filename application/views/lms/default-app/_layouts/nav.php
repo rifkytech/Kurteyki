@@ -51,7 +51,7 @@
                 </nav>
                 <!-- // Navigation items  -->
 
-                <?php $this->load->view('lms/_layouts/nav-user'); ?>
+                <?php $this->load->view('lms/default-app/_layouts/nav-user'); ?>
 
                 <button class="c-nav-toggle" type="button" data-toggle="collapse" data-target="#main-nav">
                     <span class="c-nav-toggle__bar"></span>

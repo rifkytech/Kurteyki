@@ -1,5 +1,5 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
-<?php $this->load->view('lms/_layouts/nav'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/nav'); ?>
 
 <div class="container u-mv-medium h-100vh">                   
 
@@ -61,7 +61,7 @@
 					<?php if (empty($this->input->get('showall')) AND $courses['pagination']['total_rows'] > $courses['pagination']['per_page']): ?>			
 						<div class="u-mv-medium row">
 							<div class="col-6">
-								<?php $this->load->view('lms/_layouts/pagination');?>	
+								<?php $this->load->view('lms/default-app/_layouts/pagination');?>	
 							</div>
 							<div class="col-6 o-line">
 								<a class="u-ml-auto c-btn c-btn--custom c-btn--info" href="<?php echo base_url('user/courses?showall=true') ?>">
@@ -91,5 +91,5 @@
 
 </div><!-- // .container -->
 
-<?php $this->load->view('lms/_layouts/footer-widget'); ?>
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer-widget'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

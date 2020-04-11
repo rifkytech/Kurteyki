@@ -1,10 +1,10 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
 
 <div class="o-page__card">
 
 	<div class="u-text-center">
 		<a href="<?php echo base_url() ?>" class="u-block u-mb-medium">
-			<img src="<?php echo base_url('storage/lms/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
+			<img src="<?php echo base_url('storage/uploads/lms/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
 		</a>
 		<h3 class="u-text-bold u-h2">
 			<?php echo $this->lang->line('wait_payment') ?>
@@ -19,4 +19,4 @@
 
 </div>
 
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

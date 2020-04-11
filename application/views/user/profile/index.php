@@ -1,5 +1,5 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
-<?php $this->load->view('lms/_layouts/nav'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/nav'); ?>
 
 <div class="container u-mv-medium h-100vh">                   
 
@@ -11,7 +11,7 @@
 			<form action="<?php echo base_url('user/profile/process') ?>" method="POST" enctype="multipart/form-data">
 				<h2 class="u-h3 u-mb-small"><?php echo $this->lang->line('my_profile') ?></h2>
 
-				<div class="c-card u-p-zero u-mb-large">	
+				<div class="c-card u-p-zero">	
 
 					<div class="u-m-medium">
 						<?php $this->load->view('app/_layouts/alert'); ?>			
@@ -22,8 +22,8 @@
 							<img class="c-avatar__img" src="<?php echo (!empty($profile['photo']) ?  base_url('storage/uploads/user/'.$profile['photo']) : base_url('storage/uploads/user/person.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
 						</div>
 
-						<div class="row u-mb-medium">
-							<div class="col-sm-4 offset-sm-4">
+						<div class="row">
+							<div class="col-10 col-md-4 col-sm-6 offset-md-4 offset-sm-3 offset-1">
 								<label class="c-field__label">								
 									<?php echo $this->lang->line('change_photo') ?>
 								</label>
@@ -172,5 +172,5 @@
 
 </div><!-- // .container -->
 
-<?php $this->load->view('lms/_layouts/footer-widget'); ?>
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer-widget'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

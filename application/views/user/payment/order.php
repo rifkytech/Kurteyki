@@ -1,4 +1,4 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
 
 <?php $this->load->view('user/payment/part/nav'); ?>
 
@@ -15,4 +15,4 @@
 
 <?php $this->load->view('user/payment/part/payment-button'); ?>
 
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

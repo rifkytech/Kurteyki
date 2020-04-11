@@ -5,7 +5,7 @@ class M_Sitemap extends CI_Model
 
 	public $table_lms_courses = 'tb_lms_courses';
 	public $table_blog_post = 'tb_blog_post';
-	public $table_blog_pages = 'tb_blog_pages';	
+	public $table_site_pages = 'tb_site_pages';	
 
 	public function loop_courses($splid){
 		$total_post = $this->db
@@ -32,7 +32,7 @@ class M_Sitemap extends CI_Model
 	public function loop_blog_pages($splid){
 		$total_post = $this->db
 		->select("id")
-		->from($this->table_blog_pages)
+		->from($this->table_site_pages)
 		->where("time <= NOW()")
 		->where("status = 'Published'")        
 		->get()->num_rows();
@@ -100,7 +100,7 @@ class M_Sitemap extends CI_Model
 
 		$data = $this->db
 		->select("permalink")
-		->from($this->table_blog_pages)
+		->from($this->table_site_pages)
 		->where("time <= NOW()")
 		->where("status = 'Published'")
 		->limit($limit,$index)

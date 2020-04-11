@@ -20,7 +20,7 @@ Class My_Site extends MY_Controller {
 	public function _output($output)
 	{
 
-		//$output = $this->minifier->run($output);
+		$output = $this->minifier->run($output);
 
 		if ($this->output->cache_expiration > 0)
 		{

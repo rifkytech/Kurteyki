@@ -1,5 +1,5 @@
-<?php $this->load->view('lms/_layouts/header'); ?>
-<?php $this->load->view('lms/_layouts/nav'); ?>
+<?php $this->load->view('lms/default-app/_layouts/header'); ?>
+<?php $this->load->view('lms/default-app/_layouts/nav'); ?>
 
 <div class="container u-mv-small">                   
 
@@ -48,25 +48,44 @@
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary" href="<?php echo $post['url'] ?>">
 										<img width="100%" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
 									</a>
-
-									<?php if (empty($post['price'])): ?>
-										<span class="c-event__status u-bg-secondary u-color-primary">
-											<i class="fa fa-shopping-cart u-mr-xsmall"></i>
-											<?php echo $this->lang->line('free') ?>
-										</span>
-									<?php endif ?>
-									<?php if (!empty($post['price'])): ?>
-										<span class="c-event__status u-bg-info">
-											<i class="fa fa-shopping-cart u-mr-xsmall"></i>
-											<?php echo $post['price'] ?>
-										</span>
-									<?php endif ?>
+									
+									<span class="c-event__status u-bg-secondary u-color-primary">
+										<?php if ($post['sub_category']['icon']): ?>
+											<i class="fa <?php echo $post['sub_category']['icon'] ?>"></i>
+										<?php endif ?>
+										<?php if (empty($post['sub_category']['icon'])): ?>
+											<i class="fa fa-folder"></i>
+										<?php endif ?>
+										<a class='u-text-dark' href="<?php echo $post['sub_category']['url'] ?>" title="<?php echo $post['sub_category']['name'] ?>">
+											<?php echo $post['sub_category']['name'] ?>
+										</a>
+									</span>
 								</div>
 								<div class="c-event__meta u-p-small">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary u-h4 u-text-bold" href="<?php echo $post['url'] ?>">
 										<?php echo $post['title'] ?>
 									</a>
 								</div>
+								<div class="c-event__meta u-p-small u-border-top">
+									<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero"><i class="fa fa-eye u-mr-xsmall"></i><?php echo $post['views'] ?></span>          
+									<?php if (empty($post['price'])): ?>
+										<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero">
+											<i class="fa fa-shopping-cart u-mr-xsmall"></i>
+											<?php echo $this->lang->line('free') ?>
+										</span>
+									<?php endif ?>
+									<?php if (!empty($post['price'])): ?>
+										<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-info u-text-small">
+											<?php if (!empty($post['discount'])): ?>
+												<s class="u-text-xsmall u-mr-xsmall"><?php echo $post['price'] ?></s>
+												<?php echo $post['price_total'] ?>
+											<?php endif ?>
+											<?php if (empty($post['discount'])): ?>
+												<?php echo $post['price_total'] ?>
+											<?php endif ?>
+										</span>
+									<?php endif ?>
+								</div>										
 							</article>
 
 						</div>
@@ -74,7 +93,7 @@
 					<?php endforeach ?>	
 
 					<div class="col-12">
-						<?php $this->load->view('lms/_layouts/pagination');?>	
+						<?php $this->load->view('lms/default-app/_layouts/pagination');?>	
 					</div>	
 
 
@@ -97,5 +116,5 @@
 
 </div><!-- // .container -->
 
-<?php $this->load->view('lms/_layouts/footer-widget'); ?>
-<?php $this->load->view('lms/_layouts/footer'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer-widget'); ?>
+<?php $this->load->view('lms/default-app/_layouts/footer'); ?>

@@ -34,6 +34,7 @@ class _Lesson extends CI_Model
 
 		$number = 0;
 		$total_lesson_user = 0;
+		$first_lesson = false;
 		foreach ($section->result_array() as $data_section) {
 
 			$section_data = [
@@ -45,11 +46,10 @@ class _Lesson extends CI_Model
 
 			$lesson = $this->_Process_MYSQL->get_data_multiple($this->table_lms_courses_lesson, $data_section['id'],'id_section',false,['order','ASC']);
 
+
 			$total_lesson[] = $lesson->num_rows();
 
 			if ($lesson->num_rows() < 1) {
-
-				$first_lesson = false;
 				$lesson_data[] = false;
 			}else {				
 

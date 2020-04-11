@@ -14,7 +14,7 @@ class M_Lesson extends CI_Model
 		 */
 		$user_courses = $this->_Courses->check_courses($courses);
 
-		if (empty($user_courses['user_courses'])) redirect(base_url('auth'));
+		if (empty($user_courses['user_courses']) AND !empty($courses['price'])) redirect(base_url('auth'));
 
 		$build_lesson = $this->_Lesson->build_lesson($courses);
 

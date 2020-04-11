@@ -40,7 +40,7 @@ http://localhost/kurteyki
 
 ## Bug
 
-* views/lms/homepage/part/jumbotron
+* when delete, when multiple user.
 
 ## License
 

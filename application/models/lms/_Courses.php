@@ -119,6 +119,18 @@ class _Courses extends CI_Model
 			 */
 			$courses['price_original'] = $courses['price'];
 			$courses['price'] = $this->_Currency->set_currency($courses['price']);
+
+			/**
+			 * discount
+			 */
+			$courses['discount_original'] = $courses['discount'];
+			$courses['discount'] = $this->_Currency->set_currency($courses['discount']);
+
+			/**
+			 * total priceif have discount
+			 */
+			$courses['price_total_original'] = $courses['price_original']-$courses['discount_original'];
+			$courses['price_total'] = $this->_Currency->set_currency($courses['price_total_original']);
 			
 			$extract[] = array(
 				'id' =>$courses['id'],
@@ -136,7 +148,11 @@ class _Courses extends CI_Model
 				'sub_category' => $courses['sub_category'],				
 				'views' =>$courses['views'],
 				'price' =>  $courses['price'],
-				'price_original' =>  $courses['price_original'],				
+				'price_original' =>  $courses['price_original'],
+				'discount' =>  $courses['discount'],
+				'discount_original' =>  $courses['discount_original'],							
+				'price_total' =>  $courses['price_total'],
+				'price_total_original' =>  $courses['price_total_original'],					
 				'status' =>$courses['status']					
 			);         
 
@@ -200,6 +216,18 @@ class _Courses extends CI_Model
 		 */
 		$courses['price_original'] = $courses['price'];
 		$courses['price'] = $this->_Currency->set_currency($courses['price']);
+
+		/**
+		 * discount
+		 */
+		$courses['discount_original'] = $courses['discount'];
+		$courses['discount'] = $this->_Currency->set_currency($courses['discount']);
+
+		/**
+		 * total priceif have discount
+		 */
+		$courses['price_total_original'] = $courses['price_original']-$courses['discount_original'];
+		$courses['price_total'] = $this->_Currency->set_currency($courses['price_total_original']);
 		
 		$extract = array(
 			'id' =>$courses['id'],
@@ -218,7 +246,11 @@ class _Courses extends CI_Model
 			'sub_category' => $courses['sub_category'],
 			'views' =>$courses['views'],
 			'price' =>  $courses['price'],
-			'price_original' =>  $courses['price_original'],				
+			'price_original' =>  $courses['price_original'],
+			'discount' =>  $courses['discount'],
+			'discount_original' =>  $courses['discount_original'],							
+			'price_total' =>  $courses['price_total'],
+			'price_total_original' =>  $courses['price_total_original'],										
 			'status' =>$courses['status']					
 		);
 

@@ -18,11 +18,17 @@ Class My_Lms extends MY_Site {
         $this->site = $this->M_Site_Meta->init();
 
         /**
+         * Load Template data
+         */
+        $this->load->model('lms/M_Template');
+        $this->template = $this->M_Template->init();
+
+        /**
          * Load Template Widget
          */
         $this->load->model('lms/M_Template_Widget');
         $template_widget = $this->M_Template_Widget->init($this->site,$this->template);
-        if ($template_widget) $this->widget = $template_widget;  
+        if ($template_widget) $this->widget = array_merge($this->template['widget'],$template_widget);  
 
         /**
         * Record Visitor

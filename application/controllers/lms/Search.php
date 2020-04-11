@@ -27,7 +27,7 @@ class Search extends My_Lms{
 			'courses' => $courses
 		];
 		
-		$this->load->view('lms/search/index', $data);
+		$this->load->view('lms/'.$template['name'].'/search/index', $data);
 	}
 
 }

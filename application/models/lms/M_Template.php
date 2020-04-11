@@ -3,9 +3,8 @@
 class M_Template extends CI_Model
 {
 
-    public $table_blog_template = 'tb_blog_template';
-    public $table_blog_template_style = 'tb_blog_template_style';    
-    public $table_blog_template_widget = 'tb_blog_template_widget';
+    public $table_lms_template = 'tb_lms_template';
+    public $table_lms_template_widget = 'tb_lms_template_widget';
 
     public function init(){
         return $this->read_template();
@@ -13,35 +12,17 @@ class M_Template extends CI_Model
 
     public function read_template(){
 
-        $read = $this->_Process_MYSQL->get_data($this->table_blog_template, array('status' => 'Active'))->row_array();
+        $read = $this->_Process_MYSQL->get_data($this->table_lms_template, array('status' => 'Active'))->row_array();
 
         return [
             'name' => $read['path'],
-            'style' => $this->read_template_style($read['id']),
             'widget' => $this->read_template_widget($read['id']),
         ];
-    }
-
-    public function read_template_style($id_template){
-
-        $read = $this->_Process_MYSQL->get_data($this->table_blog_template_style, array('id_template' => $id_template,'status' => 'Active'))->result_array();
-
-        if ($read) {
-
-            foreach ($read as $data_style) {
-                $style[$data_style['type']] = $data_style['file'];
-            }
-
-            return $style;
-        }else {
-            return false;
-        }
-
-    }    
+    }  
 
     public function read_template_widget($id_template){
 
-        $read = $this->_Process_MYSQL->get_data_multiple($this->table_blog_template_widget, $id_template, 'id_template');
+        $read = $this->_Process_MYSQL->get_data_multiple($this->table_lms_template_widget, $id_template, 'id_template');
 
         if ($read->num_rows() > 0) {
 

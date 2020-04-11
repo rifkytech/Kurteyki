@@ -25,7 +25,7 @@ class Category extends My_Lms{
 			'courses' => $courses
 		];
 		
-		$this->load->view('lms/category/index', $data);
+		$this->load->view('lms/'.$template['name'].'/category/index', $data);
 	}
 
 }

@@ -1,7 +1,7 @@
-<div class="u-h4">
+<div class="u-h4 u-mb-small">
     <?php echo $this->lang->line('payment_detail'); ?> 
 </div> 
-<div class="c-card u-p-medium u-mb-small">  
+<div class="c-card u-p-small u-mb-small">  
 
     <article class="c-stage u-mb-zero" id="stages">
         <a class="c-stage__header u-flex u-justify-between" data-toggle="collapse" href="#stage-detail-pembelian" aria-expanded="true" aria-controls="stage-detail-pembelian">

@@ -33,12 +33,12 @@
 				<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
 			</a>
 		</li>
-		<li><a class="c-sidebar__link" href="<?php echo base_url('app/lms_widget') ?>">
+		<!-- <li><a class="c-sidebar__link" href="<?php echo base_url('app/lms_widget') ?>">
 			Widget
 			<?php if (strpos($this->uri->segment(2), "lms_widget") !== FALSE): ?>
 				<i class="fa fa-check u-ml-xsmall"></i><?php endif ?>
 			</a>
-		</li>
+		</li> -->
 
 	</ul>
 </li>

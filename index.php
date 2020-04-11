@@ -114,7 +114,7 @@ $system_path = 'system';
  *
  * NO TRAILING SLASH!
  */
-$application_folder = 'install';
+$application_folder = 'application';
 
 /*
  *---------------------------------------------------------------
