@@ -49,7 +49,7 @@
                                             </div>
                                         <?php endif ?>
                                         <?php if (empty($lesson)): ?>
-                                            <div class="c-alert u-bg-secondary u-text-dark">
+                                            <div class="c-alert u-bg-secondary u-text-dark u-mb-zero">
                                                 <?php echo $this->lang->line('no_material') ?>
                                             </div>
                                         <?php endif ?>
@@ -62,7 +62,7 @@
                         </article> 
                     <?php endif ?>
                     <?php if (empty($courses['all_data'])): ?>
-                        <div class="c-alert u-bg-secondary u-text-dark">
+                        <div class="c-alert u-bg-secondary u-text-dark u-mb-zero">
                             <?php echo $this->lang->line('no_material') ?>
                         </div>
                     <?php endif ?>
