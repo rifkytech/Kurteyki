@@ -86,7 +86,7 @@ class M_Template_Widget extends CI_Model
         foreach ($read->result_array() as $data_category) {
             $extract_category[] = array(
                 'title' => $data_category['name'],
-                'url' => base_url('blog/category/'.$data_category['slug']),
+                'url' => base_url('blog-category/'.$data_category['slug']),
             );   
         }
 
@@ -113,7 +113,7 @@ class M_Template_Widget extends CI_Model
         foreach ($read->result_array() as $data_tags) {
             $extract_tags[] = array(
                 'title' => $data_tags['name'],
-                'url' => base_url('blog/tags/'.$data_tags['slug']),
+                'url' => base_url('blog-tags/'.$data_tags['slug']),
             );   
         }
 

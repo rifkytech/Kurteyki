@@ -59,7 +59,7 @@ class M_Blog_Post extends CI_Model
             ', 'id');
 
         $this->datatables->edit_column('title', '
-            <a title="$1" href="' . base_url('blog/post/') ."$2" . '" target="_blank">$1</a>
+            <a title="$1" href="' . base_url('blog-post/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
             <small class="u-mr-xsmall">$3</small>
             <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>

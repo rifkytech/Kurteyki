@@ -103,16 +103,16 @@ $route['courses/search'] = 'lms/Search/index/';
 $route['blog'] = 'blog/Homepage/index';
 
 # blog category index
-$route['blog/category/(:any)'] = 'blog/Category/index/$1';
+$route['blog-category/(:any)'] = 'blog/Category/index/$1';
 
 # blog tags index
-$route['blog/tags/(:any)'] = 'blog/Tags/index/$1';
+$route['blog-tags/(:any)'] = 'blog/Tags/index/$1';
 
 # blog search index
-$route['blog/search'] = 'blog/Search/index/';
+$route['blog-search'] = 'blog/Search/index/';
 
 # blog post
-$route['blog/post/(:any)'] = 'blog/Post/index/$1';
+$route['blog-post/(:any)'] = 'blog/Post/index/$1';
 
 
 /*

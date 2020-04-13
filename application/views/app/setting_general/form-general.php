@@ -1,6 +1,6 @@
 <div class="c-stage u-m-zero u-border-bottom-zero">
 
-	<div class="c-stage__header o-media u-justify-start">
+	<div class="c-stage__header o-media u-justify-start cursor-default">
 		<div class="c-stage__icon o-media__img">
 			<i class="fa fa-info"></i>
 		</div>
@@ -59,7 +59,7 @@
 
 	</div>
 
-	<div class="c-stage__header o-media u-justify-start">
+	<div class="c-stage__header o-media u-justify-start cursor-default">
 		<div class="c-stage__icon o-media__img">
 			<i class="fa fa-info"></i>
 		</div>
@@ -117,7 +117,7 @@
 
 	</div>
 
-	<div class="c-stage__header o-media u-justify-start">
+	<div class="c-stage__header o-media u-justify-start cursor-default">
 		<div class="c-stage__icon o-media__img">
 			<i class="fa fa-info"></i>
 		</div>

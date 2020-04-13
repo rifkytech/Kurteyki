@@ -18,7 +18,7 @@
             </i>
         </button>
         <div class="search-box">
-            <form action="<?php echo base_url('blog/search') ?>" method="GET" class="animated fadeInDown">
+            <form action="<?php echo base_url('blog-search') ?>" method="GET" class="animated fadeInDown">
                 <input class="input-form" type="text" name="q" placeholder="<?php echo $this->lang->line('search') ?>">
                 <button>
                     <i class="fa fa-arrow-right">

@@ -19,10 +19,10 @@ class M_Tags extends CI_Model
 
 		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog/tags/'.$tags),FALSE,TRUE,'page');
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('blog-tags/'.$tags),FALSE,TRUE,'page');
 
 		$read_data = $this->query($id_tag,false,$limit,$index);
-		if (empty($read_data)) redirect(base_url('blog/tags/'.$tags));
+		if (empty($read_data)) redirect(base_url('blog-tags/'.$tags));
 
 		$read_post = $this->query_post($site,$read_data);
 

@@ -3,7 +3,7 @@
 
         <!--  search -->
         <div class="blog-sidebar_block sidebar-search">
-            <form action="<?php echo base_url('blog/search') ?>" method="GET">
+            <form action="<?php echo base_url('blog-search') ?>" method="GET">
                 <input class="input-form" type="text" name="q" placeholder="<?php echo $this->lang->line('search') ?>">
             </form>
         </div>

@@ -37,7 +37,7 @@ class _Post extends CI_Model
 			/**
 			 * Edit Permalink
 			 */
-			$post['permalink'] = base_url('blog/post/' . $post['permalink']);
+			$post['permalink'] = base_url('blog-post/' . $post['permalink']);
 
 			/**
 			 * Edit Time & Updated
@@ -83,7 +83,7 @@ class _Post extends CI_Model
 		/**
 		 * Edit Permalink
 		 */
-		$post['permalink'] = base_url('blog/post/' . $post['permalink']);
+		$post['permalink'] = base_url('blog-post/' . $post['permalink']);
 
 		/**
 		 * Edit Time & Updated
@@ -137,7 +137,7 @@ class _Post extends CI_Model
 			/**
 			 * Edit Permalink
 			 */
-			$post['permalink'] = base_url('blog/post/' . $post['permalink']);
+			$post['permalink'] = base_url('blog-post/' . $post['permalink']);
 
 			/**
 			 * Edit Time & Updated
@@ -200,7 +200,7 @@ class _Post extends CI_Model
 		/**
 		 * Edit Permalink
 		 */
-		$post['permalink'] = base_url('blog/post/' . $post['permalink']);
+		$post['permalink'] = base_url('blog-post/' . $post['permalink']);
 
 		/**
 		 * Edit Time & Updated
@@ -272,7 +272,7 @@ class _Post extends CI_Model
 
 		$category = [
 			'name' => $read['name'],
-			'url' => base_url('blog/category/'.$read['slug']),
+			'url' => base_url('blog-category/'.$read['slug']),
 		];
 
 		return $category;
@@ -298,7 +298,7 @@ class _Post extends CI_Model
 		foreach ($read as $data_tag) {
 			$tags [] = [
 				'name' => $data_tag['name'],
-				'url' => base_url('blog/tags/'.$data_tag['slug']),
+				'url' => base_url('blog-tags/'.$data_tag['slug']),
 			];
 		}
 
