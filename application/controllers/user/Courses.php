@@ -18,10 +18,12 @@ class Courses extends My_User
     {
 
         $site = $this->site;
+        $widget= $this->widget; 
         $courses = $this->M_Courses->read($site);
 
         $data = array(
             'site' => $site,
+            'widget' => $widget,    
             'courses' =>  $courses
         );
 

@@ -29,9 +29,9 @@
 							<div class="c-tabs">
 
 								<ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs u-ph-medium" id="myTab" role="tablist">
-									<li class="c-tabs__item"><a class="c-tabs__link u-p-small u-text-small active show" id="nav-schema-tab" data-toggle="tab" href="#nav-schema" role="tab" aria-controls="nav-schema" aria-selected="false">Schema</a></li>
-									<li class="c-tabs__item"><a class="c-tabs__link u-p-small u-text-small" id="nav-open-graph-tab" data-toggle="tab" href="#nav-open-graph" role="tab" aria-controls="nav-open-graph" aria-selected="false">Open Graph</a></li>
-									<li class="c-tabs__item"><a class="c-tabs__link u-p-small u-text-small" id="nav-twitter-card-tab" data-toggle="tab" href="#nav-twitter-card" role="tab" aria-controls="nav-twitter-card" aria-selected="false">Twitter Card</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small active show" id="nav-schema-tab" data-toggle="tab" href="#nav-schema" role="tab" aria-controls="nav-schema" aria-selected="false">Schema</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-open-graph-tab" data-toggle="tab" href="#nav-open-graph" role="tab" aria-controls="nav-open-graph" aria-selected="false">Open Graph</a></li>
+									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-twitter-card-tab" data-toggle="tab" href="#nav-twitter-card" role="tab" aria-controls="nav-twitter-card" aria-selected="false">Twitter Card</a></li>
 								</ul>
 
 								<div class="c-tabs__content tab-content" id="nav-tabContent">

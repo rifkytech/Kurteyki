@@ -91,8 +91,8 @@ class _Courses extends CI_Model
 			/**
 			 * Edit Permalink
 			 */
-			$courses['url_lesson'] = base_url('courses/lesson/' . $courses['permalink']);
-			$courses['permalink'] = base_url('courses/detail/' . $courses['permalink']);
+			$courses['url_lesson'] = base_url('courses-lesson/' . $courses['permalink']);
+			$courses['permalink'] = base_url('courses-detail/' . $courses['permalink']);
 
 			/**
 			 * Edit Time & Updated
@@ -187,8 +187,8 @@ class _Courses extends CI_Model
 		/**
 		 * Edit Permalink
 		 */
-		$courses['url_lesson'] = base_url('courses/lesson/' . $courses['permalink']);
-		$courses['permalink'] = base_url('courses/detail/' . $courses['permalink']);
+		$courses['url_lesson'] = base_url('courses-lesson/' . $courses['permalink']);
+		$courses['permalink'] = base_url('courses-detail/' . $courses['permalink']);
 
 		/**
 		 * Edit Time & Updated
@@ -278,7 +278,7 @@ class _Courses extends CI_Model
 		$category = [
 			'name' => $read['name'],
 			'icon' => $read['icon'],			
-			'url' => base_url('courses/category/'.$read['slug']),
+			'url' => base_url('courses-category/'.$read['slug']),
 		];
 
 		return $category;

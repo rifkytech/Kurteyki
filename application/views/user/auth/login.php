@@ -33,7 +33,7 @@
                 <?php endif ?>
 
                 <input type="hidden" name="csrf_code" value="<?php echo $this->session->userdata('csrf_code') ?>">
-                <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">
+                <button class="c-btn c-btn--info" type="submit">
                     <?php echo $this->lang->line('sign_in') ?>
                 </button>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="c-login__content-image">
-            <img src="<?php echo base_url('storage/uploads/user/bg.jpg') ?>" alt="<?php echo $site['title'] ?>">
+            <img src="<?php echo base_url('storage/uploads/user/bg.svg') ?>" alt="<?php echo $site['title'] ?>">
 
             <h3><?php echo $site['title'] ?></h3>
             <p class="u-text-large">

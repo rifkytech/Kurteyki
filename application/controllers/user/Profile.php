@@ -16,10 +16,12 @@ class Profile extends My_User
     {
 
         $site = $this->site;
+        $widget= $this->widget; 
         $profile = $this->M_Profile->read();
 
         $data = array(
             'site' => $site,
+            'widget' => $widget,    
             'profile' =>  $profile
         );
 

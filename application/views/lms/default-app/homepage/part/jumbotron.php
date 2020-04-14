@@ -1,20 +1,20 @@
 <?php if ($site['page_type'] =='index'): ?>
-<div style="background: #bbe2ff">
+<div>
 	<div class="container">                   
 		<div class="row">
 
 			<div class="col-12">    
 
-				<div class="row u-pt-large">
+				<div class="row u-pv-large">
 
 					<div class="col-lg-4 u-flex u-hidden-down@desktop">
-						<img style="width: 200px" src="<?php echo base_url('storage/uploads/lms/intro.png') ?>" alt="intro"> 
+						<img style="width: 200px" src="<?php echo base_url('storage/uploads/lms/intro.svg') ?>" alt="intro"> 
 					</div>
 
-					<div class="col-lg-8 u-pb-large">
+					<div class="col-lg-8">
 
 						<h2 class="u-h3 u-text-bold">
-							Belajar <?php echo $site['description'] ?>
+							<?php echo $site['description'] ?>
 						</h2>   
 
 						<div class="row">
@@ -35,7 +35,7 @@
 							<div class="col-12 col-lg-4">
 								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
-										<i class="fa fa-book"></i>
+										<i class="fa fa-file-text"></i>
 									</div>
 									<div class="c-state-card__content">
 										<p>
@@ -49,7 +49,7 @@
 							<div class="col-12 col-lg-4">
 								<div class="c-state-card u-mb-zero u-p-small" data-mh="state-cards">
 									<div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
-										<i class="fa fa-star"></i>
+										<i class="fa fa-flash"></i>
 									</div>
 									<div class="c-state-card__content">
 										<p>

@@ -95,7 +95,11 @@ function datatables_serverside(resource_columns) {
                 $("button[name='submit']").prop("disabled", false);
             },
             error: function(xhr, ajaxOptions, thrownError) {
-                swal("Error Processing !", "Please try again", "error");
+                Swal.fire({
+                    title: 'Error Processing !',
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                })
             }
         });
     })

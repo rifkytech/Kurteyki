@@ -14,8 +14,8 @@ class M_Profile extends CI_Model
 		$post = $this->input->post();
 
 		$post_data = [
-			'username' => $post['full_name'],
-			'no_handphone' => $post['no_handphone'],
+			'username' => strip_tags($post['full_name']),
+			'no_handphone' => strip_tags($post['no_handphone']),
 		];
 
 		/**

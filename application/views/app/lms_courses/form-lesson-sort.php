@@ -19,7 +19,7 @@
 					</div>
 
 					<input class="input-lesson-order-<?php echo $section['id'] ?>" type="hidden" name="order">  
-					<input type="hidden" name="redirect" value="<?php echo current_url(); ?>">   
+					<input type="hidden" name="redirect" value="<?php echo current_url().'?tab=material'; ?>">   
 					<button data-id='<?php echo $section['id']; ?>' class="c-btn c-btn--info btn-lesson-sort" type="button">
 						<i class="fa fa-save"></i>
 					</button>

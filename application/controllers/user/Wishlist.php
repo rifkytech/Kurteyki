@@ -18,10 +18,12 @@ class Wishlist extends My_User
     {
 
         $site = $this->site;
+        $widget= $this->widget; 
         $wishlist = $this->M_Wishlist->read($site);
 
         $data = array(
             'site' => $site,
+            'widget' => $widget,    
             'wishlist' =>  $wishlist
         );
 

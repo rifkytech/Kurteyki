@@ -53,7 +53,7 @@ $lang['sucess_change'] = 'Berhasil Mengganti Password';
 /* validation */
 $lang['user_exist'] = 'User sudah terdaftar.';
 $lang['email_exist'] = 'Email Sudah Pernah Digunakan';
-$lang['success_register'] = 'Berhasil Mendaftar, silahkan cek email.';
+$lang['success_register'] = 'Berhasil Mendaftar, silahkan login.';
 $lang['invalid_csrf'] = 'kode Csrf tidak valid, silahkan refresh halaman dan coba lagi.';
 
 $lang['min_length_start'] = 'Harus memiliki';
@@ -134,7 +134,7 @@ $lang['home'] = 'Beranda';
 
 $lang['rendered_in'] = 'Di Render';
 $lang['seconds'] = 'Detik';
-$lang['copyright'] = 'Hak Cipta';
+$lang['copyright'] = 'Copyright';
 
 /*
 |--------------------------------------------------------------------------

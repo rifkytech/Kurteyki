@@ -18,7 +18,7 @@
 					</div>
 
 					<input class="input-section-order" type="hidden" name="order">
-					<input type="hidden" name="redirect" value="<?php echo current_url(); ?>">   
+					<input type="hidden" name="redirect" value="<?php echo current_url().'?tab=material'; ?>">   
 					<button id="btn-section-sort" class="c-btn c-btn--info" type="button">
 						<i class="fa fa-save"></i>
 					</button>

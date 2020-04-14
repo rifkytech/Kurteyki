@@ -19,6 +19,7 @@ $lang['page'] = 'Halaman';
 */
 
 $lang['select_category'] = 'Pilih Kategori';
+$lang['select_filter'] = 'Filter Materi';
 $lang['courses_not_found_category'] = 'Tidak ditemukan materi dengan kategori ini.';
 
 
@@ -78,12 +79,18 @@ $lang['buy'] = 'Beli';
 $lang['order_now'] = 'Pesan Sekarang';
 $lang['price'] = 'Harga';
 $lang['discount'] = 'Diskon';
+$lang['discount_coupun'] = 'Diskon Kupon';
 $lang['total_price'] = 'Total Harga';
 
 $lang['payment'] = 'Pembelian';
 $lang['payment_detail'] = 'Detail Pembelian';
 $lang['payment_method'] = 'Metode Pembayaran';
 $lang['payment_lesson'] = 'Spesifikasi Materi';
+$lang['payment_coupon'] = 'Kode Voucher';
+$lang['payment_coupon_insert'] = 'Masukan kode voucher';
+$lang['payment_coupon_check'] = 'Cek Kode';
+$lang['payment_coupon_not_valid'] = 'Kode Voucher dapat Digunakan';
+$lang['payment_coupon_not_valid'] = 'Kode Voucher tidak Valid';
 
 $lang['success_transaction'] = 'Sukses Memesan Barang';
 $lang['failed_transaction'] = 'Gagal Memesan Barang';

@@ -72,6 +72,7 @@ $route['payment/process'] = 'user/payment/process';
 $route['payment/notification'] = 'user/payment/notification';
 $route['payment/success'] = 'user/payment/success';
 $route['payment/waiting'] = 'user/payment/waiting';
+$route['payment/use_coupon'] = 'user/payment/use_coupon';
 
 /*
 |--------------------------------------------------------------------------
@@ -81,16 +82,16 @@ $route['payment/waiting'] = 'user/payment/waiting';
 */
 
 # courses category index
-$route['courses/category/(:any)'] = 'lms/Category/index/$1';
+$route['courses-category/(:any)'] = 'lms/Category/index/$1';
 
 # lms courses
-$route['courses/detail/(:any)'] = 'lms/Courses/index/$1';
+$route['courses-detail/(:any)'] = 'lms/Courses/index/$1';
 
 # lms lesson
-$route['courses/lesson/(:any)/(:any)/(:any)'] = 'lms/Lesson/index/$1/$2/$3';
+$route['courses-lesson/(:any)/(:any)/(:any)'] = 'lms/Lesson/index/$1/$2/$3';
 
 # lesson search
-$route['courses/search'] = 'lms/Search/index/';
+$route['courses-search'] = 'lms/Search/index/';
 
 /*
 |--------------------------------------------------------------------------

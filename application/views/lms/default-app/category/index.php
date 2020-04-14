@@ -12,28 +12,7 @@
 					<?php echo $site['breadcrumbs'] ?>
 				</h3>
 
-				<div class="u-ml-auto" style="min-width: 200px">						
-					<select id='select-category' class="select2-search">
-						<option></option>
-						<?php
-						foreach ($widget['all_category'] as $category_name => $child_category) {
-
-							echo "<optgroup label='".$category_name."'>";
-
-							foreach ($child_category as $category) {
-								if (!empty($this->uri->segment(3)) AND $this->uri->segment(3) == strtolower($category['name'])) {
-									echo "<option value='".$category['url']."' selected>".$category['name']."</option>";
-								}else {
-									echo "<option value='".$category['url']."'>".$category['name']."</option>";
-								}
-							}
-
-							echo "</optgroup>";
-						}
-
-						?>
-					</select>
-				</div>
+				<?php $this->load->view('lms/default-app/_layouts/select-filter'); ?>
 
 			</div>
 
@@ -49,12 +28,12 @@
 										<img width="100%" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
 									</a>																	
 								</div>
-								<div class="c-event__meta u-p-small">
+								<div class="c-event__meta u-ph-small u-pv-xsmall">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary u-h4 u-text-bold" href="<?php echo $post['url'] ?>">
 										<?php echo $post['title'] ?>
 									</a>
 								</div>
-								<div class="c-event__meta u-p-small u-border-top">
+								<div class="c-event__meta u-ph-small u-pv-xsmall u-border-top">
 									<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero"><i class="fa fa-eye u-mr-xsmall"></i><?php echo $post['views'] ?></span>          
 									<?php if (empty($post['price'])): ?>
 										<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero">
@@ -85,22 +64,22 @@
 					</div>	
 
 
-					<?php else: ?><div class="col-sm-12 col-lg-12">
-						<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
+				<?php else: ?><div class="col-sm-12 col-lg-12">
+					<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 
-							<div class="u-text-center u-justify-between">
-								<p class="u-h5"><?php echo $this->lang->line('courses_not_found_category') ?></p>
-							</div>
-
+						<div class="u-text-center u-justify-between">
+							<p class="u-h5"><?php echo $this->lang->line('courses_not_found_category') ?></p>
 						</div>
-					</div>					
-				<?php endif ?>
 
-			</div>
+					</div>
+				</div>					
+			<?php endif ?>
 
 		</div>
 
-	</div><!-- // .row -->
+	</div>
+
+</div><!-- // .row -->
 
 </div><!-- // .container -->
 

@@ -4,8 +4,12 @@ class M_Payment extends CI_Model
 {
 
 	public $table_lms_courses = 'tb_lms_courses';
+
+	public $table_lms_coupon = 'tb_lms_coupon';
+
 	public $table_lms_user_payment = 'tb_lms_user_payment';	
 	public $table_lms_user_courses = 'tb_lms_user_courses';
+
 
 	public function read($site,$id){
 
@@ -26,7 +30,7 @@ class M_Payment extends CI_Model
 		$check_user_courses = $this->_Process_MYSQL->get_data($this->table_lms_user_courses,[
 			'id_courses' => $read_courses['id'],
 			'id_user' => $this->session->userdata('id_user'),
-		])->num_rows();
+			])->num_rows();
 
 		if ($check_user_courses > 0) redirect(base_url());
 
@@ -49,6 +53,52 @@ class M_Payment extends CI_Model
 		return $all_data;
 	}
 
+	public function check_coupon(){
+		$check_coupon = $this->_Process_MYSQL->get_data($this->table_lms_coupon,[
+			'code' => $this->input->post('code')
+			]);
+
+		if ($check_coupon->num_rows() > 0) {
+
+			$read_coupon = $check_coupon->row_array();
+
+			$this->db->select('
+				tb_lms_courses.id,				
+				tb_lms_courses.title,								
+				tb_lms_courses.price,
+				tb_lms_courses.discount
+				');
+			$this->db->from($this->table_lms_courses);		
+			$this->db->where('tb_lms_courses.id',$this->input->post('id_courses'));
+			$this->db->where('tb_lms_courses.price != 0');
+			$this->db->where("time <= NOW()");
+			$this->db->where("status = 'Published'"); 				
+			$courses_detail =$this->db->get()->row_array();
+			$courses_price_total = $courses_detail['price']-$courses_detail['discount'];
+
+			$this->load->model('_Currency');
+
+			if ($read_coupon['type'] == 'Percent') {
+				$discount_coupon = $read_coupon['data'] / 100 * $courses_price_total;
+				$price_total = $courses_price_total - $discount_coupon;
+			}elseif ($read_coupon['type'] == 'Price') {
+				$discount_coupon = $read_coupon['data'];
+				$price_total = $courses_price_total - $discount_coupon;
+			}
+
+			if ($price_total < 1) return false;
+
+			return [
+			'discount_coupon' => $this->_Currency->set_currency($discount_coupon),
+			'price_total' => $this->_Currency->set_currency($price_total),
+			'midtrans_token' => $this->create_token($courses_detail,$price_total)['token']
+			];
+
+		}else {
+			return false;
+		}
+	}
+
 	public function midtrans_key($site){
 		\Midtrans\Config::$serverKey = $site['midtrans']['server_key'];
 		\Midtrans\Config::$isProduction = ($site['midtrans']['status_production'] == 'Yes') ? true : false;
@@ -56,7 +106,7 @@ class M_Payment extends CI_Model
 		\Midtrans\Config::$is3ds = true;
 	}	
 
-	public function create_token($courses){
+	public function create_token($courses,$price_from_coupon = false){
 
 		/**
 		 * Read User Data
@@ -68,35 +118,44 @@ class M_Payment extends CI_Model
 		 */
 		$this->midtrans_key($this->site);
 
+		/**
+		 * Check Session Coupon
+		 */
+		if (!empty($price_from_coupon)) {
+			$price_total = $price_from_coupon;
+		}else {
+			$price_total = $courses['price_total_original'];
+		}
+
 		$transaction_details = [
-			'order_id' => $user['id'].'C'.$courses['id'].'T'.date('ymdHis'),
-			'gross_amount' => $courses['price_total_original'], 
+		'order_id' => $user['id'].'C'.$courses['id'].'T'.date('ymdHis'),
+		'gross_amount' => $price_total, 
 		];
 
 		$expiry = [
-			"start_time" => date('Y-m-d H:i:s O'),
-			"unit" => "day",
-			"duration" => 1
+		"start_time" => date('Y-m-d H:i:s O'),
+		"unit" => "day",
+		"duration" => 1
 		];
 
 		$item_details = [
-			[
-				'id' => $courses['id'],
-				'price' => $courses['price_total_original'],
-				'quantity' => 1,
-				'name' => $courses['title']
-			]
+		[
+		'id' => $courses['id'],
+		'price' => $price_total,
+		'quantity' => 1,
+		'name' => $courses['title']
+		]
 		];
 
 		$customer_details = array(
 			'first_name'    => $user['username'], 			
 			'email'         => $user['email'],
 			'phone'         => $user['no_handphone'],
-		);
+			);
 
 		$credit_card = [
-			"secure" => true,
-			"save_card" => false
+		"secure" => true,
+		"save_card" => false
 		];
 
 		$transaction = array(
@@ -105,7 +164,7 @@ class M_Payment extends CI_Model
 			'credit_card' => $credit_card,
 			'customer_details' => $customer_details,
 			'item_details' => $item_details,
-		);
+			);
 
 		try {
 
@@ -113,7 +172,7 @@ class M_Payment extends CI_Model
 			$snapToken =  \Midtrans\Snap::getSnapToken($transaction);
 
 			return [
-				'token' => $snapToken,
+			'token' => $snapToken,
 			];		
 		}
 		catch (Exception $e) {
@@ -135,14 +194,14 @@ class M_Payment extends CI_Model
 		$id_courses = explode('T', $id_courses)[0];
 
 		$post_data = [
-			'id' => $post['order_id'],
-			'id_user' => $this->session->userdata('id_user'),
-			'id_courses' => $id_courses,			
-			'type' => $post['payment_type'],
-			'amount' => (int)$post['gross_amount'],
-			'token' => $post['token'],
-			'time' => $post['transaction_time'],
-			'status' => $post['transaction_status'],
+		'id' => $post['order_id'],
+		'id_user' => $this->session->userdata('id_user'),
+		'id_courses' => $id_courses,			
+		'type' => $post['payment_type'],
+		'amount' => (int)$post['gross_amount'],
+		'token' => $post['token'],
+		'time' => $post['transaction_time'],
+		'status' => $post['transaction_status'],
 		];
 
 		if ($this->_Process_MYSQL->insert_data($this->table_lms_user_payment, $post_data)) {
@@ -165,7 +224,7 @@ class M_Payment extends CI_Model
 
 				$notif = \Midtrans\Transaction::status($this->input->get('order_id'));		
 			} catch (Exception $e) {
-				
+
 				echo $e->getMessage();
 				exit;
 			}
@@ -206,7 +265,7 @@ class M_Payment extends CI_Model
     public function update_status($order_id,$status){
 
     	$post_data = [
-    		'status' => $status,
+    	'status' => $status,
     	];
 
     	if ($this->_Process_MYSQL->update_data($this->table_lms_user_payment,$post_data,['id' => $order_id])) {
@@ -214,17 +273,17 @@ class M_Payment extends CI_Model
     		if ($status == 'Purchased') {
     			if ($this->insert_purchased_courses($order_id)) {
     				return [
-    					'status' => true,
-    					'message' => 'Success Update Status id : '.$order_id.' to '.$status,
-    					'redirect' => base_url('user/order')
+    				'status' => true,
+    				'message' => 'Success Update Status id : '.$order_id.' to '.$status,
+    				'redirect' => base_url('user/order')
     				];
     			}
     		}else {
     			if ($this->delete_purchased_courses($order_id)) {
     				return [
-    					'status' => true,
-    					'message' => 'Success Update Status id : '.$order_id.' to '.$status,
-    					'redirect' => base_url('user/order')
+    				'status' => true,
+    				'message' => 'Success Update Status id : '.$order_id.' to '.$status,
+    				'redirect' => base_url('user/order')
     				];
     			}
     		}
@@ -237,8 +296,8 @@ class M_Payment extends CI_Model
     	$read_payment = $this->_Process_MYSQL->get_data($this->table_lms_user_payment,['id' => $id_order])->row_array();
 
     	$post_data = [
-    		'id_user' => $read_payment['id_user'],
-    		'id_courses' => $read_payment['id_courses'],
+    	'id_user' => $read_payment['id_user'],
+    	'id_courses' => $read_payment['id_courses'],
     	];
     	$post_data['time'] = date('Y:m:d H:i:s');
 
@@ -250,8 +309,8 @@ class M_Payment extends CI_Model
     	$read_payment = $this->_Process_MYSQL->get_data($this->table_lms_user_payment,['id' => $id_order])->row_array();
 
     	$post_data = [
-    		'id_user' => $read_payment['id_user'],
-    		'id_courses' => $read_payment['id_courses'],
+    	'id_user' => $read_payment['id_user'],
+    	'id_courses' => $read_payment['id_courses'],
     	];
 
     	return $this->_Process_MYSQL->delete_data($this->table_lms_user_courses, $post_data);

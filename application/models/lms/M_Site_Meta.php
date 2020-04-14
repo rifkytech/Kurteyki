@@ -32,23 +32,23 @@ class M_Site_Meta extends CI_Model
 
 	public function page_type(){
 
-		if (empty($this->uri->segment(2)) OR $this->uri->segment(2) == 'index') {
+		if (empty($this->uri->segment(1))) {
 			if (!empty($this->input->get('page'))) {
 				$type = 'index_page';
 			}else {
 				$type = 'index';
 			}
 		}
-		elseif ($this->uri->segment(2) == 'category') {
+		elseif ($this->uri->segment(1) == 'courses-category') {
 			$type = 'category';
 		}
-		elseif ($this->uri->segment(2) == 'search') {
+		elseif ($this->uri->segment(1) == 'courses-search') {
 			$type = 'search';
 		}
-		elseif ($this->uri->segment(2) == 'detail') {
+		elseif ($this->uri->segment(1) == 'courses-detail') {
 			$type = 'detail';
 		}		
-		elseif ($this->uri->segment(2) == 'lesson') {
+		elseif ($this->uri->segment(1) == 'courses-lesson') {
 			$type = 'lesson';
 		}
 
@@ -84,7 +84,7 @@ class M_Site_Meta extends CI_Model
 		}		
 		elseif ($page_type == 'category') {
 
-			$category = $this->M_Site_Meta_Courses_Category->read(urldecode($this->uri->segment(3)));
+			$category = $this->M_Site_Meta_Courses_Category->read(urldecode($this->uri->segment(2)));
 
 			if (!empty($this->input->get('page'))) {
 				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
@@ -131,7 +131,7 @@ class M_Site_Meta extends CI_Model
 		}		
 		elseif ($page_type == 'detail') {
 
-			$read = $this->M_Site_Meta_Courses->read(urldecode($this->uri->segment(3)));
+			$read = $this->M_Site_Meta_Courses->read(urldecode($this->uri->segment(2)));
 			$courses = $this->_Courses->read_long_single($site,$read);
 
 			$title = $courses['title'].' - '.$site['title'];
@@ -160,7 +160,7 @@ class M_Site_Meta extends CI_Model
 		}
 		elseif ($page_type == 'lesson') {
 
-			$read = $this->M_Site_Meta_Courses_Lesson->read(urldecode($this->uri->segment(3)));
+			$read = $this->M_Site_Meta_Courses_Lesson->read(urldecode($this->uri->segment(2)));
 			$courses = $this->_Courses->read_long_single($site,$read);
 
 			$title = $this->lang->line('room').' : '. $courses['title'];

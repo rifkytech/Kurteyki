@@ -90,7 +90,7 @@ class Lms_courses extends My_App
             $create = $this->M_LMS_Courses->process_create();
 
             if ($create) {
-                redirect(base_url('app/lms_courses/update/'.$create));
+                redirect(base_url('app/lms_courses/update/'.$create.'?tab=material'));
             }   
         }
 
@@ -273,7 +273,7 @@ class Lms_courses extends My_App
             }               
         }
 
-        redirect(base_url('app/lms_courses/update/'.$this->input->post('id_courses')));
+        redirect(base_url('app/lms_courses/update/'.$this->input->post('id_courses')."?tab=material"));
     }
 
     public function process_lesson_delete($id) {

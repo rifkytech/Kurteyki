@@ -7,6 +7,7 @@
 		<div class="col-12 col-xl-8 offset-xl-2">    
 
 			<?php $this->load->view('user/payment/part/courses-info'); ?>
+			<?php $this->load->view('user/payment/part/coupon'); ?>
 
 		</div>
 	</div>

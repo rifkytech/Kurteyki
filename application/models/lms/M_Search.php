@@ -13,9 +13,9 @@ class M_Search extends CI_Model
 
 		if (empty($count_data)) return false;
 
-		$index = ($this->input->get('index')) ? $limit*($this->input->get('index')-1) : 0;
+		$index = ($this->input->get('page')) ? $limit*($this->input->get('page')-1) : 0;
 
-		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('courses/search?q='.$keyword.''),4,TRUE,TRUE);
+		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('courses-search?q='.$keyword.''),FALSE,TRUE,'page');			
 
 		$read_data = $this->query($keyword,false,$limit,$index);
 		if (empty($read_data)) redirect(base_url());

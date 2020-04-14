@@ -24,23 +24,36 @@
                                 <?php echo $courses['discount_original'] ?>
                             <?php endif ?>
                         </h4>
+                        <div id="order-discount-coupon" class="u-hidden">                            
+                            <span class="c-toolbar__state-title">
+                                <?php echo $this->lang->line('discount_coupun'); ?> 
+                            </span>
+                            <h4 class="c-toolbar__state-number u-h4">
+                                <?php if (!empty($courses['discount'])): ?>
+                                    <?php echo $courses['discount'] ?>
+                                <?php endif ?>
+                                <?php if (empty($courses['discount'])): ?>
+                                    <?php echo $courses['discount_original'] ?>
+                                <?php endif ?>
+                            </h4>
+                        </div>
                     </div>
 
                     <div class="col-12 col-lg-4 c-toolbar__state order-first order-lg-last">
                         <div class="c-toolbar__state-number u-h4">
                             <?php echo $this->lang->line('total_price'); ?> 
-                            <div class="u-block">
+                            <div id='order-price-total' class="u-block" data-price-total='<?php echo $courses['price_total'] ?>'>
                                 <?php echo $courses['price_total'] ?>
                             </div>
                         </div>
-                        <button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' value="<?php echo $midtrans['token'] ?>" id="pay-button" class="c-btn c-btn--custom u-mb-small">
-                            </i><?php echo $this->lang->line('order_now'); ?> 
-                        </button>
-                    </div>
+                        <button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' data-value="<?php echo $midtrans['token'] ?>" value="<?php echo $midtrans['token'] ?>" id="pay-button" class="c-btn c-btn--custom u-mb-small">
+                        </i><?php echo $this->lang->line('order_now'); ?> 
+                    </button>
                 </div>
-
             </div>
 
         </div>
+
     </div>
+</div>
 </footer>

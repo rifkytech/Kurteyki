@@ -1,4 +1,4 @@
-<div style="background: #bbe2ff">
+<div>
     <div class="container">                   
         <div class="row">
 
@@ -41,19 +41,19 @@
                                             </div>
                                             <div class="c-state-card__content">
                                                 <?php if (!empty($courses['discount'])): ?>
-                                                    <s class="u-text-xsmall"><?php echo $courses['price'] ?></s>
+                                                    <s class="u-text-xsmall u-block"><?php echo $courses['price'] ?></s>
                                                     <?php echo $courses['price_total'] ?>
                                                 <?php endif ?>
                                                 <?php if (empty($courses['discount'])): ?>
-                                                   <?php echo $courses['price_total'] ?>
-                                               <?php endif ?>
-                                           </div>
-                                       <?php endif ?>
-                                   <?php endif ?>
-                               </div>
-                           </div>
+                                                 <?php echo $courses['price_total'] ?>
+                                             <?php endif ?>
+                                         </div>
+                                     <?php endif ?>
+                                 <?php endif ?>
+                             </div>
+                         </div>
 
-                           <div class="col-12 col-lg-4">
+                         <div class="col-12 col-lg-4">
                             <div class="c-state-card u-m-zero u-p-small" data-mh="state-cards" style="height: 62px;">
                                 <div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
                                     <i class="fa fa-eye"></i>
@@ -105,19 +105,19 @@
                                     <a class="c-btn c-btn--success c-btn--custom" href='<?php echo base_url('payment/order/'.$courses['id']) ?>'>
                                         <i class="fa fa-shopping-cart u-mr-xsmall"></i><?php echo $this->lang->line('buy') ?>
                                     </a >
-                                <?php endif ?>
 
-                                <?php if (empty($courses['user_wishlist'])): ?>
-                                    <button data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--secondary c-btn--custom btn-process-wishlist c-tooltip c-tooltip--top" data-action="<?php echo base_url('user/wishlist/process/') ?>" aria-label="<?php echo $this->lang->line('wishlist') ?>" style='overflow: unset;'>
-                                        <i class="fa fa-heart-o"></i>
-                                    </button >
+                                    <?php if (empty($courses['user_wishlist'])): ?>
+                                        <button data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--secondary c-btn--custom btn-process-wishlist c-tooltip c-tooltip--top" data-action="<?php echo base_url('user/wishlist/process/') ?>" aria-label="<?php echo $this->lang->line('wishlist') ?>" style='overflow: unset;'>
+                                            <i class="fa fa-heart-o"></i>
+                                        </button >
+                                    <?php endif ?>
+                                    <?php if (!empty($courses['user_wishlist'])): ?>
+                                        <button data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--secondary c-btn--custom btn-process-wishlist c-tooltip c-tooltip--top" data-action="<?php echo base_url('user/wishlist/process/') ?>" aria-label="<?php echo $this->lang->line('wishlist') ?>" style='overflow: unset;'>
+                                            <i class="fa fa-heart u-text-danger"></i>
+                                        </button >
+                                    <?php endif ?>
+                                    
                                 <?php endif ?>
-                                <?php if (!empty($courses['user_wishlist'])): ?>
-                                    <button data-id='<?php echo base64_encode($courses['id']) ?>' class="c-btn c-btn--secondary c-btn--custom btn-process-wishlist c-tooltip c-tooltip--top" data-action="<?php echo base_url('user/wishlist/process/') ?>" aria-label="<?php echo $this->lang->line('wishlist') ?>" style='overflow: unset;'>
-                                        <i class="fa fa-heart u-text-danger"></i>
-                                    </button >
-                                <?php endif ?>
-
 
                             <?php endif ?>
                         <?php endif ?>
@@ -156,7 +156,7 @@
                     <?php endif ?>
 
                 </div>
-                <div class="col-lg-3 u-flex u-justify-center u-align-items-center order-first order-lg-last">
+                <div class="col-lg-3 u-hidden-down@desktop">
                     <img style="width: 100%" src="<?php echo $courses['image']['original'] ?>" alt="<?php echo $courses['title'] ?>">   
                 </div>
             </div>

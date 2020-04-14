@@ -87,6 +87,7 @@ class M_Auth extends CI_Model
                 'no_handphone' => $post_data['no_handphone'],
                 'grade' => 'User',
                 'created' => date('Y:m:d H:i:s'),
+                'status' => 'Active',                
             );
 
             if ($this->_Process_MYSQL->insert_data($this->table_user,$data)) {

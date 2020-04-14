@@ -968,11 +968,19 @@ blockquote {
   border-radius: 4px; }
 
 .c-choice--checkbox .c-choice__input:checked + .c-choice__label::before {
-  border-color: #34aa44;
-  background-color: #39b54a;
+  border-color: #1a91eb;
+  background-color: #1a98f7;
   font-family: "FontAwesome";
   font-size: 10px;
   content: "\f00c"; }
+
+.c-choice--checkbox .c-choice__input:indeterminate + .c-choice__label::before {
+  border-color: #1a91eb;
+  background-color: #1a98f7;
+  font-family: "FontAwesome";
+  font-size: 10px;
+  content: "\f068"; }
+
 
 /**
  * Radio buttons
@@ -2581,8 +2589,8 @@ textarea.c-input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
   .c-toggle__btn.is-active {
-    border-color: #249533;
-    background-color: #39B54A;
+    border-color: #1a91eb;
+    background-color: #2ea1f8;
     color: #fff; }
 
 .c-toggle__label {
@@ -5262,14 +5270,15 @@ textarea.c-input {
   overflow: hidden; }
 
 .c-stage__icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 0.625rem;
   border: #e6eaee solid 1px;
   border-radius: 100%;
   color: #7f8fa4;
+  background: #eff3f6;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 25px;
   text-align: center; }
 
 .c-stage__panel {

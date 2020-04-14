@@ -16,10 +16,12 @@ class Order extends My_User
     {
 
         $site = $this->site;
+        $widget= $this->widget; 
         $order = $this->M_Order->read($site);
 
         $data = array(
             'site' => $site,
+            'widget' => $widget,    
             'order' =>  $order,
             'midtrans' => true,
         );

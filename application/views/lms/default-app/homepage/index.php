@@ -15,28 +15,7 @@
 						<?php echo $site['breadcrumbs'] ?>
 					</h3>
 
-					<div class="u-ml-auto" style="min-width: 200px">						
-						<select id='select-category' class="select2-search" data-placeholder='<?php echo $this->lang->line('select_category') ?>'>
-							<option></option>
-							<?php
-							foreach ($widget['all_category'] as $category_name => $child_category) {
-
-								echo "<optgroup label='".$category_name."'>";
-
-								foreach ($child_category as $category) {
-									if (!empty($this->uri->segment(3)) AND $this->uri->segment(3) == $category['name']) {
-										echo "<option value='".$category['url']."' selected>".$category['name']."</option>";
-									}else {
-										echo "<option value='".$category['url']."'>".$category['name']."</option>";
-									}
-								}
-
-								echo "</optgroup>";
-							}
-
-							?>
-						</select>
-					</div>
+					<?php $this->load->view('lms/default-app/_layouts/select-filter'); ?>
 
 				</div>
 
@@ -45,8 +24,8 @@
 
 						<div class="col-sm-12 col-lg-4">
 
-							<article class="c-event u-p-zero" data-mh="landing-cards">
-								<div class="c-event__img u-m-zero">
+							<article class="c-event u-p-zero">
+								<div class="c-event__img u-m-zero" data-mh="imaged">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary" href="<?php echo $post['url'] ?>">
 										<img width="100%" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
 									</a>
@@ -63,12 +42,12 @@
 										</a>
 									</span>
 								</div>
-								<div class="c-event__meta u-p-small">
+								<div class="c-event__meta u-ph-small u-pv-xsmall" data-mh="heading">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary u-h4 u-text-bold" href="<?php echo $post['url'] ?>">
 										<?php echo $post['title'] ?>
 									</a>
 								</div>
-								<div class="c-event__meta u-p-small u-border-top">
+								<div class="c-event__meta u-ph-small u-pv-xsmall u-border-top">
 									<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero"><i class="fa fa-eye u-mr-xsmall"></i><?php echo $post['views'] ?></span>          
 									<?php if (empty($post['price'])): ?>
 										<span class="cursor-default c-btn c-event__btn c-btn--custom u-bg-secondary u-color-primary u-border-zero">

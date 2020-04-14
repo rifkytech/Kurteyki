@@ -13,7 +13,7 @@
 				</h1>
 
 				<?php if (empty($this->session->userdata('user'))): ?>
-					<a class="c-nav__link u-text-bold" href="<?php echo base_url('courses/detail/'.$this->uri->segment(3)) ?>">
+					<a class="c-nav__link u-text-bold" href="<?php echo base_url('courses-detail/'.$this->uri->segment(2)) ?>">
 						<i class="fa fa-arrow-left u-mr-xsmall"></i><?php echo $this->lang->line('back') ?>
 					</a>
 				<?php endif ?>

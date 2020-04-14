@@ -190,7 +190,7 @@ class M_Site_Meta extends CI_Model
 
 			$read_pages = $this->M_Site_Meta_Pages->read(urldecode($this->uri->segment(2)));
 
-			$title = $read_pages['title'].' - '.$site['title'];
+			$title = $read_pages['title'];
 			$description = ctsubstr($read_pages['content'],150);;
 			$image = $this->_Image->first_image($read_pages['content']);
 			$published = $read_pages['time'];			

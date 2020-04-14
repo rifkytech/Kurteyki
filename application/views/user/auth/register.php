@@ -58,7 +58,7 @@
                 </div>
 
                 <input type="hidden" name="csrf_code" value="<?php echo $this->session->userdata('csrf_code') ?>">
-                <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">
+                <button class="c-btn c-btn--info" type="submit">
                     <?php echo $this->lang->line('register') ?>
                 </button>
 

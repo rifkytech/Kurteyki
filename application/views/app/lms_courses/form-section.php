@@ -16,7 +16,7 @@
 
                     <input class="input-section-id" type="hidden" name="id">   
                     <input type="hidden" name="id_courses" value="<?php echo $data['id']; ?>">   
-                    <input type="hidden" name="redirect" value="<?php echo ($_SERVER['QUERY_STRING'] ? current_url().'?'.$_SERVER['QUERY_STRING'] : current_url()) ?>">   
+                    <input type="hidden" name="redirect" value="<?php echo current_url().'?tab=material'; ?>">   
                     <button class="c-btn c-btn--info" name="submit" type="submit">
                         <i class="fa fa-save"></i>
                     </button>

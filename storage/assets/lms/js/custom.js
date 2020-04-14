@@ -1,4 +1,19 @@
 /**
+ * to top
+ */
+ $(window).scroll(function() {
+ 	if ($(this).scrollTop() > 100) {
+ 		$('#toTop').fadeIn();
+ 	} else {
+ 		$('#toTop').fadeOut();
+ 	}
+ });
+
+ $("#toTop").click(function () {
+ 	$("html, body").animate({scrollTop: 0}, 500);
+ });
+
+/**
 * Module Categories on Select
 */
 $('#select-category,#selectmenu').on('change', function() {
@@ -172,22 +187,22 @@ $('.btn-process-wishlist').on('click', function(e) {
  */
 
  $('.btn-remove-wishlist').on('click', function(e) {
-    e.preventDefault();
-    Swal.fire({
-        title: $(this).data('title'),
-        text: $(this).data('text'),
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'        
-    }).then((result) => {
-        if (result.value) {
-            window.location.href = $(this).data('action');
-        }
-    })
-});
+ 	e.preventDefault();
+ 	Swal.fire({
+ 		title: $(this).data('title'),
+ 		text: $(this).data('text'),
+ 		icon: 'warning',
+ 		showCancelButton: true,
+ 		confirmButtonColor: '#3085d6',
+ 		cancelButtonColor: '#d33',
+ 		confirmButtonText: 'Yes',
+ 		cancelButtonText: 'No'        
+ 	}).then((result) => {
+ 		if (result.value) {
+ 			window.location.href = $(this).data('action');
+ 		}
+ 	})
+ });
 
 /**
 * Module Payment
@@ -259,7 +274,6 @@ var insert_order = function(result,action){
 $('.btn-check-payment').on('click', function(e) {
 	e.preventDefault();
 
-
 	let  button = $(this),
 	token = button.data("token"),
 	lang = button.data("lang");
@@ -306,3 +320,64 @@ var check_order = function(result){
 		}
 	}); 
 }
+
+/**
+ * module coupon
+ */
+ $("#form-coupon").submit(function(e) {
+ 	e.preventDefault();
+ 	$("button[type='submit']").prop("disabled", true);
+ 	$.ajax({
+ 		url: $(this).data('action'),
+ 		method: "POST",
+ 		data: $(this).serialize(),
+ 		dataType: 'JSON',
+ 		success: function(data) {
+
+ 			if (data.status == 'valid') {
+ 				$("input[name='code']").prop("disabled", true);
+
+ 				$("#order-discount-coupon, #remove-coupon").removeClass('u-hidden');
+ 				$("#check-coupon").addClass('u-hidden');			
+ 				$("#order-discount-coupon > h4").html(data.discount_coupon);
+ 				$("#order-price-total").html(data.price_total);
+ 				$("#pay-button").val(data.midtrans_token);
+ 				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
+ 			} 
+ 			else if (data.status == 'invalid') {
+ 				$("#order-discount-coupon").addClass('u-hidden');
+ 				$("#order-price-total").html($('#order-price-total').data('price-total')); 				
+ 				$("#pay-button").val($('#pay-button').data('value')); 				 				
+ 				$("#coupon-respon").html('<small class="c-field__message u-color-danger"><i class="fa fa-times-circle"></i> ' + data.message + '</small>');
+ 			}else {
+ 				Swal.fire({
+ 					title: 'Error Processing !',
+ 					icon: 'error',
+ 					confirmButtonColor: '#3085d6',
+ 				})
+ 			}
+
+ 			$("button[type='submit']").prop("disabled", false);
+ 		},
+ 		error: function(xhr, ajaxOptions, thrownError) {
+ 			Swal.fire({
+ 				title: 'Error Processing !',
+ 				icon: 'error',
+ 				confirmButtonColor: '#3085d6',
+ 			})
+ 		}
+ 	});
+ })
+
+ $('#remove-coupon').on('click', function(e) {
+ 	e.preventDefault();
+
+ 	$("input[name='code']").val('').prop("disabled", false);;
+ 	$("#order-discount-coupon").addClass('u-hidden');
+ 	$("#order-price-total").html($('#order-price-total').data('price-total')); 				
+ 	$("#pay-button").val($('#pay-button').data('value')); 				 				
+ 	$("#coupon-respon").html('');
+
+ 	$("#check-coupon").removeClass('u-hidden');
+ 	$("#remove-coupon").addClass('u-hidden');
+ });	

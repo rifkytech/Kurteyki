@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2020 at 05:52 AM
+-- Generation Time: Apr 14, 2020 at 12:23 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_blog_post` (
   `id` int(255) NOT NULL,
+  `id_user` int(255) NOT NULL,
   `title` mediumtext NOT NULL,
   `permalink` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -47,8 +48,8 @@ CREATE TABLE `tb_blog_post` (
 -- Dumping data for table `tb_blog_post`
 --
 
-INSERT INTO `tb_blog_post` (`id`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
-(1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/logo_20200324103241.png', '2020-03-21 18:44:00', '2020-04-11 18:43:38', '0', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 2, 'Published');
+INSERT INTO `tb_blog_post` (`id`, `id_user`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
+(1, 0, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-04-14 08:40:47', '0', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 2, 'Published');
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ INSERT INTO `tb_blog_template_widget` (`id`, `id_template`, `name`, `var`, `type
 (15, 2, 'Ads Content Bottom', 'ads_content_bottom', 'ads', '{\"status\":\"nonactive\",\"content\":\"\"}'),
 (16, 2, 'Logo Header', 'logo_header', 'image', '{\"status\":\"active\",\"content\":\"image16_20200408092129.png\"}'),
 (17, 2, 'Ads Post Content', 'ads_post_content', 'ads-content', '{\"status\":\"nonactive\",\"content\":\"<a href=\\\"https:\\/\\/placeholder.com\\\"><img src=\\\"https:\\/\\/via.placeholder.com\\/768x120\\\"><\\/a>\",\"loop_ads\":\"1\"}'),
-(18, 2, 'Footer Pages', 'footer_pages', 'pages', '{\"status\":\"active\",\"title\":\"Pages\",\"id\":[\"1\"]}'),
+(18, 2, 'Footer Pages', 'footer_pages', 'pages', '{\"status\":\"nonactive\",\"title\":\"Pages\",\"id\":null}'),
 (19, 2, 'Navigation Header', 'navigation_header', 'pages', '{\"status\":\"nonactive\",\"title\":\"Menu\",\"id\":[\"1\"]}');
 
 -- --------------------------------------------------------
@@ -212,11 +213,34 @@ INSERT INTO `tb_lms_category` (`id`, `name`, `slug`, `parent`, `time`, `updated`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_lms_coupon`
+--
+
+CREATE TABLE `tb_lms_coupon` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `expired` datetime NOT NULL,
+  `type` enum('Price','Percent') NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `for` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_lms_coupon`
+--
+
+INSERT INTO `tb_lms_coupon` (`id`, `code`, `expired`, `type`, `data`, `for`) VALUES
+(1, '123', '2020-04-14 00:00:00', 'Percent', '100', 'all-product');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_lms_courses`
 --
 
 CREATE TABLE `tb_lms_courses` (
   `id` int(255) NOT NULL,
+  `id_user` int(255) NOT NULL,
   `title` mediumtext NOT NULL,
   `permalink` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -236,10 +260,9 @@ CREATE TABLE `tb_lms_courses` (
 -- Dumping data for table `tb_lms_courses`
 --
 
-INSERT INTO `tb_lms_courses` (`id`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 'Cara menjadi manusia berbakat dari Adam Khoo', 'cara-menjadi-manusia-berbakat-dari-adam-khoo', 'images/logo_20200324103241.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-11 23:50:10', 0, 0, 9, 'Published'),
-(2, 'Mengatur Prioritas Waktu', 'mengatur-prioritas-waktu', 'images/logo_20200324103241.png', '', '', '1', '3', '2020-04-11 22:19:25', '2020-04-11 22:22:42', 0, 0, 2, 'Draft'),
-(3, '123', '123', 'images/logo_20200324103241.png', '', '', '1', '2', '2020-04-11 22:23:28', '0000-00-00 00:00:00', 0, 0, 0, 'Draft');
+INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
+(1, 0, 'Ilmu dari Adam Khoo, I am gifted so are you', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-14 16:42:21', 200000, 100000, 11, 'Published'),
+(2, 0, 'Ilmu dari BTD, Building the dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-04-11 22:19:25', '2020-04-14 13:44:41', 0, 0, 2, 'Published');
 
 -- --------------------------------------------------------
 
@@ -262,10 +285,14 @@ CREATE TABLE `tb_lms_courses_lesson` (
 --
 
 INSERT INTO `tb_lms_courses_lesson` (`id`, `id_courses`, `id_section`, `title`, `type`, `content`, `order`) VALUES
-(1, 1, 1, 'Kenapa harus memiliki tujuan', 'Text', '', 0),
+(1, 1, 1, 'Kenapa harus memiliki tujuan', 'Text', '', 1),
 (2, 1, 2, 'Meyakinkan diri', 'Text', '', 2),
 (3, 1, 2, 'Kenapa harus yakin ?', 'Text', '', 1),
-(4, 1, 1, 'Memiliki tujuan besar', 'Text', '', 0);
+(4, 1, 1, 'Memiliki tujuan besar', 'Text', '', 2),
+(5, 1, 5, 'emosi dapat mempengaruhi tindakan', 'Text', '', 0),
+(6, 1, 6, 'Penundaan adalah rintangan utama kesuksesan', 'Text', '', 0),
+(7, 1, 3, 'Waktu yang diberikan sama apa yang membedakannya ?', 'Text', '', 0),
+(8, 1, 4, 'Tujuan Hidupmu ? ', 'Text', '', 0);
 
 -- --------------------------------------------------------
 
@@ -340,13 +367,6 @@ CREATE TABLE `tb_lms_user_courses` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tb_lms_user_courses`
---
-
-INSERT INTO `tb_lms_user_courses` (`id`, `id_user`, `id_courses`, `time`) VALUES
-(1, 18, 1, '2020-04-11 22:02:10');
-
 -- --------------------------------------------------------
 
 --
@@ -377,6 +397,14 @@ CREATE TABLE `tb_lms_user_payment` (
   `updated` datetime NOT NULL,
   `status` enum('Purchased','Pending','Failed') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_lms_user_payment`
+--
+
+INSERT INTO `tb_lms_user_payment` (`id`, `id_user`, `id_courses`, `type`, `amount`, `token`, `time`, `updated`, `status`) VALUES
+('2C1T200414164949', 2, 1, 'bank_transfer', '100000', '7baca755-d440-4036-8904-5d0337d8c7cb', '2020-04-14 16:50:04', '0000-00-00 00:00:00', 'Pending'),
+('2C1T200414165027', 2, 1, 'bank_transfer', '10000', 'ced9f609-c5ac-45fa-a4ed-91563b8d1b9d', '2020-04-14 16:50:41', '0000-00-00 00:00:00', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -430,11 +458,11 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('icon', 'icon_20200408075727.png'),
 ('image', 'logo_20200408075726.png'),
 ('language', 'indonesia'),
-('lms_limit_post', '5'),
+('lms_limit_post', '9'),
 ('midtrans', '{\"status_production\":\"No\",\"client_key\":\"SB-Mid-client-kda5uXSFYxy0K5EJ\",\"server_key\":\"SB-Mid-server-pE6FhBweNWjzV3ZJkDueTaYp\"}'),
 ('no_image', 'no_image_20200408075727.jpg'),
 ('robots_txt', ''),
-('slogan', 'Belajar pengembangan diri'),
+('slogan', 'Belajar pengembangan diri.'),
 ('time_zone', 'Asia/Jakarta'),
 ('title', 'Kurteyki'),
 ('user_limit_data', '5');
@@ -481,7 +509,11 @@ CREATE TABLE `tb_site_pages` (
 --
 
 INSERT INTO `tb_site_pages` (`id`, `title`, `permalink`, `time`, `updated`, `content`, `status`) VALUES
-(1, 'Privacy', 'privacy', '2020-03-21 18:36:40', '2020-04-09 06:06:48', '&lt;p&gt;If you require any more information or have any questions about our privacy policy, please feel free to contact us by email at http://www.kurteyki.com/p/contact.html&lt;/p&gt;\r\n\r\n&lt;p&gt;At www.kurteyki.com we consider the privacy of our visitors to be extremely important. This privacy policy document describes in detail the types of personal information is collected and recorded by www.kurteyki.com and how we use it.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Log Files&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Like many other Web sites, www.kurteyki.com makes use of log files. These files merely logs visitors to the site - usually a standard procedure for hosting companies and a part of hosting services&amp;#39;s analytics. The information inside the log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks. This information is used to analyze trends, administer the site, track user&amp;#39;s movement around the site, and gather demographic information. IP addresses, and other such information are not linked to any information that is personally identifiable.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Cookies and Web Beacons&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;www.kurteyki.com uses cookies to store information about visitors&amp;#39; preferences, to record user-specific information on which pages the site visitor accesses or visits, and to personalize or customize our web page content based upon visitors&amp;#39; browser type or other information that the visitor sends via their browser.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Our Advertising Partners&lt;/b&gt; Some of our advertising partners may use cookies and web beacons on our site. Our advertising partners include ...&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Google&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;While each of these advertising partners has their own Privacy Policy for their site. You may consult this listing to find the privacy policy for each of the advertising partners of www.kurteyki.com.&lt;/em&gt; These third-party ad servers or ad networks use technology in their respective advertisements and links that appear on www.kurteyki.com and which are sent directly to your browser. They automatically receive your IP address when this occurs. Other technologies (such as cookies, JavaScript, or Web Beacons) may also be used by our site&amp;#39;s third-party ad networks to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on the site. www.kurteyki.com has no access to or control over these cookies that are used by third-party advertisers.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Third Party Privacy Policies&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices as well as for instructions about how to opt-out of certain practices. www.kurteyki.com&amp;#39;s privacy policy does not apply to, and we cannot control the activities of, such other advertisers or web sites. If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found at the browsers&amp;#39; respective websites.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Children&amp;#39;s Information&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;We believe it is important to provide added protection for children online. We encourage parents and guardians to spend time online with their children to observe, participate in and/or monitor and guide their online activity. www.kurteyki.com does not knowingly collect any personally identifiable information from children under the age of 13. If a parent or guardian believes that www.kurteyki.com has in its database the personally-identifiable information of a child under the age of 13, please contact us immediately (using the contact in the first paragraph) and we will use our best efforts to promptly remove such information from our records.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Online Privacy Policy Only&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This privacy policy applies only to our online activities and is valid for visitors to our website and regarding information shared and/or collected there. This policy does not apply to any information collected offline or via channels other than this website.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Consent&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;By using our website, you hereby consent to our privacy policy and agree to its terms.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Update&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;This Privacy Policy was last updated on: Sunday, December 3rd, 2017.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;Should we update, amend or make any changes to our privacy policy, those changes will be posted here.&lt;/em&gt;&lt;/p&gt;\r\n', 'Published');
+(1, 'Kebijakan Privasi', 'privacy-policy', '2020-03-21 18:36:40', '2020-04-14 08:31:36', '&lt;p&gt;Di Kurteyki, dapat diakses dari kurteyki.com, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh Kurteyki dan bagaimana kami menggunakannya.&lt;/p&gt;\r\n\r\n&lt;p&gt;Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;File Log&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kurteyki mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), tipe browser, Penyedia Layanan Internet (ISP), cap tanggal dan waktu, halaman rujukan / keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan dari informasi ini adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Cookie dan Beacon Web&lt;/h2&gt;\r\n\r\n&lt;p&gt;Seperti situs web lainnya, Kurteyki menggunakan &amp;#39;cookies&amp;#39;. Cookie ini digunakan untuk menyimpan informasi termasuk preferensi pengunjung, dan halaman-halaman di situs web yang diakses atau dikunjungi pengunjung. Informasi ini digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan / atau informasi lainnya.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Google DoubleClick Cookie DART&lt;/h2&gt;\r\n\r\n&lt;p&gt;Google adalah salah satu vendor pihak ketiga di situs kami. Itu juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke www.website.com dan situs lain di internet. Namun, pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi iklan Google dan jaringan konten Kebijakan Privasi di URL berikut - https://policies.google.com/technologies/ads&lt;/p&gt;\r\n\r\n&lt;h2&gt;Mitra Iklan Kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Beberapa pengiklan di situs kami mungkin menggunakan cookie dan suar web. Mitra iklan kami tercantum di bawah ini. Setiap mitra periklanan kami memiliki Kebijakan Privasi sendiri untuk kebijakan mereka tentang data pengguna. Untuk akses yang lebih mudah, kami hyperlink ke Kebijakan Privasi mereka di bawah ini.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Google\r\n	&lt;ul&gt;\r\n		&lt;li&gt;https://policies.google.com/technologies/ads&lt;/li&gt;\r\n	&lt;/ul&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h2&gt;Kebijakan Privasi&lt;/h2&gt;\r\n\r\n&lt;p&gt;Anda dapat berkonsultasi daftar ini untuk menemukan Kebijakan Privasi untuk masing-masing mitra periklanan Kurteyki. Kebijakan Privasi kami dibuat dengan bantuan Generator Kebijakan Privasi Gratis dan Generator Kebijakan Privasi Online.&lt;/p&gt;\r\n\r\n&lt;p&gt;Server iklan pihak ketiga atau jaringan iklan menggunakan teknologi seperti cookie, JavaScript, atau Web Beacon yang digunakan dalam iklan masing-masing dan tautan yang muncul di Kurteyki, yang dikirim langsung ke browser pengguna. Mereka secara otomatis menerima alamat IP Anda ketika ini terjadi. Teknologi ini digunakan untuk mengukur efektivitas kampanye iklan mereka dan / atau untuk mempersonalisasi konten iklan yang Anda lihat di situs web yang Anda kunjungi.&lt;/p&gt;\r\n\r\n&lt;p&gt;Perhatikan bahwa Kurteyki tidak memiliki akses ke atau kontrol terhadap cookie ini yang digunakan oleh pengiklan pihak ketiga.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Kebijakan Privasi Pihak Ketiga&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kebijakan Privasi Kurteyki tidak berlaku untuk pengiklan atau situs web lain. Karenanya, kami menyarankan Anda untuk berkonsultasi dengan masing-masing Kebijakan Privasi dari server iklan pihak ketiga ini untuk informasi yang lebih terperinci. Ini mungkin termasuk praktik dan instruksi mereka tentang cara menyisih dari opsi tertentu. Anda dapat menemukan daftar lengkap Kebijakan Privasi ini dan tautannya di sini: Tautan Kebijakan Privasi.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda dapat memilih untuk menonaktifkan cookie melalui opsi peramban individual. Untuk mengetahui informasi lebih rinci tentang manajemen cookie dengan browser web tertentu, dapat ditemukan di situs web masing-masing browser. Apa Itu Cookie?&lt;/p&gt;\r\n\r\n&lt;h2&gt;Informasi Anak&lt;/h2&gt;\r\n\r\n&lt;p&gt;Bagian lain dari prioritas kami adalah menambahkan perlindungan untuk anak-anak saat menggunakan internet. Kami mendorong orang tua dan wali untuk mengamati, berpartisipasi, dan / atau memantau dan membimbing aktivitas online mereka.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kurteyki tidak secara sadar mengumpulkan Informasi Identifikasi Pribadi apa pun dari anak-anak di bawah usia 13. Jika Anda berpikir bahwa anak Anda memberikan informasi semacam ini di situs web kami, kami sangat menganjurkan Anda untuk menghubungi kami segera dan kami akan melakukan upaya terbaik kami untuk segera menghapus informasi tersebut dari catatan kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Hanya Kebijakan Privasi Online&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kebijakan Privasi ini hanya berlaku untuk aktivitas online kami dan berlaku untuk pengunjung situs web kami sehubungan dengan informasi yang mereka bagikan dan / atau kumpulkan di Kurteyki. Kebijakan ini tidak berlaku untuk informasi apa pun yang dikumpulkan secara offline atau melalui saluran selain dari situs web ini.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Persetujuan&lt;/h2&gt;\r\n\r\n&lt;p&gt;Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui Syarat dan Ketentuannya.&lt;/p&gt;\r\n', 'Published'),
+(2, 'Bantuan', 'help', '2020-04-14 07:52:45', '2020-04-14 08:03:28', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', 'Published'),
+(3, 'Kontak', 'contact', '2020-04-14 07:53:12', '2020-04-14 08:03:22', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', 'Published'),
+(4, 'Tentang Kurteyki', 'about', '2020-04-14 07:53:19', '2020-04-14 08:01:24', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', 'Published'),
+(5, 'Syarat dan Ketentuan', 'term-and-condition', '2020-04-14 07:54:26', '2020-04-14 08:39:27', '&lt;p&gt;Selamat datang di Kurteyki!&lt;/p&gt;\r\n\r\n&lt;p&gt;Syarat dan ketentuan ini menguraikan aturan dan peraturan untuk penggunaan Situs Web Kurteyki, yang terletak di kurteyki.com.&lt;/p&gt;\r\n\r\n&lt;p&gt;Dengan mengakses situs web ini, kami menganggap Anda menerima syarat dan ketentuan ini. Jangan terus menggunakan Kurteyki jika Anda tidak setuju untuk mengambil semua syarat dan ketentuan yang tercantum di halaman ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Terminologi berikut ini berlaku untuk Syarat dan Ketentuan ini, Pernyataan Privasi dan Pemberitahuan Sangkalan dan semua Perjanjian: &amp;quot;Klien&amp;quot;, &amp;quot;Anda&amp;quot; dan &amp;quot;Anda&amp;quot; mengacu pada Anda, orang yang masuk ke situs web ini dan mematuhi persyaratan dan ketentuan Perusahaan. &amp;quot;Perusahaan&amp;quot;, &amp;quot;Diri Kami&amp;quot;, &amp;quot;Kami&amp;quot;, &amp;quot;Kami&amp;quot; dan &amp;quot;Kami&amp;quot;, mengacu pada Perusahaan kami. &amp;quot;Pihak&amp;quot;, &amp;quot;Pihak&amp;quot;, atau &amp;quot;Kami&amp;quot;, mengacu pada Klien dan diri kami sendiri. Semua istilah mengacu pada penawaran, penerimaan, dan pertimbangan pembayaran yang diperlukan untuk melakukan proses bantuan kami kepada Klien dengan cara yang paling tepat untuk tujuan yang jelas dalam memenuhi kebutuhan Klien sehubungan dengan penyediaan layanan yang dinyatakan Perusahaan, sesuai dengan dan tunduk pada, hukum Belanda yang berlaku. Setiap penggunaan terminologi di atas atau kata-kata lain dalam bentuk tunggal, jamak, huruf besar dan / atau dia, dianggap sebagai dapat dipertukarkan dan karena itu merujuk pada yang sama.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Cookies&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami menggunakan penggunaan cookie. Dengan mengakses Kurteyki, Anda setuju untuk menggunakan cookie sesuai dengan Kebijakan Privasi Kurteyki.&lt;/p&gt;\r\n\r\n&lt;p&gt;Sebagian besar situs web interaktif menggunakan cookie untuk memungkinkan kami mengambil detail pengguna untuk setiap kunjungan. Cookie digunakan oleh situs web kami untuk mengaktifkan fungsionalitas area tertentu agar lebih mudah bagi orang yang mengunjungi situs web kami. Beberapa mitra afiliasi / iklan kami juga dapat menggunakan cookie.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Lisensi&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kecuali dinyatakan sebaliknya, Kurteyki dan / atau pemberi lisensinya memiliki hak kekayaan intelektual untuk semua materi tentang Kurteyki. Semua hak kekayaan intelektual dilindungi. Anda dapat mengakses ini dari Kurteyki untuk penggunaan pribadi Anda dengan batasan yang diatur dalam syarat dan ketentuan ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda tidak harus:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Publikasikan ulang materi dari Kurteyki&lt;/li&gt;\r\n	&lt;li&gt;Menjual, menyewakan atau mensublisensikan materi dari Kurteyki&lt;/li&gt;\r\n	&lt;li&gt;Mereproduksi, menggandakan atau menyalin materi dari Kurteyki&lt;/li&gt;\r\n	&lt;li&gt;Mendistribusikan kembali konten dari Kurteyki&lt;/li&gt;\r\n	&lt;li&gt;Perjanjian ini akan dimulai pada tanggal perjanjian ini.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Bagian dari situs web ini menawarkan kesempatan bagi pengguna untuk memposting dan bertukar pendapat dan informasi di area situs web tertentu. Kurteyki tidak memfilter, mengedit, menerbitkan atau meninjau Komentar sebelum kehadiran mereka di situs web. Komentar tidak mencerminkan pandangan dan pendapat Kurteyki, agen dan / atau afiliasinya. Komentar mencerminkan pandangan dan pendapat orang yang memposting pandangan dan pendapat mereka. Sejauh diizinkan oleh undang-undang yang berlaku, Kurteyki tidak akan bertanggung jawab atas Komentar atau untuk setiap kewajiban, kerusakan atau biaya yang disebabkan dan / atau diderita sebagai akibat dari penggunaan dan / atau pengeposan dan / atau penampilan Komentar mengenai hal ini. situs web.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kurteyki berhak untuk memantau semua Komentar dan menghapus Komentar yang dapat dianggap tidak pantas, menyinggung, atau menyebabkan pelanggaran terhadap Syarat dan Ketentuan ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda menjamin dan menyatakan bahwa:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Anda berhak memposting Komentar di situs web kami dan memiliki semua lisensi dan persetujuan yang diperlukan untuk melakukannya;&lt;/li&gt;\r\n	&lt;li&gt;Komentar tidak melanggar hak kekayaan intelektual apa pun, termasuk tanpa batasan hak cipta, paten, atau merek dagang pihak ketiga mana pun;&lt;/li&gt;\r\n	&lt;li&gt;Komentar tidak mengandung materi yang memfitnah, memfitnah, menyinggung, tidak senonoh, atau melanggar hukum yang merupakan pelanggaran privasi&lt;/li&gt;\r\n	&lt;li&gt;Komentar tidak akan digunakan untuk meminta atau mempromosikan bisnis atau kebiasaan atau menyajikan kegiatan komersial atau kegiatan yang melanggar hukum.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Anda dengan ini memberi Kurteyki lisensi non-eksklusif untuk menggunakan, mereproduksi, mengedit, dan memberi otorisasi kepada orang lain untuk menggunakan, mereproduksi, dan mengedit komentar Anda dalam segala bentuk, format, atau media.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Hyperlink ke Konten kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Organisasi berikut dapat menautkan ke situs web kami tanpa persetujuan tertulis sebelumnya:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Agensi pemerintahan;&lt;/li&gt;\r\n	&lt;li&gt;Mesin pencari;&lt;/li&gt;\r\n	&lt;li&gt;Organisasi berita;&lt;/li&gt;\r\n	&lt;li&gt;Distributor direktori online dapat menautkan ke situs web kami dengan cara yang sama seperti mereka hyperlink ke situs web bisnis terdaftar lainnya; dan&lt;/li&gt;\r\n	&lt;li&gt;Bisnis Terakreditasi di seluruh sistem kecuali meminta organisasi nirlaba, pusat perbelanjaan amal, dan kelompok penggalangan dana amal yang mungkin tidak hyperlink ke situs Web kami.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Organisasi-organisasi ini dapat menautkan ke beranda kami, ke publikasi atau ke informasi situs web lainnya selama tautan: (a) tidak menipu dengan cara apa pun; (B) tidak secara tidak langsung menyiratkan sponsor, dukungan atau persetujuan dari pihak yang menghubungkan dan produk dan / atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menghubungkan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kami dapat mempertimbangkan dan menyetujui permintaan tautan lain dari jenis organisasi berikut:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;sumber informasi konsumen dan / atau bisnis yang umum dikenal;&lt;/li&gt;\r\n	&lt;li&gt;situs komunitas dot.com;&lt;/li&gt;\r\n	&lt;li&gt;asosiasi atau kelompok lain yang mewakili badan amal;&lt;/li&gt;\r\n	&lt;li&gt;distributor direktori online;&lt;/li&gt;\r\n	&lt;li&gt;portal internet;&lt;/li&gt;\r\n	&lt;li&gt;perusahaan akuntansi, hukum dan konsultasi; dan&lt;/li&gt;\r\n	&lt;li&gt;lembaga pendidikan dan asosiasi perdagangan.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Kami akan menyetujui permintaan tautan dari organisasi-organisasi ini jika kami memutuskan bahwa: (a) tautan tersebut tidak akan membuat kami terlihat tidak menguntungkan bagi diri kami sendiri atau untuk bisnis terakreditasi kami; (B) organisasi tidak memiliki catatan negatif dengan kami; (c) manfaat bagi kami dari visibilitas hyperlink mengkompensasi ketiadaan Kurteyki; dan (d) tautannya ada dalam konteks informasi sumber daya umum.&lt;/p&gt;\r\n\r\n&lt;p&gt;Organisasi-organisasi ini dapat menautkan ke beranda kami selama tautan tersebut: (a) sama sekali tidak menipu; (B) tidak secara tidak langsung menyiratkan sponsor, dukungan atau persetujuan dari pihak yang menghubungkan dan produk atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menghubungkan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Jika Anda salah satu organisasi yang tercantum dalam paragraf 2 di atas dan tertarik untuk menautkan ke situs web kami, Anda harus memberi tahu kami dengan mengirim email ke Kurteyki. Harap sertakan nama Anda, nama organisasi Anda, informasi kontak serta URL situs Anda, daftar URL apa pun yang ingin Anda tautkan ke Situs web kami, dan daftar URL di situs kami yang ingin Anda kunjungi tautan. Tunggu 2-3 minggu untuk tanggapan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Organisasi yang disetujui dapat hyperlink ke Situs web kami sebagai berikut:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Dengan menggunakan nama perusahaan kami; atau&lt;/li&gt;\r\n	&lt;li&gt;Dengan menggunakan pencari sumber daya seragam yang ditautkan ke; atau&lt;/li&gt;\r\n	&lt;li&gt;Dengan menggunakan uraian lain apa pun dari Situs Web kami yang ditautkan dengan yang masuk akal dalam konteks dan format konten di situs pihak yang menautkan.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Penggunaan logo Kurteyki atau karya seni lainnya tidak akan diizinkan untuk menghubungkan tidak adanya perjanjian lisensi merek dagang.&lt;/p&gt;\r\n\r\n&lt;h2&gt;iFrames&lt;/h2&gt;\r\n\r\n&lt;p&gt;Tanpa persetujuan sebelumnya dan izin tertulis, Anda tidak boleh membuat bingkai di sekitar Halaman Web kami yang mengubah cara tampilan visual atau tampilan Situs Web kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Pertanggungjawaban Konten&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami tidak akan bertanggung jawab atas konten yang muncul di Situs Web Anda. Anda setuju untuk melindungi dan membela kami terhadap semua klaim yang muncul di Situs Web Anda. Tidak ada tautan yang muncul di Situs web mana pun yang dapat ditafsirkan sebagai fitnah, cabul atau kriminal, atau yang melanggar, jika tidak melanggar, atau menganjurkan pelanggaran atau pelanggaran lain terhadap, hak pihak ketiga.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Reservasi Hak&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami berhak meminta Anda menghapus semua tautan atau tautan tertentu apa pun ke Situs Web kami. Anda menyetujui untuk segera menghapus semua tautan ke Situs web kami berdasarkan permintaan. Kami juga berhak mengubah syarat dan ketentuan ini dan ini menautkan kebijakan kapan saja. Dengan terus menautkan ke Situs web kami, Anda setuju untuk terikat dan mengikuti syarat dan ketentuan tautan ini.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Penghapusan tautan dari situs web kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Jika Anda menemukan tautan apa pun di Situs Web kami yang menyinggung karena alasan apa pun, Anda bebas untuk menghubungi dan memberi tahu kami kapan saja. Kami akan mempertimbangkan permintaan untuk menghapus tautan tetapi kami tidak berkewajiban untuk menanggapi Anda secara langsung.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kami tidak memastikan bahwa informasi di situs web ini benar, kami tidak menjamin kelengkapan atau keakuratannya; kami juga tidak berjanji untuk memastikan bahwa situs web tetap tersedia atau bahwa materi di situs web tetap terbaru.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Penolakan&lt;/h2&gt;\r\n\r\n&lt;p&gt;Sejauh diizinkan oleh hukum yang berlaku, kami mengecualikan semua representasi, jaminan, dan ketentuan yang berkaitan dengan situs web kami dan penggunaan situs web ini. Tidak ada dalam penafian ini yang akan:&lt;/p&gt;\r\n\r\n&lt;p&gt;membatasi atau mengecualikan tanggung jawab kami atau Anda atas kematian atau cedera pribadi;&lt;br /&gt;\r\nmembatasi atau mengecualikan tanggung jawab kami atau Anda untuk penipuan atau penggambaran yang salah;&lt;br /&gt;\r\nbatasi salah satu dari kewajiban kami atau Anda dengan cara apa pun yang tidak diizinkan berdasarkan hukum yang berlaku; atau&lt;br /&gt;\r\nmengecualikan salah satu dari kewajiban kami atau Anda yang mungkin tidak dikecualikan berdasarkan hukum yang berlaku.&lt;br /&gt;\r\nBatasan dan larangan tanggung jawab yang diatur dalam Bagian ini dan di tempat lain dalam penafian ini: (a) tunduk pada paragraf sebelumnya; dan (b) mengatur semua kewajiban yang timbul berdasarkan penafian, termasuk kewajiban yang timbul dalam kontrak, dalam gugatan hukum dan untuk pelanggaran kewajiban hukum.&lt;/p&gt;\r\n\r\n&lt;p&gt;Selama situs web dan informasi serta layanan di situs web disediakan secara gratis, kami tidak akan bertanggung jawab atas kehilangan atau kerusakan apa pun.&lt;/p&gt;\r\n', 'Published');
 
 -- --------------------------------------------------------
 
@@ -507,61 +539,13 @@ CREATE TABLE `tb_site_visitor` (
 --
 
 INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_name`, `country_code`, `hits`, `url`, `referrer`) VALUES
-(1, '::1', '2020-04-11 16:22:52', 'Chrome', 'Windows 10', 'Other', 'Other', 475, 'http://localhost/kurteyki/', ''),
-(2, '::1', '2020-04-11 16:22:54', 'Chrome', 'Windows 10', 'Other', 'Other', 84, 'http://localhost/kurteyki/blog', ''),
-(3, '::1', '2020-04-11 16:22:56', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/search', ''),
-(4, '::1', '2020-04-11 16:24:39', 'Chrome', 'Windows 10', 'Other', 'Other', 39, 'http://localhost/kurteyki/p/privacy', ''),
-(5, '::1', '2020-04-11 16:42:08', 'Chrome', 'Windows 10', 'Other', 'Other', 51, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(6, '::1', '2020-04-11 16:47:38', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog/category/hello-world', ''),
-(7, '::1', '2020-04-11 16:47:41', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog/tags/hello-world', ''),
-(8, '::1', '2020-04-11 16:52:17', 'Chrome', 'Windows 10', 'Other', 'Other', 44, 'http://localhost/kurteyki/courses/category/skill-hidup', ''),
-(9, '::1', '2020-04-11 16:56:23', 'Chrome', 'Windows 10', 'Other', 'Other', 90, 'http://localhost/kurteyki/courses/detail/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi', ''),
-(10, '::1', '2020-04-11 16:58:56', 'Chrome', 'Windows 10', 'Other', 'Other', 35, 'http://localhost/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/1', ''),
-(11, '::1', '2020-04-11 16:58:58', 'Chrome', 'Windows 10', 'Other', 'Other', 18, 'http://localhost/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/2', ''),
-(12, '::1', '2020-04-11 16:58:59', 'Chrome', 'Windows 10', 'Other', 'Other', 18, 'http://localhost/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/3', ''),
-(13, '::1', '2020-04-11 16:59:00', 'Chrome', 'Windows 10', 'Other', 'Other', 20, 'http://localhost/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/4', ''),
-(14, '::1', '2020-04-11 16:59:01', 'Chrome', 'Windows 10', 'Other', 'Other', 15, 'http://localhost/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/5', ''),
-(15, '192.168.2.1', '2020-04-11 16:59:32', 'Chrome', 'Android', 'Other', 'Other', 1, 'http://192.168.2.10/kurteyki/', ''),
-(16, '192.168.2.1', '2020-04-11 16:59:36', 'Chrome', 'Android', 'Other', 'Other', 5, 'http://192.168.2.10/kurteyki/courses/detail/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi', ''),
-(17, '192.168.2.1', '2020-04-11 17:00:34', 'Chrome', 'Android', 'Other', 'Other', 6, 'http://192.168.2.10/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/1', ''),
-(18, '192.168.2.1', '2020-04-11 17:01:59', 'Chrome', 'Android', 'Other', 'Other', 2, 'http://192.168.2.10/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/2', ''),
-(19, '192.168.2.1', '2020-04-11 17:02:02', 'Chrome', 'Android', 'Other', 'Other', 2, 'http://192.168.2.10/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/3', ''),
-(20, '192.168.2.1', '2020-04-11 17:02:09', 'Chrome', 'Android', 'Other', 'Other', 5, 'http://192.168.2.10/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/4', ''),
-(21, '192.168.2.1', '2020-04-11 17:02:46', 'Chrome', 'Android', 'Other', 'Other', 2, 'http://192.168.2.10/kurteyki/courses/lesson/surah-ar-rahmansurah-yasinsurah-al-waqiahsurah-al-mulk-surah-al-kahfi/1/5', ''),
-(22, '::1', '2020-04-11 19:38:19', 'Chrome', 'Windows 10', 'Other', 'Other', 63, 'http://localhost/kurteyki/courses/category/karakter', ''),
-(23, '::1', '2020-04-11 19:38:31', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses/detail/memulai-dengan-tujuan-dan-keyakinan', ''),
-(24, '::1', '2020-04-11 19:42:39', 'Chrome', 'Windows 10', 'Other', 'Other', 235, 'http://localhost/kurteyki/courses/detail/memulai-dengan-tujuan-dan-yakin', ''),
-(25, '::1', '2020-04-11 19:42:41', 'Chrome', 'Windows 10', 'Other', 'Other', 94, 'http://localhost/kurteyki/courses/lesson/memulai-dengan-tujuan-dan-yakin/1/1', ''),
-(26, '::1', '2020-04-11 19:42:43', 'Chrome', 'Windows 10', 'Other', 'Other', 69, 'http://localhost/kurteyki/courses/lesson/memulai-dengan-tujuan-dan-yakin/2/2', ''),
-(27, '::1', '2020-04-11 19:42:44', 'Chrome', 'Windows 10', 'Other', 'Other', 64, 'http://localhost/kurteyki/courses/lesson/memulai-dengan-tujuan-dan-yakin/2/3', ''),
-(28, '::1', '2020-04-11 19:45:01', 'Chrome', 'Windows 10', 'Other', 'Other', 63, 'http://localhost/kurteyki/courses/lesson/memulai-dengan-tujuan-dan-yakin/1/4', ''),
-(29, '::1', '2020-04-11 21:26:37', 'Chrome', 'Windows 10', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses/search', ''),
-(30, '::1', '2020-04-11 22:19:40', 'Chrome', 'Windows 10', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses/detail/mengatur-prioriitas-waktu', ''),
-(31, '::1', '2020-04-11 22:22:46', 'Chrome', 'Windows 10', 'Other', 'Other', 12, 'http://localhost/kurteyki/courses/detail/mengatur-prioritas-waktu', ''),
-(32, '::1', '2020-04-11 22:25:01', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses/lesson/mengatur-prioritas-waktu/1/1', ''),
-(33, '::1', '2020-04-11 22:31:41', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses/detail/rangkuman-buku-adam-khoo-im-gifted-so-are-you', ''),
-(34, '::1', '2020-04-11 22:32:51', 'Chrome', 'Windows 10', 'Other', 'Other', 19, 'http://localhost/kurteyki/courses/detail/rangkuman-buku-i-am-gifted-so-are-you', ''),
-(35, '::1', '2020-04-11 22:32:53', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses/lesson/rangkuman-buku-i-am-gifted-so-are-you/1/1', ''),
-(36, '::1', '2020-04-11 22:32:54', 'Chrome', 'Windows 10', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses/lesson/rangkuman-buku-i-am-gifted-so-are-you/1/4', ''),
-(37, '::1', '2020-04-11 22:32:56', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses/lesson/rangkuman-buku-i-am-gifted-so-are-you/2/3', ''),
-(38, '::1', '2020-04-11 22:32:56', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses/lesson/rangkuman-buku-i-am-gifted-so-are-you/2/2', ''),
-(39, '::1', '2020-04-11 22:45:51', 'Chrome', 'Windows 10', 'Other', 'Other', 68, 'http://localhost/kurteyki/courses/detail/ilmu-menjadi-manusia-berbakat-dari-adam-khoo', ''),
-(40, '::1', '2020-04-11 22:49:21', 'Chrome', 'Windows 10', 'Other', 'Other', 20, 'http://localhost/kurteyki/courses/lesson/ilmu-menjadi-manusia-berbakat-dari-adam-khoo/1/1', ''),
-(41, '::1', '2020-04-11 22:49:22', 'Chrome', 'Windows 10', 'Other', 'Other', 16, 'http://localhost/kurteyki/courses/lesson/ilmu-menjadi-manusia-berbakat-dari-adam-khoo/1/4', ''),
-(42, '::1', '2020-04-11 22:49:23', 'Chrome', 'Windows 10', 'Other', 'Other', 13, 'http://localhost/kurteyki/courses/lesson/ilmu-menjadi-manusia-berbakat-dari-adam-khoo/2/3', ''),
-(43, '::1', '2020-04-11 22:49:24', 'Chrome', 'Windows 10', 'Other', 'Other', 14, 'http://localhost/kurteyki/courses/lesson/ilmu-menjadi-manusia-berbakat-dari-adam-khoo/2/2', ''),
-(44, '::1', '2020-04-11 23:32:11', 'Chrome', 'Windows 10', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses/detail/cara-menjadi-manusia-berbakat-dari-adam-khoo', ''),
-(45, '::1', '2020-04-12 06:12:33', 'Chrome', 'Windows 10', 'Other', 'Other', 49, 'http://localhost/kurteyki/', ''),
-(46, '::1', '2020-04-12 06:15:01', 'Chrome', 'Windows 10', 'Other', 'Other', 30, 'http://localhost/kurteyki/courses/detail/cara-menjadi-manusia-berbakat-dari-adam-khoo', ''),
-(47, '::1', '2020-04-12 06:15:06', 'Chrome', 'Windows 10', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses/lesson/cara-menjadi-manusia-berbakat-dari-adam-khoo/1/1', ''),
-(48, '::1', '2020-04-12 06:15:36', 'Chrome', 'Windows 10', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses/lesson/cara-menjadi-manusia-berbakat-dari-adam-khoo/1/4', ''),
-(49, '::1', '2020-04-12 06:15:37', 'Chrome', 'Windows 10', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses/lesson/cara-menjadi-manusia-berbakat-dari-adam-khoo/2/3', ''),
-(50, '::1', '2020-04-12 06:15:38', 'Chrome', 'Windows 10', 'Other', 'Other', 11, 'http://localhost/kurteyki/courses/lesson/cara-menjadi-manusia-berbakat-dari-adam-khoo/2/2', ''),
-(51, '::1', '2020-04-12 09:22:16', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog', ''),
-(52, '::1', '2020-04-12 09:22:20', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog/post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(53, '::1', '2020-04-12 09:22:25', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/p/privacy', ''),
-(54, '::1', '2020-04-12 09:23:03', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses/category/karakter', ''),
-(55, '::1', '2020-04-12 10:03:23', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses/category/skill-hidup', '');
+(1, '::1', '2020-04-14 14:09:12', 'Chrome', 'Windows 7', 'Other', 'Other', 37, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(2, '::1', '2020-04-14 14:09:33', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/1/1', ''),
+(3, '::1', '2020-04-14 14:09:35', 'Chrome', 'Windows 7', 'Other', 'Other', 25, 'http://localhost/kurteyki/', ''),
+(4, '::1', '2020-04-14 14:22:16', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/courses-category/karakter', ''),
+(5, '::1', '2020-04-14 14:22:18', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
+(6, '::1', '2020-04-14 14:24:26', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(7, '::1', '2020-04-14 14:25:07', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog', '');
 
 -- --------------------------------------------------------
 
@@ -578,17 +562,17 @@ CREATE TABLE `tb_user` (
   `photo` varchar(255) NOT NULL,
   `grade` enum('App','User') NOT NULL,
   `created` datetime NOT NULL,
-  `last_login` datetime NOT NULL
+  `last_login` datetime NOT NULL,
+  `status` enum('Active','Blocked','UnActive') NOT NULL DEFAULT 'UnActive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `no_handphone`, `photo`, `grade`, `created`, `last_login`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', '', '0', '', 'App', '0000-00-00 00:00:00', '2020-04-11 22:10:00'),
-(18, 'user teladan', '8cb2237d0679ca88db6464eac60da96345513964', 'userteladan@gg.cc', '0852808157333', '', 'User', '2020-04-11 16:57:10', '2020-04-11 21:00:09'),
-(19, 'user mantap', '8cb2237d0679ca88db6464eac60da96345513964', 'userteladan@gg.ccc', '1234567891', '', 'User', '2020-04-11 19:33:20', '2020-04-11 19:34:12');
+INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `no_handphone`, `photo`, `grade`, `created`, `last_login`, `status`) VALUES
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', '', '0', '', 'App', '0000-00-00 00:00:00', '2020-04-14 14:08:01', 'Active'),
+(2, 'demo12345', '7997f12c3820726b29acaad633838035f867d9a2', 'user@user.cc', '08532991293219', '', 'User', '2020-04-14 14:19:08', '2020-04-14 14:19:31', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -660,6 +644,12 @@ ALTER TABLE `tb_blog_template_widget`
 ALTER TABLE `tb_lms_category`
   ADD PRIMARY KEY (`id`),
   ADD KEY `slug` (`slug`);
+
+--
+-- Indexes for table `tb_lms_coupon`
+--
+ALTER TABLE `tb_lms_coupon`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_lms_courses`
@@ -822,16 +812,22 @@ ALTER TABLE `tb_lms_category`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tb_lms_coupon`
+--
+ALTER TABLE `tb_lms_coupon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tb_lms_courses`
 --
 ALTER TABLE `tb_lms_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_lesson`
 --
 ALTER TABLE `tb_lms_courses_lesson`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_section`
@@ -855,7 +851,7 @@ ALTER TABLE `tb_lms_template_widget`
 -- AUTO_INCREMENT for table `tb_lms_user_courses`
 --
 ALTER TABLE `tb_lms_user_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_lesson`
@@ -873,7 +869,7 @@ ALTER TABLE `tb_lms_user_review`
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -885,19 +881,19 @@ ALTER TABLE `tb_site_meta`
 -- AUTO_INCREMENT for table `tb_site_pages`
 --
 ALTER TABLE `tb_site_pages`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
