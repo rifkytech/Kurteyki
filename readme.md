@@ -18,6 +18,7 @@ Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komput
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
+Pastikan os anda sudah terinstall [composer](https://getcomposer.org/)
 Download Project ini dan extract di folder htdocs yang ada pada xampp.
 ```
 
