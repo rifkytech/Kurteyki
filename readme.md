@@ -2,7 +2,7 @@
 
 LMS (Learning Management System) & Blog.
 
-![alt Site](https://i.ibb.co/2PWG8cc/screencapture-localhost-kurteyki-2020-04-15-19-59-34.png)
+![alt Site](https://i.ibb.co/mtbfvhh/screencapture-localhost-kurteyki-2020-04-15-19-59-34.png)
 ![alt App](https://i.ibb.co/GVsBVMY/screencapture-localhost-kurteyki-app-2020-04-15-19-52-52.png)
 
 ## Fiture
