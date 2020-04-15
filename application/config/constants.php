@@ -6,10 +6,10 @@
 |
 */
 
-define('APP_NAME', 'Apps');
+define('APP_NAME', 'Kurteyki App');
 define('APP_LOGO', 'storage/assets/app/img/logo.png');
 define('APP_DESC', 'CMS Teyki');
-define('APP_VERSION', 'v1.0');
+define('APP_VERSION', 'v1.5');
 define('APP_CREATOR', 'Faanteyki');
 define('APP_CREATOR_URL', 'https://instagram.com/faanteyki');
 define('APP_CREATOR_WEBSITE', 'https://www.kurteyki.com');
@@ -20,6 +20,7 @@ define('APP_CREATOR_WEBSITE', 'https://www.kurteyki.com');
 |--------------------------------------------------------------------------
 |
 */
+
 define('PATH_FILE_MANAGER', 'storage/plugins-b/filemanager/dialog.php');
 define('CSS_POST', 'storage/assets/blog/post.css');
 

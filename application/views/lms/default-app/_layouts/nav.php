@@ -51,7 +51,7 @@
 
                     <?php $this->load->view('lms/default-app/_layouts/nav-user'); ?>
 
-                    <button class="c-nav-toggle u-ml-auto" type="button" data-toggle="collapse" data-target="#main-nav">
+                    <button class="c-nav-toggle " type="button" data-toggle="collapse" data-target="#main-nav">
                         <span class="c-nav-toggle__bar"></span>
                         <span class="c-nav-toggle__bar"></span>
                         <span class="c-nav-toggle__bar"></span>

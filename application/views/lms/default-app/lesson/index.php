@@ -4,7 +4,36 @@
 
 <div class="container-fluid">                   
 
-    <div class="row">
+    <div class="row">       
+
+    <div class="col-12 col-xl-9 col-lg-8 col-md-12 u-p-zero order-first order-lg-first">
+
+            <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 4.5rem);min-height: calc(100vh - 4.5rem);overflow-y: auto;overflow-x:hidden;">
+
+
+                <div class="c-stage__header cursor-default u-ph-small">
+                    <div class="col-12 col-xl-8">
+                        <h1 class="u-text-bold u-h4 u-mb-zero" style="cursor: default;">
+                            <?php echo $courses['lesson_detail']['title'] ?>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="u-flex u-align-items-center">
+                    <div class="col-12 col-xl-7 offset-xl-2">
+
+                        <?php if (!empty($courses['lesson_detail'])): ?>
+                            <div class="u-pv-medium u-ph-small post-body">
+                                <?php echo $courses['lesson_detail']['content'] ?>
+                            </div>
+                        <?php endif ?>
+
+                    </div>
+                </div>
+            </article>
+
+
+        </div>
 
         <div class="col-xl-3 col-lg-4 u-p-zero">
 
@@ -91,36 +120,7 @@
 
     </article>
 
-</div>
-
-<div class="col-12 col-xl-9 col-lg-8 col-md-12 u-p-zero order-first order-lg-last">
-
-    <article class="c-stage u-mb-zero" style="max-height: calc(100vh - 4.5rem);min-height: calc(100vh - 4.5rem);overflow-y: auto;overflow-x:hidden;">
-
-
-        <div class="c-stage__header cursor-default u-ph-small">
-            <div class="col-12 col-xl-8">
-                <h1 class="u-text-bold u-h4 u-mb-zero" style="cursor: default;">
-                    <?php echo $courses['lesson_detail']['title'] ?>
-                </h1>
-            </div>
-        </div>
-
-        <div class="u-flex u-align-items-center">
-            <div class="col-12 col-xl-8 offset-xl-2">
-
-                <?php if (!empty($courses['lesson_detail'])): ?>
-                    <div class="u-pv-medium u-ph-small post-body">
-                        <?php echo $courses['lesson_detail']['content'] ?>
-                    </div>
-                <?php endif ?>
-
-            </div>
-        </div>
-    </article>
-
-
-</div>
+</div>        
 
 </div>
 

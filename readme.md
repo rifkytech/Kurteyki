@@ -1,35 +1,45 @@
-function coupon($l){
-		$coupon = "PR".substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',$l-2)),0,$l-2);
- 
-		return $coupon;
-	}
-
 # Kurteyki App
 
-Simple Blog App.
+LMS (Learning Management System) & Blog.
 
 ![alt App Teyki](https://i.ibb.co/Prq3FY8/App-Teyki.png)
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Fiture
 
+* LMS (Learning Management System)
 * Blog
 
-### Installing
+## Langkah Awal Memulai
 
-Create Database On Phpmyadmin
+Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer dan ditujukan hanya untuk melakukan development dan testing saja.
+
+### Langkah Menjalankan Aplikasi Menggunakan XAMPP
+
+```
+Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
+Download Project ini dan extract di folder htdocs yang ada pada xampp.
+```
+
+Buat Database dengan nama kurteyki di phpmyadmin, silahkan akses url dibawah ini untuk membuka phpmyadmin :
 
 ```
 http://localhost/phpmyadmin
 ```
-Run XAMPP
-Install Database
+
+Langkah kedua akses url dibawah ini, disamakan dengan nama folder pada saat extract project ini pada htdocs xampp :
 
 ```
 http://localhost/kurteyki
+```
+
+Kemudian Masukan data yang dibutuhkan untuk menginstall table
+
+```
+host : localhost
+username : root
+password : kosong (default xampp)
+database : kurteyki
+database port : 3306 (default xampp)
 ```
 
 ## Built With
@@ -42,14 +52,15 @@ http://localhost/kurteyki
 
 ## Work List
 
-* Coupon Code
-* Multiple user
+* Coupon Code (Not Perfect)
+* Multiple user 
 * Review User
 
 ## Bug
 
-* when delete, when multiple user.
+* when delete
+* when multiple user
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.

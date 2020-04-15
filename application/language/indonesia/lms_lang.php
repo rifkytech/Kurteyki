@@ -39,8 +39,6 @@ $lang['courses_not_found_search'] = 'Materi yang dicari tidak ditemukan.';
 |
 */
 
-$lang['room'] = 'Kursus';
-
 /* button courses */
 $lang['add_to_my_courses'] = 'Tambahkan';
 $lang['success_add_courses'] = 'Berhasil Menambahkan Kursus.';

@@ -42,14 +42,15 @@ function datatables_serverside(resource_columns) {
 
     /** button create **/
     $("#modal-create").click(function() {
-        $("input[type=text],input[type=hidden]").val('');
+        $("#form-master input[type=text],input[type=hidden]").val('');
+        $("#form-master select.select2").val(null).trigger('change');
         $(".cst-modal-title").html($(this).data('title'));
         $("button[name='submit']").prop("disabled", false);
     })
 
     $('#modal').on('shown.bs.modal', function() {
-        $("input[name=name]").focus();
-    })
+     $('#form-master input:enabled:visible:not([readonly]):first').focus();
+ })
 
     $("#form-master").submit(function(e) {
         e.preventDefault();
@@ -174,12 +175,14 @@ function datatables_serverside(resource_columns) {
             $('div.dataTables_length').appendTo($('.cst-table'));
             $('div.dataTables_filter').css({ 'width': '50%', 'float': 'right', 'text-align': 'right' });
 
-            tablebest.on("click", '.action-edit', function() {
-                var id = $(this).attr("data-id"),
-                name = $(this).attr("data-name");
+            tablebest.on("click", '.action-edit-coupon', function() {
                 $(".cst-modal-title").html($(this).data('title'));
-                $("input[name=id]").val(id);
-                $("input[name=name]").val(name);
+                $("input[name=id]").val($(this).data("id"));
+                $("input[name=code]").val($(this).data("code"));
+                $("input[name=expired]").val($(this).data("expired"));
+                $("input[name=data]").val($(this).data("data"));
+                $("#coupon-type").val($(this).data("type")).trigger('change');
+                $("#coupon-for").val($(this).data("for")).trigger('change');
             });
 
             tablebest.on('click', action_delete, function(e) {

@@ -79,7 +79,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);			
+				]);			
 
 		}		
 		elseif ($page_type == 'category') {
@@ -102,7 +102,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);			
+				]);			
 
 		}	
 		elseif ($page_type == 'search') {
@@ -127,7 +127,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);										
+				]);										
 		}		
 		elseif ($page_type == 'detail') {
 
@@ -155,7 +155,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);				
+				]);				
 
 		}
 		elseif ($page_type == 'lesson') {
@@ -163,7 +163,7 @@ class M_Site_Meta extends CI_Model
 			$read = $this->M_Site_Meta_Courses_Lesson->read(urldecode($this->uri->segment(2)));
 			$courses = $this->_Courses->read_long_single($site,$read);
 
-			$title = $this->lang->line('room').' : '. $courses['title'];
+			$title = $courses['title'];
 			$description = ctsubstr($courses['description'],150);
 			$image = $courses['image']['original'];
 			$published = $read['time'];
@@ -184,12 +184,12 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);				
+				]);				
 		}
 		
 		return [
-			'breadcrumbs' => $breadcrumbs,
-			'meta' => $meta,
+		'breadcrumbs' => $breadcrumbs,
+		'meta' => $meta,
 		];
 	}	
 

@@ -10,18 +10,18 @@ class M_Blog_Post extends CI_Model
 
     public function datatables(){
         return [
-            'datatable' => true,
-            'datatables_data' => "
-            [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
-            {'data': 'id',className:'c-table__cell'},
-            {'data': 'title',className:'c-table__cell u-pl-small',width:'100%'},
-            {'data': 'category',className:'c-table__cell u-text-center'},
-            {'data': 'time',className:'c-table__cell'},
-            {'data': 'updated',className:'c-table__cell'},
-            {'data': 'view',className:'c-table__cell'},            
-            {'data': 'alat',className:'c-table__cell'}
-            ]
-            ",
+        'datatable' => true,
+        'datatables_data' => "
+        [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
+        {'data': 'id',className:'c-table__cell'},
+        {'data': 'title',className:'c-table__cell u-pl-small',width:'100%'},
+        {'data': 'category',className:'c-table__cell u-text-center'},
+        {'data': 'time',className:'c-table__cell'},
+        {'data': 'updated',className:'c-table__cell'},
+        {'data': 'view',className:'c-table__cell'},            
+        {'data': 'alat',className:'c-table__cell'}
+        ]
+        ",
         ];
     }
 
@@ -51,19 +51,19 @@ class M_Blog_Post extends CI_Model
         $this->datatables->group_by('tb_blog_post.id');
         $this->datatables->add_column('checkbox', '
             <td>
-            <div class="c-choice c-choice--checkbox">
-            <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
-            <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
-            </div>
+                <div class="c-choice c-choice--checkbox">
+                    <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
+                    <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
+                </div>
             </td>
             ', 'id');
 
         $this->datatables->edit_column('title', '
             <a title="$1" href="' . base_url('blog-post/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
-            <small class="u-mr-xsmall">$3</small>
-            <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
-            <small class="u-mr-xsmall"><i class="fa fa-comment u-color-info"></i>&nbsp; $5</small>            
+                $3
+                <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
+                <small class="u-mr-xsmall"><i class="fa fa-comment u-color-info"></i>&nbsp; $5</small>            
             </span>
             ', 'ctsubstr(title,60),permalink,formatstatus(timeorigin,status),views,countcomment(comments)');
         $this->datatables->edit_column('category', '$1', 'ucwords(category)');
@@ -71,7 +71,7 @@ class M_Blog_Post extends CI_Model
         $this->datatables->add_column('alat', '
             <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/blog_post/').'update/$1"><i class="fa fa-edit"></i></a>
             <button type="button" data-title="are you sure ?" data-text="want to delete $2" class="c-btn c-btn--danger c-btn--custom action-delete" data-href="'. base_url('app/blog_post/delete/$1') .'">
-            <i class="fa fa-trash"></i>
+                <i class="fa fa-trash"></i>
             </button>
             ', 'id,title');
 
@@ -85,8 +85,8 @@ class M_Blog_Post extends CI_Model
     public function required($withpost = false){
 
         $data = [
-            'categorys' => $this->_Process_MYSQL->read_data($this->table_blog_post_category, 'id', 'DESC')->result_array(),
-            'tags' => $this->_Process_MYSQL->read_data($this->table_blog_post_tags, 'id', 'DESC')->result_array(),
+        'categorys' => $this->_Process_MYSQL->read_data($this->table_blog_post_category, 'id', 'DESC')->result_array(),
+        'tags' => $this->_Process_MYSQL->read_data($this->table_blog_post_tags, 'id', 'DESC')->result_array(),
         ];
 
         if ($withpost) {
@@ -107,15 +107,15 @@ class M_Blog_Post extends CI_Model
     public function data_post(){
 
         $post_data = [
-            'title' => htmlentities($this->input->post('title')),
-            'image' => htmlentities($this->input->post('image')),
-            'permalink' => $this->input->post('permalink'),
-            'time' => htmlentities($this->input->post('time')),
-            'id_category' => $this->input->post('id_category'),
-            'id_tags' => $this->input->post('id_tags'),
-            'content' => htmlentities($this->input->post('content')),
-            'description' => htmlentities($this->input->post('description')),                        
-            'status' => strip_tags($this->input->post('status')),            
+        'title' => htmlentities($this->input->post('title')),
+        'image' => htmlentities($this->input->post('image')),
+        'permalink' => $this->input->post('permalink'),
+        'time' => htmlentities($this->input->post('time')),
+        'id_category' => $this->input->post('id_category'),
+        'id_tags' => $this->input->post('id_tags'),
+        'content' => htmlentities($this->input->post('content')),
+        'description' => htmlentities($this->input->post('description')),                        
+        'status' => strip_tags($this->input->post('status')),            
         ];
 
         /**
@@ -125,7 +125,7 @@ class M_Blog_Post extends CI_Model
 
             $post_merge = array(
                 'updated' => date('Y-m-d H:i:s'),
-            );
+                );
 
             $post_data = array_merge($post_data, $post_merge);   
         }     
@@ -209,7 +209,7 @@ class M_Blog_Post extends CI_Model
                 $data_category = array(
                     'name' => $category,
                     'slug' => slug($category),
-                );
+                    );
 
                 if ($this->_Process_MYSQL->insert_data($this->table_blog_post_category, $data_category)) {
 
@@ -276,7 +276,7 @@ class M_Blog_Post extends CI_Model
                     $post_tags[] = array(
                         'name' => strtolower($name),
                         'slug' => strtolower(slug($name)),
-                    );
+                        );
                 }
 
                 # insert all new tag

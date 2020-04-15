@@ -12,11 +12,15 @@
 
 	<div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
 		<a class="c-dropdown__item dropdown-item" href="<?php echo base_url('app/user') ?>">
-			<i class="fa fa-user"></i>
+			<i class="fa fa-user u-mr-xsmall"></i>
 			Edit Profile
 		</a>
+		<a class="c-dropdown__item dropdown-item" href="javascript" data-toggle="modal" data-target="#app-about">
+			<i class="fa fa-info-circle u-mr-xsmall"></i>
+			About
+		</a>
 		<a class="c-dropdown__item dropdown-item" href="<?php echo base_url('app/auth/process_logout') ?>">
-			<i class="fa fa-sign-out"></i>
+			<i class="fa fa-sign-out u-mr-xsmall"></i>
 			Logout
 		</a>
 	</div>

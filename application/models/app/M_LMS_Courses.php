@@ -56,11 +56,11 @@ class M_LMS_Courses extends CI_Model
         $this->datatables->edit_column('title', '
             <a title="$1" href="' . base_url('courses-detail/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
-                <small class="u-mr-xsmall">$3</small>
+                $3
                 <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
-                <small class="u-mr-xsmall"><i class="fa fa-comment u-color-info"></i>&nbsp; $5</small>            
             </span>
-            ', 'ctsubstr(title,60),permalink,formatstatus(timeorigin,status),views,countcomment(comments)');
+            ', 'ctsubstr(title,60),permalink,formatstatus(timeorigin,status),views');
+
         $this->datatables->edit_column('category', '$1', 'ucwords(category)');
 
         $this->datatables->add_column('alat', '
@@ -165,6 +165,31 @@ class M_LMS_Courses extends CI_Model
         if ($post_data['discount'] >= $post_data['price']) {
             $post_data['discount'] = false;
         }
+
+        /**
+         * Set Permalink News if Update
+         */
+        if (empty($post_data['permalink'])) {
+            $permalink_news = strtolower(slug($post_data['title']));
+        }else {        
+            $permalink_old = strtolower(slug($this->input->post('permalink'."_old")));
+            $set_permalink = strtolower(slug($post_data['permalink']));
+
+            if ($permalink_old == $set_permalink) {
+                $permalink_news = $set_permalink;                
+            }else {
+
+                $read_post = $this->_Process_MYSQL->get_data($this->table_lms_courses, array('permalink' => $set_permalink))->num_rows();
+                if ($read_post > 0) {
+                    $uniqe_string = rand();
+                    $permalink_news = $set_permalink."-".$uniqe_string;
+                }else {
+                    $permalink_news = $set_permalink;
+                }
+            }
+        }
+
+        $post_data['permalink'] = $permalink_news;          
 
         return $post_data;        
     }     

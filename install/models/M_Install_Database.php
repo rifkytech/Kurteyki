@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Install_Table extends CI_Model {
+class M_Install_Database extends CI_Model {
 
 
 	public function install_table(){
@@ -30,7 +30,7 @@ class M_Install_Table extends CI_Model {
 		$this->db->trans_start(TRUE);
 		$this->db->trans_begin();
 
-		$query = file_get_contents('install/table.sql') ;
+		$query = file_get_contents('install/kurteyki.sql') ;
 		$this->db->query($query);
 
 		if ($this->db->trans_status() == TRUE) 
@@ -43,7 +43,7 @@ class M_Install_Table extends CI_Model {
 				'DB_USER' => $post['username'],
 				'DB_PASS' => $post['password'],
 				'DB_PORT' => $post['port'],				
-			]);
+				]);
 
 			return 'success';
 		}
@@ -83,14 +83,39 @@ class M_Install_Table extends CI_Model {
 			'stricton' => FALSE,
 			'failover' => array(),
 			'save_queries' => FALSE
-		);
+			);
 
 
 		return $config;
 	}
 
 	public function delete_table(){
-		return $this->db->query('DROP TABLE `tb_blog_pages`, `tb_blog_post`, `tb_blog_post_category`, `tb_blog_post_comment`, `tb_blog_post_tags`, `tb_site`, `tb_site_meta`, `tb_site_template`, `tb_site_template_style`, `tb_site_template_widget`, `tb_site_visitor`, `tb_user`;');
+		return $this->db->query('DROP TABLE 
+			`tb_blog_post`,
+			`tb_blog_post_category`,
+			`tb_blog_post_comment`,
+			`tb_blog_post_tags`,
+			`tb_blog_template`,
+			`tb_blog_template_style`,
+			`tb_blog_template_widget`,
+			`tb_lms_category`,
+			`tb_lms_coupon`,
+			`tb_lms_courses`,
+			`tb_lms_courses_lesson`,
+			`tb_lms_courses_section`,
+			`tb_lms_template`,
+			`tb_lms_template_widget`,
+			`tb_lms_user_courses`,
+			`tb_lms_user_lesson`,
+			`tb_lms_user_payment`,
+			`tb_lms_user_review`,
+			`tb_lms_user_wishlist`,
+			`tb_site`,
+			`tb_site_meta`,
+			`tb_site_pages`,
+			`tb_site_visitor`,
+			`tb_user`
+			;');
 	}
 
 }
