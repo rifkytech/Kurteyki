@@ -12,7 +12,7 @@ LMS (Learning Management System) & Blog.
 
 ## Langkah Awal Memulai
 
-Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer dan ditujukan hanya untuk melakukan development dan testing saja.
+Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer anda (local) dan ditujukan hanya untuk melakukan development dan testing saja.
 
 ### Menjalankan Aplikasi Menggunakan XAMPP
 
