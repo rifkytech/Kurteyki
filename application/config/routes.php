@@ -73,6 +73,7 @@ $route['payment/notification'] = 'user/payment/notification';
 $route['payment/success'] = 'user/payment/success';
 $route['payment/waiting'] = 'user/payment/waiting';
 $route['payment/use_coupon'] = 'user/payment/use_coupon';
+$route['payment/process_free'] = 'user/payment/process_free';
 
 /*
 |--------------------------------------------------------------------------

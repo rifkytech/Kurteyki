@@ -97,6 +97,9 @@ $lang['failed_transaction'] = 'Gagal Memesan Barang';
 
 $lang['error_midtrans_config'] = 'Error Midtrans Configuration';
 
+$lang['success_payment'] = 'Selamat !';
+$lang['success_payment_message'] = 'Pembelian Berhasil Dilakukan.';
+
 $lang['wait_payment_message'] = 'Silahkan lakukan pembayaran untuk menyelesaikan pembelian. pastikan jumlah yang dibayar sesuai.';
 $lang['view_transaction'] = 'Lihat Transaksi';
 

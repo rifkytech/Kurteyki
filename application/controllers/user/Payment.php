@@ -64,20 +64,40 @@ class Payment extends My_User
     } 
 
     public function use_coupon(){
+        
         /** check if ajax request */
         if ($this->input->is_ajax_request()) {
 
             $process = $this->M_Payment->check_coupon();
 
-            if ($process) {
+            if ($process['status'] == 'valid_not_free') {
                 echo json_encode([
-                    'status' => 'valid',
+                    'status' => 'valid_not_free',
                     'discount_coupon' => $process['discount_coupon'],
                     'price_total' => $process['price_total'],
                     'midtrans_token' => $process['midtrans_token'],                    
                     'message' => 'Kode Voucher valid',
                     ]);
-            }else{
+            }elseif ($process['status'] == 'valid_to_free') {
+                echo json_encode([
+                    'status' => 'valid_to_free',
+                    'discount_coupon' => $process['discount_coupon'],
+                    'price_total' => $process['price_total'],
+                    'free_code' => $process['free_code'],
+                    'message' => 'Kode Voucher valid',
+                    ]);
+            }elseif ($process['status'] == 'coupon_reuse') {
+                echo json_encode([
+                    'status' => 'invalid',
+                    'message' => 'Kode Voucher sudah pernah digunakan.',
+                    ]);
+            }elseif ($process['status'] == 'coupon_expired') {
+                echo json_encode([
+                    'status' => 'invalid',
+                    'message' => 'Kode Voucher sudah expired.',
+                    ]);
+            }
+            else{
                 echo json_encode([
                     'status' => 'invalid',
                     'message' => 'Kode Voucher tidak valid',
@@ -87,6 +107,23 @@ class Payment extends My_User
         }else{
             redirect(base_url());
         }        
+    }
+
+    public function process_free(){
+
+        if ($this->input->post()) {
+
+            $process = $this->M_Payment->process_free();
+
+            if ($process) {
+                redirect(base_url('payment/success'));
+            }else{
+                redirect(base_url());
+            }        
+
+        }else{
+            redirect(base_url());
+        } 
     }
 
     public function waiting(){

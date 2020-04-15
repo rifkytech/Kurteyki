@@ -46,14 +46,19 @@
                                 <?php echo $courses['price_total'] ?>
                             </div>
                         </div>
-                        <button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' data-value="<?php echo $midtrans['token'] ?>" value="<?php echo $midtrans['token'] ?>" id="pay-button" class="c-btn c-btn--custom u-mb-small">
-                        </i><?php echo $this->lang->line('order_now'); ?> 
-                    </button>
+                        <button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' data-value="<?php echo $midtrans['token'] ?>" value="<?php echo $midtrans['token'] ?>" id="pay-button" class="c-btn c-btn--custom u-mb-small"> 
+                            <?php echo $this->lang->line('order_now'); ?> 
+                        </button>
+                        <form action="<?php echo base_url('payment/process_free') ?>" method='POST'>                            
+                            <button name='free_code' value="" id="pay-button-free" class="c-btn c-btn--custom u-mb-small u-hidden"> 
+                                <?php echo $this->lang->line('order_now'); ?> 
+                            </button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
 
         </div>
-
     </div>
-</div>
 </footer>

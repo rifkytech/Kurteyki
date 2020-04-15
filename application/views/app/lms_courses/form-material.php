@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="c-stage__panel u-p-xsmall <?php echo ($this->input->get('editsection') == 'false') ? 'u-hidden' : '' ?>">
+    <div class="c-stage__panel u-p-medium <?php echo ($this->input->get('editsection') == 'false') ? 'u-hidden' : '' ?>">
 
         <?php if (empty($section)): ?>
             <div class="c-alert c-alert--info">

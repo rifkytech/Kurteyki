@@ -44,6 +44,7 @@ http://localhost/kurteyki
 
 * Coupon Code
 * Multiple user
+* Review User
 
 ## Bug
 

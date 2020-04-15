@@ -334,16 +334,26 @@ var check_order = function(result){
  		dataType: 'JSON',
  		success: function(data) {
 
- 			if (data.status == 'valid') {
+ 			if (data.status == 'valid_not_free') {
  				$("input[name='code']").prop("disabled", true);
 
  				$("#order-discount-coupon, #remove-coupon").removeClass('u-hidden');
- 				$("#check-coupon").addClass('u-hidden');			
+ 				$("#check-coupon").addClass('u-hidden');
  				$("#order-discount-coupon > h4").html(data.discount_coupon);
  				$("#order-price-total").html(data.price_total);
  				$("#pay-button").val(data.midtrans_token);
  				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
  			} 
+ 			else if (data.status == 'valid_to_free') {
+ 				$("input[name='code']").prop("disabled", true);
+
+ 				$("#order-discount-coupon, #remove-coupon").removeClass('u-hidden');
+ 				$("#check-coupon, #pay-button").addClass('u-hidden');
+ 				$("#order-discount-coupon > h4").html(data.discount_coupon);
+ 				$("#order-price-total").html(data.price_total);
+ 				$("#pay-button-free").val(data.free_code).removeClass('u-hidden');
+ 				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
+ 			}
  			else if (data.status == 'invalid') {
  				$("#order-discount-coupon").addClass('u-hidden');
  				$("#order-price-total").html($('#order-price-total').data('price-total')); 				
@@ -378,6 +388,6 @@ var check_order = function(result){
  	$("#pay-button").val($('#pay-button').data('value')); 				 				
  	$("#coupon-respon").html('');
 
- 	$("#check-coupon").removeClass('u-hidden');
- 	$("#remove-coupon").addClass('u-hidden');
- });	
+ 	$("#check-coupon,#pay-button").removeClass('u-hidden');
+ 	$("#remove-coupon,#pay-button-free").addClass('u-hidden');
+ });
