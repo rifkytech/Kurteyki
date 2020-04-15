@@ -2,9 +2,9 @@
 
 LMS (Learning Management System) & Blog.
 
-![alt App Teyki](https://i.ibb.co/Prq3FY8/App-Teyki.png)
+![alt App Teyki](https://i.ibb.co/GVsBVMY/screencapture-localhost-kurteyki-app-2020-04-15-19-52-52.png)
 
-### Fiture
+## Fiture
 
 * LMS (Learning Management System)
 * Blog
@@ -13,7 +13,7 @@ LMS (Learning Management System) & Blog.
 
 Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer dan ditujukan hanya untuk melakukan development dan testing saja.
 
-### Langkah Menjalankan Aplikasi Menggunakan XAMPP
+## Langkah Menjalankan Aplikasi Menggunakan XAMPP
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
@@ -41,6 +41,8 @@ password : kosong (default xampp)
 database : kurteyki
 database port : 3306 (default xampp)
 ```
+
+![alt Install table](https://i.ibb.co/fvwfX67/screencapture-localhost-kurteyki-2020-04-15-19-53-19.png)
 
 ## Built With
 
