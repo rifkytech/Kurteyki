@@ -70,6 +70,7 @@ composer install
 
 * when delete
 * when multiple user
+* when caching active user login / register not working -> not caching on this page.
 
 ## License
 

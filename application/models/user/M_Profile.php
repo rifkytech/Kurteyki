@@ -31,7 +31,7 @@ class M_Profile extends CI_Model
 				'photo', // file post data
 				$image_old, // delete file
 				'user_photo', // file name
-				'resize', //is image for resizing image or create thumb
+				'resize' //is image for resizing image or create thumb
 			);
 
 			if ($upload_photo['photo']) {
