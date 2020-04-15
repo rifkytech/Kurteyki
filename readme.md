@@ -14,7 +14,7 @@ LMS (Learning Management System) & Blog.
 
 Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer dan ditujukan hanya untuk melakukan development dan testing saja.
 
-## Langkah Menjalankan Aplikasi Menggunakan XAMPP
+### Menjalankan Aplikasi Menggunakan XAMPP
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
