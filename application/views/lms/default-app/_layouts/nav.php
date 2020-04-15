@@ -40,8 +40,8 @@
                                             <i class="fa fa-search"></i> 
                                         </span>
 
-                                        <label class="u-hidden-visually" for="navbar-search"><?php echo $this->lang->line('search') ?></label>
-                                        <input class="c-input" id="navbar-search" type="text" name="q" placeholder="<?php echo $this->lang->line('search') ?>">
+                                        <label class="u-hidden-visually"><?php echo $this->lang->line('search') ?></label>
+                                        <input class="c-input" type="text" name="q" placeholder="<?php echo $this->lang->line('search') ?>">
                                     </div>
                                 </form>
                             </li>
