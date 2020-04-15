@@ -5,7 +5,7 @@ LMS (Learning Management System) & Blog.
 ![alt Site](https://i.ibb.co/mtbfvhh/screencapture-localhost-kurteyki-2020-04-15-19-59-34.png)
 ![alt App](https://i.ibb.co/GVsBVMY/screencapture-localhost-kurteyki-app-2020-04-15-19-52-52.png)
 
-## Fiture
+## Fitur Aplikasi
 
 * LMS (Learning Management System)
 * Blog
@@ -45,11 +45,11 @@ database port : 3306 (default xampp)
 
 ![alt Install table](https://i.ibb.co/fvwfX67/screencapture-localhost-kurteyki-2020-04-15-19-53-19.png)
 
-## Built With
+## Dibuat dengan
 
 * [CodeIgniter 3.11](https://codeigniter.com/)
 
-## Authors
+## Pembuat
 
 * **Riedayme** - [Riedayme](https://facebook.com/riedayme)
 
