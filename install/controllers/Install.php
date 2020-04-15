@@ -65,7 +65,9 @@ class Install extends CI_Controller {
 			// $file_index = file_get_contents('install/index_application.txt');
 			// file_put_contents('index.php', $file_index);
 
-			redirect(base_url('install_website'));
+			// redirect(base_url('install_website'));
+
+			redirect(base_url());
 		}else {
 			$this->session->set_flashdata([
 				'message' => true,
