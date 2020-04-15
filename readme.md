@@ -18,7 +18,7 @@ Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komput
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
-Pastikan os anda sudah terinstall [composer](https://getcomposer.org/)
+Pastikan os anda sudah terinstall composer https://getcomposer.org/
 Download Project ini dan extract di folder htdocs yang ada pada xampp.
 ```
 
@@ -45,6 +45,12 @@ database port : 3306 (default xampp)
 ```
 
 ![alt Install table](https://i.ibb.co/fvwfX67/screencapture-localhost-kurteyki-2020-04-15-19-53-19.png)
+
+Setelah itu Install Library yang dibutuhkan menggunakan composer dengan mengetikan perintah command:
+
+```
+composer install
+```
 
 ## Dibuat dengan
 
