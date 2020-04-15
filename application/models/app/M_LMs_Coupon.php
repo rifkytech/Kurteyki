@@ -111,4 +111,5 @@ class M_LMS_Coupon extends CI_Model
         return $this->_Process_MYSQL->delete_data_multiple($this->table_lms_coupon, $id, 'id');
     }    
 
+    
 }
